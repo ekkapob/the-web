@@ -10,6 +10,16 @@ server.bind({
 server.register([
   require('inert'),
   require('vision'),
+  {
+    register: require('yar'),
+    options: {
+      storeBlank: false,
+      cookieOptions: {
+        password: 'f9!^4nZHr@NqWmby@%PmFp%8%pRgn$qv',
+        isSecure: false
+      }
+    }
+  },
   require('./plugins/base')
 ], (err) => {
   if (err) { throw err; }
