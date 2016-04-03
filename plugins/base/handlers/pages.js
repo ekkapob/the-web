@@ -1,12 +1,13 @@
+exports.locale = (request, reply) => {
+  request.yar.set('locale', { value: request.params.locale });
+  reply.redirect(request.info.referrer);
+};
+
 exports.index = (request, reply) => {
-  console.log(request.info.referer);
-  request.yar.set('example', { key: 'value' });
   reply.view('index');
 };
 
 exports.products = (request, reply) => {
-  // console.log(request.info.referer);
-  // console.log(request.query.next);
-  const key = request.yar.get('example');
+  const key = request.yar.get('locale');
   reply(key);
 }
