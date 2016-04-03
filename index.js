@@ -1,30 +1,17 @@
 const Hapi = require('hapi');
-const Path = require('path');
-const server = new Hapi.Server();
-server.connection({ port: 4000 });
-server.bind({
+const Server = new Hapi.Server();
+const Routes = require('./routes');
+
+Server.connection({ port: 4000 });
+Server.bind({
   apiBaseUrl: 'http://localhost:4000/api',
   webBaseUrl: 'http://localhost:4000'
 });
 
-server.register([
-  require('inert'),
-  require('vision'),
-  {
-    register: require('yar'),
-    options: {
-      storeBlank: false,
-      cookieOptions: {
-        password: 'f9!^4nZHr@NqWmby@%PmFp%8%pRgn$qv',
-        isSecure: false
-      }
-    }
-  },
-  require('./plugins/base')
-], (err) => {
+Server.register(Routes, (err) => {
   if (err) { throw err; }
 
-  server.views({
+  Server.views({
     engines: {
       hbs: require('handlebars')
     },
@@ -36,7 +23,7 @@ server.register([
     isCached: false
   });
 
-  server.route({
+  Server.route({
     method: 'GET',
     path: '/assets/{param*}',
     handler: {
@@ -46,7 +33,7 @@ server.register([
     }
   });
 
-  server.start(() => {
-    console.log('Started server at ', server.info.uri);
+  Server.start(() => {
+    console.log('Started Server at ', Server.info.uri);
   });
 });
