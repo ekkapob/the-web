@@ -4,6 +4,8 @@ exports.locale = (request, reply) => {
 };
 
 exports.index = (request, reply) => {
+  console.log(request.i18n.getLocale());
+  console.log(request.i18n.__("Hello"));
   reply.view('index');
 };
 

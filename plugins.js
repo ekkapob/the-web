@@ -12,10 +12,11 @@ module.exports = [
     }
   },
   {
-    register: require( "hapi-i18n" ),
+    register: require('./plugins/i18n'),
     options: {
-      locales: ["en", "th"],
-      directory: __dirname + "/locales"
+      locales: ['en', 'th'],
+      defaultLocale: 'en',
+      directory: __dirname + '/locales'
     }
   },
   require('./plugins/base')

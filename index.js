@@ -1,6 +1,6 @@
 const Hapi = require('hapi');
 const Server = new Hapi.Server();
-const Routes = require('./routes');
+const Plugins = require('./plugins');
 
 Server.connection({ port: 4000 });
 Server.bind({
@@ -8,7 +8,7 @@ Server.bind({
   webBaseUrl: 'http://localhost:4000'
 });
 
-Server.register(Routes, (err) => {
+Server.register(Plugins, (err) => {
   if (err) { throw err; }
 
   Server.views({
