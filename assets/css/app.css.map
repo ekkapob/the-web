@@ -1,0 +1,1 @@
+{"version":3,"sources":["_base.scss","app.scss"],"names":[],"mappings":"AAAA,KACE,SAAW,CCCb,UAEI,qBAAuB,CAGxB","file":"app.css","sourcesContent":["body {\n  color: red;\n}\n","@import 'base';\n\nhtml {\n  body {\n    background-color: blue;\n    // transform: rotate(7deg);\n    // display: flex;\n  }\n}\n"],"sourceRoot":"/source/"}

@@ -18,5 +18,13 @@
     "lodash": "^4.7.0",
     "vision": "^4.0.1",
     "yar": "^7.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0"
   }
 }
