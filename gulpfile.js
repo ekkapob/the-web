@@ -28,7 +28,7 @@ Gulp.task('nodemon', () => {
   // https://github.com/hapijs/hapi/issues/1564
   Nodemon({
     script: 'index.js',
-    ext: 'hbs'
+    ext: 'hbs js'
   })
   .on('restart', () => {
     console.log('[restarted server!]');

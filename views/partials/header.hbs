@@ -1,12 +1,87 @@
-<div class="top-bar">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <a href="#">
-          <img src="/assets/images/locales/th.png" alt="">
-        </a>
+<header>
+  <div id="top-bar">
+    <div class="container">
+      <div class="row">
+        <div id="locale-menu" class="col-md-2 col-sm-2">
+          <a href="/locale/th">
+            <img src="/assets/images/locales/th.png" alt="">
+          </a>
+        </div>
+        <div class="col-md-10 col-sm-10 text-right">
+          <ul class="contacts">
+            <li>
+              <a href="https://www.facebook.com/tra.autoparts" target="_blank">
+                <img src="/assets/images/contacts/facebook.png"
+                  alt="TRA Auto Parts Facebook"></img>
+                <span>TRA Auto Parts</span>
+              </a>
+            </li>
+            <li>
+              <div class="non-link">
+                <img src="/assets/images/contacts/line.png"
+                    alt="TRA Auto Parts Line"></img>
+                <span>TRA Auto Parts</span>
+              </div>
+            </li>
+          </ul>
+          <ul class="contact-info">
+            <li>
+              <a href="mailto:hello@traautoparts.com" target="_top">
+                <img src="/assets/images/contacts/email.png"
+                  alt="TRA Auto Parts email"></img>
+                <span>hello@traautoparts.com</span>
+              </a>
+            </li>
+            <li>
+              <div class="non-link">
+                <img src="/assets/images/contacts/phone.png"
+                  alt="TRA Auto Parts Phone"></img>
+                <span>+(66)89-896-8525</span>
+              </div>
+            </li>
+          </ul>
+          <a class="sign-in" href="#">Admin</a>
+        </div>
       </div>
-      <div class="col-md-6">header</div>
     </div>
   </div>
-</div>
+  <nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-11 col-md-11 nav-menus">
+          <a href="/">
+            <img id="site-logo" src="/assets/images/tra_logo.png" alt="">
+          </a>
+          <ul>
+            <li class="dropdown-menus">
+              <a href="#">Products<span class="glyphicon glyphicon-chevron-down"></span></a>
+              {{> product_menus }}
+            </li>
+            <li>
+              <a href="#">TRA History</a>
+            </li>
+            <li>
+              <a href="#">How to Order</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+          </ul>
+          <form action="/search" method="get">
+            <div class="input-group">
+              <input id="top-search" type="text" class="form-control" placeholder="Search" value="" name="query" autocomplete="off">
+                <button class="btn" type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-1 col-md-1 text-right">
+          <a id="top-shopping-cart" href="#">
+            <div id="cart-items">1,000</div>
+            <img class="cart" src="/assets/images/cart.png" alt="Shopping Cart"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

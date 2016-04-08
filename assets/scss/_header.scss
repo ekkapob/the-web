@@ -1,3 +1,151 @@
-.top-bar {
-  color: white;
+header {
+  ul {
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-block;
+    }
+  }
+  a {
+    &:link, &:hover, &:visited, &:active {
+      text-decoration: none;
+    }
+  }
+  #top-bar {
+    color: white;
+    background-color: $black;
+    font-size: 0.9em;
+    .row {
+      display: flex;
+      align-items: center;
+    }
+    ul {
+      li {
+        margin-right: 0.8em;
+      }
+    }
+    img {
+      height: 26px;
+      margin-right: 0.5em;
+    }
+    a {
+      color: white;
+    }
+    .non-link {
+      display: inline;
+    }
+    .socials {
+      margin-right: 1.5em;
+    }
+    .contact-info {
+      img {
+        height: 22px;
+      }
+    }
+    .sign-in {
+      color: black;
+      font-weight: bold;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  #locale-menu {
+    img {
+      padding: 7px 10px;
+      height: 35px;
+      background-color: #5B5B5B;
+    }
+  }
+  #site-logo {
+    height: 52px;
+  }
+  nav {
+    box-shadow: 0 2px 2px $grey;
+    .row {
+      display: flex;
+      align-items: center;
+    }
+    a {
+      color: $text-black;
+      font-size: 1.2em;
+      &:link, &:hover, &:visited, &:active {
+        color: $text-black;
+      }
+      &:hover {
+        color: $light-red;
+      }
+    }
+    ul {
+      margin-left: 3em;
+      li {
+        margin: 0 1em;
+        .glyphicon {
+          color: $red;
+          font-size: 0.6em;
+          margin-left: 0.7em;
+        }
+      }
+    }
+    .nav-menus {
+      display: flex;
+      align-items: center;
+      height: 70px;
+    }
+    .dropdown-menus {
+      position: relative;
+      display: inline-block;
+      padding: 2em 0;
+      > a {
+        padding: 1em 0;
+      }
+    }
+    form {
+      margin: 0;
+      width: 15em;
+      margin-left: 1.5em;
+      .input-group {
+        display: flex;
+      }
+      .btn {
+        border: none;
+        background-color: white;
+        .glyphicon {
+          font-size: 1.2em;
+        }
+        &:hover {
+          color: $red;
+        }
+        &:active, &:focus, &:active:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+      #top-search {
+        border-radius: 4px;
+        background-color: $grey;
+      }
+    }
+    #cart-items {
+      display: inline;
+      font-size: 0.7em;
+      background: $light-red;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: -5px;
+    }
+    #top-shopping-cart {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .cart {
+      height: 32px;
+      display: block;
+    }
+  }
 }
