@@ -1,0 +1,75 @@
+#product-container {
+  color: $black;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: $light-grey;
+}
+.product-container {
+  padding: 0 0.5em;
+  .product {
+    background-color: white;
+    box-shadow: 0 2px 2px $grey;
+    border-radius: 4px;
+    margin-bottom: 1.5em;
+    a {
+      color: $light-red;
+    }
+    .id-car {
+      font-weight: bold;
+      padding: 0.5em 0.5em;
+      .id {
+        background: $black;
+        padding: 0.1em 0.5em;
+        border-radius: 4px;
+        color: white;
+      }
+      .car {
+        float: right;
+        color: $blue;
+      }
+    }
+    img {
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+    .info {
+      text-align: center;
+      margin-top: 0.5em;
+      min-height: 95px;
+      .name {
+        font-size: 1.4em;
+        margin: 0.4em 0;
+      }
+      .details {
+        margin-bottom: 0.3em;
+      }
+      .part-info {
+        font-size: 0.8em;
+        color: $dark-grey;
+        .number {
+          color: $black;
+        }
+      }
+    }
+    .order {
+      text-align: center;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      .btn-order {
+        background-color: $green;
+        color: white;
+        border-bottom: 3px solid $dark-green;
+        padding: 0.5em 1em;
+        &:hover {
+          background-color: $light-green;
+        }
+      }
+      img {
+        width: 22px;
+        margin-left: 0.3em;
+      }
+    }
+  }
+}

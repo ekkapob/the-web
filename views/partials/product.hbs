@@ -1,1 +1,33 @@
-<div>this is partial</div>
+{{#each products}}
+<div class="col-sm-6 col-md-4 col-lg-3 product-container">
+  <div class="product">
+    <div class="id-car">
+      <span class="id">{{id}}</span>
+      <span class="car">{{car}}</span>
+    </div>
+    <a href="/products/{{id}}">
+      <img src="/assets/images/products/{{img}}" alt="{{name}}">
+    </a>
+    <div class="info">
+      <a href="/product/{{id}}"><div class="name">{{name}}</div></a>
+      <div class="details">{{details}}</div>
+      <div class="part-info">
+        {{#if partNo}}
+          <div>part no:&nbsp;<span class="number">{{partNo}}</span></div>
+        {{/if}}
+        {{#if engineModel}}
+          <div>engine model:&nbsp;
+            <span class="number">{{engineModel}}</span>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="order">
+      <button class="btn btn-order">
+        <span>Order</span>
+        <img src="/assets/images/cart-white.png"/>
+      </button>
+    </div>
+  </div>
+</div>
+{{/each}}

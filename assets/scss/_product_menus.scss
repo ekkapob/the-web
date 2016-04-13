@@ -3,6 +3,7 @@
     display: block;
   }
   .dropdown-content {
+    z-index: 100;
     display: none;
     position: absolute;
     min-width: 220px;
@@ -15,7 +16,7 @@
       margin: 0;
       line-height: 1.7em;
       li {
-        margin: 0;
+        margin: 0.2em 0;
         display: block;
         &:last-child {
           margin-bottom: 0.5em;
