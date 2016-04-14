@@ -1,0 +1,50 @@
+CREATE TABLE products (
+  id serial primary key,
+  product_id text unique not null,
+  part_no text,
+  substitute_part_no text,
+  car_brand_id int,
+  category_id int,
+  subcategory_id int,
+  engine_model text,
+  name text,
+  name_th text,
+  details text,
+  details_th text,
+  remark text,
+  remark_th text,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now()
+);
+
+CREATE TABLE car_brands (
+  id serial primary key,
+  name text unique not null,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now()
+);
+
+CREATE TABLE categories (
+  id serial primary key,
+  name text unique not null,
+  name_th text,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now()
+);
+
+CREATE OR REPLACE FUNCTION update_last_modified_at()	
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.last_modified_at = now();
+    RETURN NEW;	
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON products
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON car_brands
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON categories
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
