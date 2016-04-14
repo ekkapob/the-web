@@ -1,5 +1,11 @@
 const Hapi = require('hapi');
-const Server = new Hapi.Server();
+const Server = new Hapi.Server({
+  connections: {
+    router: {
+      stripTrailingSlash: true
+    }
+  }
+});
 const Plugins = require('./plugins');
 
 Server.connection({ port: 4000 });
