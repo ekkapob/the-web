@@ -37,10 +37,13 @@
     .info {
       text-align: center;
       margin-top: 0.5em;
-      min-height: 95px;
+      min-height: 125px;
+      display: inline-block;
+      width: 100%;
+      padding: 0 0.5em;
       .name {
         font-size: 1.4em;
-        margin: 0.4em 0;
+        margin: 0.4em 0 0;
       }
       .details {
         margin-bottom: 0.3em;
@@ -55,13 +58,13 @@
     }
     .order {
       text-align: center;
-      padding-top: 1em;
+      padding-top: 0.5em;
       padding-bottom: 1em;
       .btn-order {
         background-color: $green;
         color: white;
-        border-bottom: 3px solid $dark-green;
-        padding: 0.5em 1em;
+        // border-bottom: 3px solid $dark-green;
+        padding: 0.3em 0.7em;
         &:hover {
           background-color: $light-green;
         }

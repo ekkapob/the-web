@@ -29,9 +29,25 @@ var products = [
 ];
 
 exports.products = (request, reply) => {
-  // const key = request.yar.get('locale');
-  // reply(key);
-  reply.view('products', {
-    products: products
-  });
+  q = `SELECT COUNT(1) OVER() AS full_count,
+  products.product_id,
+  products.name,
+  products.details,
+  products.part_no,
+  products.engine_model,
+  car_brands.name AS car_name
+  FROM products
+  LEFT JOIN car_brands ON products.car_brand_id = car_brands.id
+  ORDER BY products.created_at LIMIT 24`;
+  // WHERE car_brands.name = 'HINO'
+  request.pg.client.query(q,
+    (err, result) => {
+      console.log(result);
+      reply.view('products', {
+        products: result.rows
+      });
+  })
+  // reply.view('products', {
+  //   products: products
+  // });
 }
