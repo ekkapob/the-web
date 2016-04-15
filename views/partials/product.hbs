@@ -11,14 +11,16 @@
     <div class="info">
       <a href="/product/{{id}}"><div class="name">{{name}}</div></a>
       {{#if details}}
-        <div class="details">{{details}}</div>
+        <div class="details text-ellipsis">{{details}}</div>
       {{/if}}
       <div class="part-info">
         {{#if part_no}}
-          <div>part no:&nbsp;<span class="number">{{part_no}}</span></div>
+          <div class="text-ellipsis">part no:&nbsp;
+            <span class="number">{{part_no}}</span>
+          </div>
         {{/if}}
         {{#if engine_model}}
-          <div>engine model:&nbsp;
+          <div class="text-ellipsis">engine model:&nbsp;
             <span class="number">{{engine_model}}</span>
           </div>
         {{/if}}
