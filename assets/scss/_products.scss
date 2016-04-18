@@ -11,6 +11,8 @@
     box-shadow: 0 2px 2px $grey;
     border-radius: 4px;
     margin-bottom: 1.5em;
+    border: 1px solid $grey;
+    border-top: none;
     a {
       color: $light-red;
     }

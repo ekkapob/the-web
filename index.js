@@ -9,10 +9,10 @@ const Server = new Hapi.Server({
 const Plugins = require('./plugins');
 
 Server.connection({ port: 4000 });
-Server.bind({
-  apiBaseUrl: 'http://localhost:4000/api',
-  webBaseUrl: 'http://localhost:4000'
-});
+// Server.bind({
+//   apiBaseUrl: 'http://localhost:4000/api',
+//   webBaseUrl: 'http://localhost:4000'
+// });
 
 Server.register(Plugins, (err) => {
   if (err) { throw err; }
