@@ -1,3 +1,6 @@
+var Boom = require('boom');
+var Wreck = require('wreck');
+
 exports.locale = (request, reply) => {
   request.yar.set('locale', { value: request.params.locale });
   reply.redirect(request.info.referrer);
@@ -29,25 +32,20 @@ var products = [
 ];
 
 exports.products = (request, reply) => {
-  q = `SELECT COUNT(1) OVER() AS full_count,
-  products.product_id,
-  products.name,
-  products.details,
-  products.part_no,
-  products.engine_model,
-  car_brands.name AS car_name
-  FROM products
-  LEFT JOIN car_brands ON products.car_brand_id = car_brands.id
-  ORDER BY products.created_at LIMIT 24`;
-  // WHERE car_brands.name = 'HINO'
-  request.pg.client.query(q,
-    (err, result) => {
-      console.log(result);
-      reply.view('products', {
-        products: result.rows
-      });
-  })
-  // reply.view('products', {
-  //   products: products
-  // });
+  const page = request.query.page;
+  const query = (page) ? `?page=${page}` : '';
+
+  Wreck.get(`http://localhost:4001/api/v1/products${query}`, { json: true },
+      (err, response, payload) => {
+        // TODO: show no products message
+        if (err) { return reply.view('products'); }
+
+        const { data, page, limit, all_records } = payload;
+        reply.view('products', {
+          products: data,
+          page: page,
+          pages: Math.ceil(all_records/limit),
+          path: '/products'
+        });
+  });
 }

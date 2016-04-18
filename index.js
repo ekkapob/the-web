@@ -9,10 +9,9 @@ const Server = new Hapi.Server({
 const Plugins = require('./plugins');
 
 Server.connection({ port: 4000 });
-// Server.bind({
-//   apiBaseUrl: 'http://localhost:4000/api',
-//   webBaseUrl: 'http://localhost:4000'
-// });
+Server.bind({
+  apiUrl: 'http://localhost:4001/api/v1',
+});
 
 Server.register(Plugins, (err) => {
   if (err) { throw err; }
@@ -26,6 +25,7 @@ Server.register(Plugins, (err) => {
     layout: true,
     layoutPath: './views/layout',
     partialsPath: './views/partials',
+    helpersPath: './views/helpers',
     isCached: false
   });
 

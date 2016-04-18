@@ -28,13 +28,14 @@ Gulp.task('nodemon', () => {
   // https://github.com/hapijs/hapi/issues/1564
   Nodemon({
     script: 'index.js',
+    exec: 'babel-node',
     ext: 'hbs js'
   })
   .on('restart', () => {
     console.log('[restarted server!]');
   })
   .on('start', () => {
-    setTimeout(BrowserSync.reload, 1000);
+    setTimeout(BrowserSync.reload, 2500);
   });
 });
 
@@ -44,7 +45,7 @@ Gulp.task('browser-sync', () => {
       proxy: "localhost:4000"
     });
   };
-  setTimeout(init, 1000);
+  setTimeout(init, 2000);
 });
 
 Gulp.task('default', ['start']);
