@@ -1,11 +1,12 @@
 var Gulp = require('gulp');
+var Concat = require('gulp-concat');
 var BrowserSync = require('browser-sync').create();
 var Nodemon = require('gulp-nodemon');
 var Sass = require('gulp-sass');
 var Sourcemaps = require('gulp-sourcemaps');
 var Autoprefixer = require('gulp-autoprefixer');
 
-Gulp.task('start', ['nodemon', 'browser-sync', 'watch']);
+Gulp.task('start', ['scripts', 'nodemon', 'browser-sync', 'watch']);
 
 Gulp.task('sass', () => {
   Gulp.src('./assets/scss/app.scss')
@@ -21,6 +22,15 @@ Gulp.task('sass', () => {
 
 Gulp.task('watch', () => {
   Gulp.watch('./assets/scss/**/*.scss', ['sass']);
+  Gulp.watch('./assets/js/*.js', ['scripts']);
+});
+
+Gulp.task('scripts', () => {
+  Gulp.src('./assets/js/*.js')
+    .pipe(Sourcemaps.init())
+      .pipe(Concat('app.js'))
+    .pipe(Sourcemaps.write())
+    .pipe(Gulp.dest('./assets/js/dist'));
 });
 
 Gulp.task('nodemon', () => {

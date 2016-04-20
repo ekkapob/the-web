@@ -4,84 +4,176 @@
   padding-bottom: 2em;
   background-color: $light-grey;
 
-  .container {
-    .row {
-      margin-bottom: 2em;
+  .product-list-container {
+    padding: 0.5em;
+    padding-top: 0;
+    .no-results {
+      font-size: 1.5em;
+      text-align: center;
+      color: $dark-grey;
     }
   }
-
-  .product-container {
-    padding: 0 0.5em;
-    .product {
-      background-color: white;
-      box-shadow: 0 2px 2px $grey;
-      border-radius: 4px;
-      margin-bottom: 1.5em;
-      border: 1px solid $grey;
-      border-top: none;
-      a {
-        color: $light-red;
-      }
-      .id-car {
-        font-weight: bold;
-        padding: 0.5em 0.5em;
-        .id {
-          background: $black;
-          padding: 0.1em 0.5em;
-          border-radius: 4px;
-          color: white;
+  @media (min-width: $screen-md-min) {
+    .product-list-container {
+      width: 80%;
+    }
+  }
+  .product-list {
+    display: inline-block;
+    margin-bottom: 1em;
+    .product-container {
+      padding: 0 0.5em;
+      .product {
+        background-color: white;
+        box-shadow: 0 2px 2px $grey;
+        border-radius: 4px;
+        margin-bottom: 1.5em;
+        border: 1px solid $grey;
+        border-top: none;
+        .image {
+          position: relative;
         }
-        .car {
-          float: right;
-          color: $blue;
+        a {
+          color: $light-red;
         }
-      }
-      img {
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-      }
-      .info {
-        text-align: center;
-        margin-top: 0.5em;
-        min-height: 125px;
-        display: inline-block;
-        width: 100%;
-        padding: 0 0.5em;
-        .name {
-          font-size: 1.4em;
-          margin: 0.4em 0 0;
-        }
-        .details {
-          margin-bottom: 0.3em;
-        }
-        .part-info {
-          font-size: 0.8em;
-          color: $dark-grey;
-          .number {
-            color: $black;
+        .id-car {
+          font-weight: bold;
+          padding: 0.5em 0.5em;
+          .id {
+            background: $black;
+            padding: 0.1em 0.5em;
+            border-radius: 4px;
+            color: white;
           }
-        }
-      }
-      .order {
-        text-align: center;
-        padding-top: 0.5em;
-        padding-bottom: 1em;
-        .btn-order {
-          background-color: $green;
-          color: white;
-          // border-bottom: 3px solid $dark-green;
-          padding: 0.3em 0.7em;
-          &:hover {
-            background-color: $light-green;
+          .car {
+            float: right;
+            color: $blue;
           }
         }
         img {
-          width: 22px;
-          margin-left: 0.3em;
+          width: 100%;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        .info {
+          text-align: center;
+          min-height: 115px;
+          display: inline-block;
+          width: 100%;
+          padding: 0 0.5em;
+          .name {
+            font-size: 1.2em;
+            margin: 0.2em 0 0;
+          }
+          .details {
+            margin-bottom: 0.3em;
+          }
+          .part-info {
+            font-size: 0.8em;
+            color: $dark-grey;
+            .number {
+              color: $black;
+            }
+          }
+        }
+        // .order {
+        //   text-align: center;
+        //   padding-top: 0.5em;
+        //   padding-bottom: 1em;
+        //   .btn-order {
+        //     background-color: $green;
+        //     color: white;
+        //     padding: 0.3em 0.7em;
+        //     &:hover {
+        //       background-color: $light-green;
+        //     }
+        //   }
+        //   img {
+        //     width: 22px;
+        //     margin-left: 0.3em;
+        //   }
+        // }
+        &:hover {
+          .order-mask {
+            display: block;
+          }
+        }
+        .order-mask {
+          position: absolute;
+          top: 0;
+          height: 70%;
+          background: rgba(0, 0, 0, 0.2);
+          width: 100%;
+          top: 50%;
+          transform:  translateY(-50%);
+          display: none;
+          .btn-order {
+            background: $light-red;
+            color: white;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%) translateY(-50%);
+            padding: 0.5em 1.5em;
+            img {
+              width: 22px;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  .products-info {
+    text-align: left;
+    margin-bottom: 1em;
+    color: $dark-grey;
+    font-size: 1.1em;
+    .pill {
+      background-color: $dark-grey;
+      font-size: 0.8em;
+      padding: 0.1em 0.5em;
+      border-radius: 4px;
+      color: #FFF;
+      margin: 0 0.2em;
+    }
+  }
+  .filter-container {
+    .filter {
+      margin-bottom: 1.5em;
+      border-bottom: 1px solid $grey;
+      &:last-child {
+        border: none;
+      }
+      .title {
+        font-size: 1.3em;
+        color: $light-red;
+        display: flex;
+        align-items: center;
+        .pill {
+          background-color: $dark-grey;
+          color: #FFF;
+          font-size: 0.6em;
+          padding: 0.1em 0.4em;
+          border-radius: 2px;
+          margin: 0 0.5em;
         }
       }
+      ul {
+        padding-left: 0.5em;
+        list-style: none;
+        margin-bottom: 2em;
+        margin-top: 1em;
+        li:hover {
+          color: $light-red;
+        }
+      }
+    }
+  }
+  @media (min-width: $screen-md-min) {
+    .filter-container {
+      width: 20%;
     }
   }
 }

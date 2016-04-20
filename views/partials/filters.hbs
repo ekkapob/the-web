@@ -1,0 +1,44 @@
+<div class="filters">
+  <div class="filter">
+    <div class="title">
+      <span>Car Manufacturers</span>
+      {{pillEmpty 'ALL' query_params.car_brands}}
+    </div>
+    <ul>
+      {{#each carBrands}}
+        <li>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                      name="car_brands"
+                      value="{{name}}"
+                      {{inputChecked 'car_brands' name ../query_params}}>
+              {{name}}
+            </label>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="filter">
+    <div class="title">
+      <span>Categories</span>
+      {{pillEmpty 'ALL' query_params.categories}}
+    </div>
+    <ul>
+      {{#each categories}}
+        <li>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                      name="categories"
+                      value="{{name}}"
+                      {{inputChecked 'categories' name ../query_params}}>
+              {{name}}
+            </label>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
