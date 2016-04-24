@@ -6,7 +6,9 @@ var Sass = require('gulp-sass');
 var Sourcemaps = require('gulp-sourcemaps');
 var Autoprefixer = require('gulp-autoprefixer');
 
-Gulp.task('start', ['scripts', 'nodemon', 'browser-sync', 'watch']);
+Gulp.task('start', ['assets', 'nodemon', 'browser-sync', 'watch']);
+
+Gulp.task('assets', ['sass', 'scripts']);
 
 Gulp.task('sass', () => {
   Gulp.src('./assets/scss/app.scss')
