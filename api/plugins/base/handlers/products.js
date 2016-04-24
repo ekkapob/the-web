@@ -1,19 +1,9 @@
 import Boom     from 'boom';
 import _        from 'lodash';
-import PgEscape from 'pg-escape';
 import S        from 'squel';
+const Squel = S.useFlavour('postgres');
 
 exports.index = (request, reply) => {
-  // const carBrandsList = queryStringList(request.query,'car_brands');
-  // const carBrandsQuery = _.isEmpty(carBrandsList)?
-  //   '' : `car_brands.name IN ${carBrandsList}`
-  // const categoriesList = queryStringList(request.query,'categories');
-  // const categoriesQuery = _.isEmpty(categoriesList)?
-  //   '' : `categories.name IN ${categoriesList}`
-
-  // const where = (carBrandsQuery || categoriesQuery)?
-  //   `WHERE {carBrandsQuery}
-  //
   let { limit, car_brands, categories, page } = request.query;
   car_brands = prepare(car_brands);
   categories = prepare(categories);
@@ -23,7 +13,6 @@ exports.index = (request, reply) => {
   page = (page <= 0) ? 1 : page;
   const offset = (page - 1) * limit;
 
-  const Squel = S.useFlavour('postgres');
   let q = Squel.select()
             .from('products')
             .field('COUNT(1) OVER() AS all_records')
@@ -41,28 +30,6 @@ exports.index = (request, reply) => {
     .limit(limit)
     .offset(offset)
   q = q.toParam();
-
-  // let q = `SELECT COUNT(1) OVER() AS all_records,
-  //     products.id,
-  //     products.product_id,
-  //     products.name,
-  //     products.details,
-  //     products.part_no,
-  //     products.engine_model,
-  //     car_brands.name AS car_name
-  //   FROM products
-  //   LEFT JOIN car_brands ON products.car_brand_id = car_brands.id
-  //   LEFT JOIN categories ON products.category_id = categories.id
-  //   ORDER BY products.created_at
-  //   LIMIT $1
-  //   OFFSET $2`;
-
-  // let { limit, car_brands, page } = request.query;
-  // limit = parseInt(limit) || 18;
-  // page = parseInt(page);
-  // page = isNaN(page) ? 1 : page;
-  // page = (page <= 0) ? 1 : page;
-  // const offset = (page - 1) * limit;
 
   request.pg.client.query(q.text, q.values, (err, result) => {
     if (err) { return reply(Boom.badRequest()); }
@@ -82,29 +49,32 @@ exports.index = (request, reply) => {
   });
 };
 
+exports.show = (request, reply) => {
+  const { productId } = request.params;
+  let q = Squel.select()
+            .from('products')
+            .field('products.product_id')
+            .field('products.name')
+            .field('products.details')
+            .field('products.part_no')
+            .field('products.engine_model')
+            .field('car_brands.name AS car_name')
+            .field('categories.name AS category')
+            .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
+            .left_join('categories', null, 'products.category_id = categories.id')
+            .where('products.product_id = ?', productId)
+            .toParam();
+  request.pg.client.query(q.text, q.values, (err, result) => {
+    if (err) { return reply(Boom.badRequest()); }
+    reply({
+      product: result.rows
+    });
+  });
+};
+
 function prepare(query) {
   return [].concat(query).filter((value) => {
     return value && value.trim();
   });
 }
-
-// function listQueryValues(query, attr) {
-//   let values = query[attr];
-//   if (!values || _.isEmpty(values)) return;
-//   values = [].concat(values);
-//   values = values.filter((value) => {
-//     return value && value.trim();
-//   });
-//   return values;
-// }
-//
-// function commaSeparatedString(queryList) {
-//   return _.isEmpty(queryList)? '' : PgEscape.literal(queryList);
-// }
-//
-// function queryStringList(query, attr) {
-//   const values = listQueryValues(query, attr);
-//   if (_.isEmpty(values)) return '';
-//   return commaSeparatedString(values);
-// }
 

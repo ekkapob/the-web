@@ -10,6 +10,11 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/api/v1/products/{productId}',
+    handler: Products.show
+  },
+  {
+    method: 'GET',
     path: '/api/v1/categories',
     handler: Categories.index
   },

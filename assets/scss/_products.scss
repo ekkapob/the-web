@@ -77,23 +77,6 @@
             }
           }
         }
-        // .order {
-        //   text-align: center;
-        //   padding-top: 0.5em;
-        //   padding-bottom: 1em;
-        //   .btn-order {
-        //     background-color: $green;
-        //     color: white;
-        //     padding: 0.3em 0.7em;
-        //     &:hover {
-        //       background-color: $light-green;
-        //     }
-        //   }
-        //   img {
-        //     width: 22px;
-        //     margin-left: 0.3em;
-        //   }
-        // }
         &:hover {
           .order-mask {
             display: block;
@@ -102,7 +85,7 @@
         .order-mask {
           position: absolute;
           top: 0;
-          height: 70%;
+          height: 30%;
           background: rgba(0, 0, 0, 0.2);
           width: 100%;
           top: 50%;
@@ -121,7 +104,6 @@
             }
           }
         }
-
       }
     }
   }
@@ -131,12 +113,7 @@
     color: $dark-grey;
     font-size: 1.1em;
     .pill {
-      background-color: $dark-grey;
       font-size: 0.8em;
-      padding: 0.1em 0.5em;
-      border-radius: 4px;
-      color: #FFF;
-      margin: 0 0.2em;
     }
   }
   .filter-container {

@@ -1,0 +1,13 @@
+#product-show {
+  .images {
+    img {
+      width: 100%;
+    }
+  }
+  .info {
+    line-height: 2.5em;
+    .name {
+      font-size: 2em;
+    }
+  }
+}

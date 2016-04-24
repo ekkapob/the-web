@@ -51,7 +51,7 @@ exports.products = (request, reply) => {
     } = results.products;
     const { categories } = results.categories;
     const { car_brands } = results.carBrands;
-    reply.view('products', {
+    reply.view('products/index', {
       products,
       page,
       pages: Math.ceil(all_records/limit),
@@ -62,19 +62,15 @@ exports.products = (request, reply) => {
       query_params
     });
   });
+};
 
-  // Wreck.get(`http://localhost:4001/api/v1/products${query}`, { json: true },
-  //     (err, response, payload) => {
-  //       // TODO: show no products message
-  //       if (err) { return reply.view('products'); }
-  //
-  //       const { data, page, limit, all_records } = payload;
-  //       reply.view('products', {
-  //         products: data,
-  //         page: page,
-  //         pages: Math.ceil(all_records/limit),
-  //         records: all_records,
-  //         path: '/products'
-  //       });
-  // });
-}
+exports.product = (request, reply) => {
+  const { productId } = request.params;
+  Wreck.get(`http://localhost:4001/api/v1/products/${productId}`, { json: true },
+    (err, response, payload) => {
+      if (err) return reply.view('products');
+      reply.view('products/show', {
+        product: payload.product 
+      });
+  });
+};

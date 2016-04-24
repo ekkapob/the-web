@@ -1,3 +1,7 @@
+body {
+  color: $black;
+}
+
 a {
   &:link, &:hover, &:visited, &:active {
     text-decoration: none;
@@ -8,6 +12,14 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.pill {
+  background-color: #ABABAB;
+  color: #FFF;
+  padding: 0.2em 0.5em;
+  border-radius: 2px;
+  margin-right: 0.2em;
 }
 
 #loading {

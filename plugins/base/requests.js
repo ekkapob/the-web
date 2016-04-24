@@ -3,7 +3,7 @@ var apiUrl = 'http://localhost:4001/api/v1';
 
 exports.products = (params) => {
   return (cb) => {
-    Wreck.get(`${apiUrl}/products${params.query}`, { json: true, test: 1123 },
+    Wreck.get(`${apiUrl}/products${params.query}`, { json: true },
       (err, response, payload) => {
         if (err) { return cb(new Error()); }
         cb(null, payload);

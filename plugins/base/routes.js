@@ -18,6 +18,11 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/products/{productId}',
+    handler: Pages.product
+  },
+  {
+    method: 'GET',
     path: '/{param*}',
     handler: (request, reply) => {
       reply.view('404');
