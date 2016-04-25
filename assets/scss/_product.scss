@@ -1,13 +1,145 @@
 #product-show {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  // min-height: 500px;
   .images {
     img {
       width: 100%;
+      border: 2px solid $grey;
+    }
+    .display-image {
+      padding: 0;
+      margin-bottom: 2em;
+    }
+    .image-thumbnails {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-left: 0;
+      & > div {
+        cursor: pointer;
+        margin-bottom: 1em;
+        img.selected {
+          border: 2px solid $light-red;
+        }
+      }
     }
   }
   .info {
     line-height: 2.5em;
-    .name {
+    .title {
+      display: flex;
       font-size: 2em;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+      .name {
+        padding-right: 0.5em;
+      }
+      .id {
+        font-size: 0.5em;
+        background-color: $grey;
+        padding: 0.2em 0.4em;
+        border-radius: 2px;
+        color: $light-black;
+      }
+    }
+    .category-car {
+      & > span {
+        display: inline-flex;
+        align-items: center;
+        & > span, a {
+          margin-right: 0.3em;
+          color: $dark-grey;
+        }
+      }
+      .category {
+        margin-right: 1em;
+      }
+      [class^="icon-"], [class*=" icon-"] {
+        font-size: 1.5em;
+        color: $black;
+      }
+    }
+    hr {
+      margin: 0;
+    } 
+    .details {
+      font-size: 1.5em;
+      color: $light-black;
+      margin: 2em 0;
+    }
+    blockquote {
+      margin: 0;
+      font-size: 0.9em;
+      padding: 0 1em;
+      line-height: 2em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      p {
+        margin: 0;
+        span {
+          color: $dark-grey;
+        }
+      }
+    }
+    .remark {
+      line-height: 2em;
+      p {
+        margin: 0;
+        &:first-child {
+          color: $dark-grey;
+        }
+      }
+    }
+  }
+  .order {
+    margin-top: 2em;
+    [class^="icon-"], [class*=" icon-"] {
+      font-size: 1.5em;
+      color: white;
+      margin-left: 0.2em;
+    }
+    .btn-order {
+      background-color: $green;
+      color: #FFF;
+      padding: 0.8em 3em;
+      border-bottom: 4px solid $dark-green;
+      & > span {
+        display: flex;
+      }
+    }
+  }
+}
+
+#recommended-products {
+  .header {
+    font-size: 1.4em;
+  }
+  hr {
+    margin-top: 0.5em;
+    border-top-width: 2px;
+  }
+  .product-container {
+    @media (max-width: $screen-sm-max) {
+      .product:nth-child(n+4) {
+        display: none;
+      }
+    }
+    .product {
+      img {
+        margin-bottom: 0.5em;
+      }
+      a.name {
+        margin: 0;
+        color: $light-red;
+      }
+      .details {
+        font-size: 0.8em;
+        p {
+          color: $dark-grey;
+          margin: 0;
+        }
+      }
     }
   }
 }

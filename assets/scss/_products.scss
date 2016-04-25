@@ -71,9 +71,9 @@
           }
           .part-info {
             font-size: 0.8em;
-            color: $dark-grey;
+            // color: $dark-grey;
             .number {
-              color: $black;
+              color: $dark-grey;
             }
           }
         }
@@ -87,12 +87,12 @@
           top: 0;
           height: 30%;
           background: rgba(0, 0, 0, 0.2);
-          width: 100%;
           top: 50%;
-          transform:  translateY(-50%);
+          left: 50%;
+          transform:  translate(-50%, -50%);
           display: none;
           .btn-order {
-            background: $light-red;
+            background: $green;
             color: white;
             top: 50%;
             left: 50%;

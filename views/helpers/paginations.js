@@ -39,7 +39,7 @@ function paginate(page, pages, path, query) {
 
   if (page != pages) {
     content.push(`<li><a href="${queryParams(path, pages, query)}">${pages}</a></li>`);
-    content.push(`<li><a href="${queryParams(path, page - 1, query)}">
+    content.push(`<li><a href="${queryParams(path, page + 1, query)}">
                   <span class="glyphicon glyphicon&#45;chevron&#45;right"/>
                   </a></li>`);
   }

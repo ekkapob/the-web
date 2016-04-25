@@ -1,25 +1,83 @@
 <div id="product-show">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-lg-6">
-        <div class="images">
-          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg">
+      <div class="col-md-6 col-lg-6 images">
+        <div class="col-md-2 hidden-xs hidden-sm image-thumbnails">
+          <div class="">
+            <img
+            src="https://secure.img2.wfrcdn.com/lf/maxsquare/hash/30973/16054783/1/Sofa.jpg" class="selected">
+          </div>
+          <div class="">
+            <img src="https://hhg.scene7.com/is/image/thomasville/20706_520A_S09?op_sharpen=1&hei=800&wid=1000">
+          </div>
+          <div class="">
+            <img src="http://cdn.abchome.com/shop/media/catalog/product/cache/1/base/9df78eab33525d08d6e5fb8d27136e95/1/3/1324009-lara-cream-dining-chair-a.jpg">
+          </div>
+          <div class="">
+            <img src="http://cdn.abchome.com/shop/media/catalog/product/cache/1/base/9df78eab33525d08d6e5fb8d27136e95/1/3/1324009-lara-cream-dining-chair-a.jpg">
+          </div>
+          <div class="">
+            <img src="http://www.ikea.com/PIAimages/0340649_PE528030_S5.JPG">
+          </div>
+        </div>
+        <div class="col-md-10 display-image">
+          <img class="img-responsive" src="http://cdn.abchome.com/shop/media/catalog/product/cache/1/base/9df78eab33525d08d6e5fb8d27136e95/1/3/1324009-lara-cream-dining-chair-a.jpg">
         </div>
       </div>
-      <div class="colmd-6 col-lg-6 info">
-        <p class="name">
-          Proto Pump Bla bla...<span>WPA-0001</span>
+      <div class="col-md-6 col-lg-6 info">
+        <p class="title">
+          <span class="name">{{product.name}}</span>
+          <span>
+            <span class="id">{{product.product_id}}</span>
+          </span>
         </p>
-        <p><span>Water Pump Assy</span> | <span>Water Pump Assy</span></p>
-        <p>HINO</p>
-        <div>
-          <p>MEGA, Super Turbo, EURO2</p>
-          <p>Part no. 16100-1122</p>
-          <p>Engine model: EH100</p>
-          <p>Remark: KOMATSU SK200</p>
+        <div class="category-car">
+          <span class="category">
+            {{#if product.category}}
+              <span class="icon-gear"></span>
+              <a href="#">{{product.category}}</a>
+            {{/if}}
+            {{#if product.subcategory}}
+              <span>|</span>
+              <a href="#">{{product.subcategory}}</a>
+            {{/if}}
+          </span>
+          {{#if product.car_brand}}
+            <span class="car-brand">
+              <span class="icon-truck"></span>
+              <a href="#">{{product.car_brand}}</a>
+            </span>
+          {{/if}}
+        </div>
+        <hr />
+        {{#if product.details}}
+          <p class="details">{{product.details}}</p>
+        {{/if}}
+        <blockquote>
+          {{#if product.part_no}}
+            <p>Part no.:&nbsp;<span>{{product.part_no}}</span></p>
+          {{/if}}
+          {{#if product.substitute_part_no}}
+            <p>Substitute part no.:&nbsp;
+            <span>{{product.substitute_part_no}}</span></p>
+          {{/if}}
+          {{#if product.engine_model}}
+            <p>Engine model:&nbsp;<span>{{product.engine_model}}</span></p>
+          {{/if}}
+        </blockquote>
+        {{#if product.remark}}
+          <div class="remark">
+            <p>Remark:</p>
+            <p>{{product.remark}}</p>
+          </div>
+        {{/if}}
+        <div class="order">
+          <button class="btn btn-order">
+            <span>Order<span class="icon-cart"></span></span>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+{{> recommended_products }}

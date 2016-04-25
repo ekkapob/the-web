@@ -41,4 +41,25 @@
       {{/each}}
     </ul>
   </div>
+  <div class="filter">
+    <div class="title">
+      <span>Subcategories</span>
+      {{pillEmpty 'ALL' query_params.subcategories}}
+    </div>
+    <ul>
+      {{#each subcategories}}
+      <li>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"
+                   name="subcategories"
+                   value="{{name}}"
+                   {{inputChecked 'subcategories' name ../query_params}}>
+            {{name}}
+          </label>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
 </div>
