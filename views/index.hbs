@@ -1,6 +1,231 @@
-This is a index.hbs
-{{__ "Hello"}}
-{{locale}}
-{{#each products}}
-  {{> product}}
-{{/each}}
+<div id="hero">
+  <div class="container">
+    <div class="row">
+      <div class="brand">TRA</div>
+      <div class="text">coolant pump assy | repair kit</div>
+    </div>
+    <div class="btn-container">
+      <a class="btn" href="/products">
+        Our Products
+      </a>
+    </div>
+    <div class="img-container">
+      <img src="/assets/images/truck.png" alt="">
+    </div>
+  </div>
+</div>
+
+<div id="leading" class="container">
+  <div class="row">
+    <div class="col-md-12 text">
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+      vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+      no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 hilight">
+      <span class="icon icon-cup"></span>
+      <div>
+        <div class="title">
+          Leading Water Pump Assy
+        </div>
+        <div class="content">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore magna aliquyam erat
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 hilight">
+      <span class="icon icon-money-bag"></span>
+      <div>
+        <div class="title">
+          Save Your Money!
+        </div>
+        <div class="content">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore magna aliquyam erat
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 hilight">
+      <span class="icon icon-like"></span>
+      <div>
+        <div class="title">
+          Leading Water Pump Assy
+        </div>
+        <div class="content">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore magna aliquyam erat
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 hilight">
+      <span class="icon icon-gear"></span>
+      <div>
+        <div class="title">
+          Leading Water Pump Assy
+        </div>
+        <div class="content">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore magna aliquyam erat
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="home-products">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 section-title">
+        Our Products
+      </div>
+    </div>
+  </div>
+
+  <div class="product-container bg-blue">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="category">Coolant Water Pump</div>
+        </div>
+        <div class="col-sm-4 product">
+          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
+          <div>
+            <div class="header">KM350, KM500, DM100</div>
+            <div class="info">INFO 123 456 789</div>
+          </div>
+        </div>
+        <div class="col-sm-4 product">
+          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
+          <div>
+            <div class="header">KM350, KM500, DM100</div>
+            <div class="info">INFO 123 456 789</div>
+          </div>
+        </div>
+        <div class="col-sm-4 product">
+          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
+          <div>
+            <div class="header">KM350, KM500, DM100</div>
+            <div class="info">INFO 123 456 789</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="product-container bg-dark-blue">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="category">Coolant Water Pump</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 product">
+            <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
+            <div>
+              <div class="header">KM350, KM500, DM100</div>
+              <div class="info">INFO 123 456 789</div>
+            </div>
+          </div>
+          <div class="col-sm-4 product">
+            <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
+            <div>
+              <div class="header">KM350, KM500, DM100</div>
+              <div class="info">INFO 123 456 789</div>
+            </div>
+          </div>
+          <div class="col-sm-4 product">
+            <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
+            <div>
+              <div class="header">KM350, KM500, DM100</div>
+              <div class="info">INFO 123 456 789</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="text-center">
+    <a href="/products">[ See All Products ]</a>
+  </div>
+
+</div>
+
+<div id="car-manufacturers">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 section-title">
+        Auto Parts by Car Manufacturers
+        <hr/>
+      </div>
+    </div>
+    <div class="brands">
+      <a href="/products?car_brands=NISSAN">
+        <img src="/assets/images/cars/nissan.png" alt="Nissan Parts">
+      </a>
+      <a href="/products?car_brands=MITSUBISHI">
+        <img src="/assets/images/cars/mitsubishi.png" alt="Mitsubishi Parts">
+      </a>
+      <a href="/products?car_brands=TOYOTA">
+        <img src="/assets/images/cars/toyota.png" alt="Toyota Parts">
+      </a>
+      <a href="/products?car_brands=HINO">
+        <img src="/assets/images/cars/hino.png" alt="Hino Parts">
+      </a>
+      <a href="/products?car_brands=DAEWOO">
+        <img src="/assets/images/cars/daewoo.png" alt="Daewoo Parts">
+      </a>
+      <a href="/products?car_brands=ISUZU">
+        <img src="/assets/images/cars/isuzu.png" alt="Isuzu Parts">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="map">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 section-title">
+        T.R.A Trading Office
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-3 office">
+        <h3>
+          T.R.A. Trading Co., Ltd.
+        </h3>
+        <p class="address">
+        579 soi Suan Mali Center, Bamrung Muang Rd, Khlong Maha Nak, Pom Prap Sattru Phai, Bangkok 10100, Thailand
+        </p>
+        <p><span class="glyphicon glyphicon-phone-alt"></span>+(66) 2 224 9268</p>
+        <p><span class="glyphicon glyphicon-envelope"></span>admin@traautoparts.com</p>
+      </div>
+      <div class="col-sm-12 col-md-9">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5233.3027757983955!2d100.50934518265615!3d13.750704801911084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2993c0a392f75%3A0xb6fa226f637d709f!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4l-C4tSDguK3guLLguKPguYwg4LmA4LitIOC5gOC4l-C4o-C4lOC4lOC4tOC5ieC4hyDguIjguLPguIHguLHguJQ!5e0!3m2!1sen!2s!4v1463802524694"
+          width="800" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="back-to-top">
+  <a href="#">[ Back to Top ]</a>
+</div>
+
+<!-- This is a index.hbs -->
+<!-- {{__ "Hello"}} -->
+<!-- {{locale}} -->
+<!-- {{#each products}} -->
+<!--   {{> product}} -->
+<!-- {{/each}} -->
