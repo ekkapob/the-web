@@ -13,7 +13,16 @@ exports.locale = (request, reply) => {
 exports.index = (request, reply) => {
   // console.log(request.i18n.getLocale());
   // console.log(request.i18n.__("Hello"));
-  reply.view('index');
+  const query = '?subcategoryId=1&limit=3'
+  Async.parallel({
+    coolantPumpAssy:
+      Requests.randomCoolantPumpAssy({ query: '?subcategoryId=1' })
+  },
+  (err, results) => {
+    reply.view('index', {
+      coolantPumpAssyProducts: results.coolantPumpAssy.products
+    });
+  });
 };
 
 // var products = [

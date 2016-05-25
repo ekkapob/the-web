@@ -24,7 +24,11 @@ exports.index = (request, reply) => {
             .field('products.details')
             .field('products.part_no')
             .field('products.engine_model')
+            .field('products.primary_image')
+            .field('products.images')
             .field('car_brands.name AS car_name')
+            .field('categories.name AS category')
+            .field('subcategories.name AS subcategory')
             .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
             .left_join('categories', null, 'products.category_id = categories.id')
             .left_join('subcategories', null, 'products.subcategory_id = subcategories.id');
@@ -78,6 +82,8 @@ function fetchProduct(request, productId) {
               .field('products.part_no')
               .field('products.engine_model')
               .field('products.remark')
+              .field('products.primary_image')
+              .field('products.images')
               .field('car_brands.name AS car_brand')
               .field('categories.name AS category')
               .field('subcategories.name AS subcategory')
@@ -132,6 +138,7 @@ function recommended(request, productId, categoryName, subcategoryName, carBrand
               .from('products')
               .field('products.product_id AS id')
               .field('products.name AS name')
+              .field('products.primary_image AS image')
               .field('categories.name AS category')
               .field('subcategories.name AS subcategory')
               .field('car_brands.name AS car_brand')
@@ -184,6 +191,39 @@ exports.recommended = (request, reply) => {
     });
   });
 };
+
+exports.random = (request, reply) => {
+  const { subcategoryId, limit } = request.query;
+  let productLimit = limit || 3;
+
+  let q = Squel.select()
+            .from('products')
+            .field('products.product_id AS id')
+            .field('products.primary_image')
+            .field('products.name')
+            .field('car_brands.name AS car_brand')
+            .field('categories.name AS category')
+            .field('subcategories.name AS subcategory')
+            .field('products.details')
+            .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
+            .left_join('categories', null, 'products.category_id = categories.id')
+            .left_join('subcategories', null, 'products.subcategory_id = subcategories.id')
+            .where(
+              Squel.expr()
+                .and('products.primary_image IS NOT NULL')
+                .and("products.details <> ''")
+                .and('subcategories.id = ?', subcategoryId)
+            )
+            .order('RANDOM()')
+            .limit(productLimit)
+            .toParam();
+  request.pg.client.query(q.text, q.values, (err, result) => {
+    if (err) { return reply(Boom.badRequest()); }
+    reply({
+      products: result.rows
+    });
+  });
+}
 
 function excludeProductId(productId) {
   return (value) => {

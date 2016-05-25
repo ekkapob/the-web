@@ -66,3 +66,13 @@ exports.recommended = (params) => {
     });
   };
 };
+
+exports.randomCoolantPumpAssy = (params) => {
+  return (cb) => {
+    Wreck.get(`${apiUrl}/products/random${params.query}`, { json: true },
+      (err, response, payload) => {
+        if (err) return cb(true);
+        cb(null, payload);
+      })
+  }
+}

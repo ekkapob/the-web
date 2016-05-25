@@ -4,3 +4,6 @@ assets/vendors
 assets/js/dist/app.js
 assets/css/app.css
 assets/css/app.css.map
+assets/images/products
+
+img_process/images/*

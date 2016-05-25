@@ -12,7 +12,10 @@
       </div>
       <div class="image">
         <a href="/products/{{product_id}}">
-          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="{{name}}">
+          <!-- {{primary_image}} -->
+          <img src="{{imgSrc primary_image product_id category subcategory}}"
+               alt="{{product_id}}">
+          <!-- <img src="/assets/images/products/water_pump_assy/WPA&#45;001.jpg" alt="{{name}}"> -->
         </a>
         <div class="order-mask">
           <button class="btn btn-order">

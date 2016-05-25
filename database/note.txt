@@ -1,0 +1,6 @@
+// to connect
+$ psql -U webadmin -d web_dev
+
+
+update products set images=array['1','2'] where product_id = 'WPA-001';
+pdate products set images=null where product_id = 'WPA-001';

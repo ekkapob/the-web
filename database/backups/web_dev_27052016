@@ -1,0 +1,530 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: update_last_modified_at(); Type: FUNCTION; Schema: public; Owner: webadmin
+--
+
+CREATE FUNCTION update_last_modified_at() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    NEW.last_modified_at = now();
+    RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION public.update_last_modified_at() OWNER TO webadmin;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: car_brands; Type: TABLE; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+CREATE TABLE car_brands (
+    id integer NOT NULL,
+    name text NOT NULL,
+    created_at timestamp with time zone DEFAULT now(),
+    last_modified_at timestamp with time zone DEFAULT now()
+);
+
+
+ALTER TABLE car_brands OWNER TO webadmin;
+
+--
+-- Name: car_brands_id_seq; Type: SEQUENCE; Schema: public; Owner: webadmin
+--
+
+CREATE SEQUENCE car_brands_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE car_brands_id_seq OWNER TO webadmin;
+
+--
+-- Name: car_brands_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: webadmin
+--
+
+ALTER SEQUENCE car_brands_id_seq OWNED BY car_brands.id;
+
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    name text NOT NULL,
+    name_th text,
+    created_at timestamp with time zone DEFAULT now(),
+    last_modified_at timestamp with time zone DEFAULT now()
+);
+
+
+ALTER TABLE categories OWNER TO webadmin;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: webadmin
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE categories_id_seq OWNER TO webadmin;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: webadmin
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    product_id text NOT NULL,
+    part_no text,
+    substitute_part_no text,
+    car_brand_id integer,
+    category_id integer,
+    subcategory_id integer,
+    engine_model text,
+    name text,
+    name_th text,
+    details text,
+    details_th text,
+    remark text,
+    remark_th text,
+    created_at timestamp with time zone DEFAULT now(),
+    last_modified_at timestamp with time zone DEFAULT now()
+);
+
+
+ALTER TABLE products OWNER TO webadmin;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: webadmin
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE products_id_seq OWNER TO webadmin;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: webadmin
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
+
+--
+-- Name: subcategories; Type: TABLE; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+CREATE TABLE subcategories (
+    id integer NOT NULL,
+    category_id integer NOT NULL,
+    name text NOT NULL,
+    name_th text,
+    created_at timestamp with time zone DEFAULT now(),
+    last_modified_at timestamp with time zone DEFAULT now()
+);
+
+
+ALTER TABLE subcategories OWNER TO webadmin;
+
+--
+-- Name: subcategories_id_seq; Type: SEQUENCE; Schema: public; Owner: webadmin
+--
+
+CREATE SEQUENCE subcategories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE subcategories_id_seq OWNER TO webadmin;
+
+--
+-- Name: subcategories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: webadmin
+--
+
+ALTER SEQUENCE subcategories_id_seq OWNED BY subcategories.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: webadmin
+--
+
+ALTER TABLE ONLY car_brands ALTER COLUMN id SET DEFAULT nextval('car_brands_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: webadmin
+--
+
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: webadmin
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: webadmin
+--
+
+ALTER TABLE ONLY subcategories ALTER COLUMN id SET DEFAULT nextval('subcategories_id_seq'::regclass);
+
+
+--
+-- Data for Name: car_brands; Type: TABLE DATA; Schema: public; Owner: webadmin
+--
+
+COPY car_brands (id, name, created_at, last_modified_at) FROM stdin;
+1	HINO	2016-04-25 16:22:56.851175+07	2016-04-25 16:22:56.851175+07
+2	ISUZU	2016-04-25 16:22:56.874041+07	2016-04-25 16:22:56.874041+07
+3	MITSUBISHI	2016-04-25 16:22:56.885952+07	2016-04-25 16:22:56.885952+07
+4	NISSAN	2016-04-25 16:22:56.88932+07	2016-04-25 16:22:56.88932+07
+5	TOYOTA	2016-04-25 16:22:56.89071+07	2016-04-25 16:22:56.89071+07
+6	DAEWOO	2016-04-25 16:22:56.892045+07	2016-04-25 16:22:56.892045+07
+\.
+
+
+--
+-- Name: car_brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: webadmin
+--
+
+SELECT pg_catalog.setval('car_brands_id_seq', 6, true);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: webadmin
+--
+
+COPY categories (id, name, name_th, created_at, last_modified_at) FROM stdin;
+1	Engine Group	หมวดเครื่องยนต์	2016-04-25 16:24:40.415769+07	2016-04-25 16:24:40.415769+07
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: webadmin
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 1, true);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: webadmin
+--
+
+COPY products (id, product_id, part_no, substitute_part_no, car_brand_id, category_id, subcategory_id, engine_model, name, name_th, details, details_th, remark, remark_th, created_at, last_modified_at) FROM stdin;
+4	WPA-003	16100-1460		1	1	1	EC100	KL	KL					2016-04-25 18:29:30.510166+07	2016-04-25 18:33:16.993307+07
+5	WPA-004	16100-1461		1	1	1	EC100	KL (Long Shaft)	KL แกนยาว					2016-04-25 18:29:30.514167+07	2016-04-25 18:33:16.99638+07
+6	WPA-005	16100-1341		1	1	1	EH100	KT920	KT920	Shaft 19 mm.	แกน 19 มม.			2016-04-25 18:29:30.520089+07	2016-04-25 18:33:17.000092+07
+7	WPA-006	16100-1341		1	1	1	EH300	KT920 แกนใหญ่	KT920	Shaft 24 mm.	แกน 24 มม.			2016-04-25 18:29:30.52607+07	2016-04-25 18:33:17.003012+07
+8	WPA-007	16100-1441		1	1	1	EH700	KT725	KT725					2016-04-25 18:29:30.531705+07	2016-04-25 18:33:17.00758+07
+9	WPA-008	16100-2342		1	1	1	W04D	W04D, FB2W, KM505, KM545, KM777	W04D, FB2W, KM505, KM545, KM777					2016-04-25 18:29:30.542684+07	2016-04-25 18:33:17.016948+07
+10	WPA-009	16100-2531		1	1	1	W06D	W06D, FC2W	W06D, FC2W					2016-04-25 18:29:30.552252+07	2016-04-25 18:33:17.028581+07
+11	WPA-010	16100-2384		1	1	1	W06E	W06E	W06E					2016-04-25 18:29:30.560118+07	2016-04-25 18:33:17.037551+07
+12	WPA-011	16100-2370		1	1	1	H06C	H06C	H06C					2016-04-25 18:29:30.564039+07	2016-04-25 18:33:17.040634+07
+13	WPA-013	16100-2640		1	1	1	H07C	H07C, F18	H07C, F18					2016-04-25 18:29:30.567406+07	2016-04-25 18:33:17.043212+07
+14	WPA-014	16100-2971		1	1	1	H07D	H07D, FL3H, FM3H	H07D, FL3H, FM3H					2016-04-25 18:29:30.572194+07	2016-04-25 18:33:17.047893+07
+15	WPA-015	16100-3475		1	1	1	J05C	J05C, FB4J, FC4J	J05C, FC4J	Hi-Tech Series	ไฮเทค			2016-04-25 18:29:30.581141+07	2016-04-25 18:33:17.050371+07
+17	WPA-017	16100-3581		1	1	1	J08C-TK, J08C-TR	RU1J	RU1J					2016-04-25 18:29:30.598259+07	2016-04-25 18:33:17.056625+07
+18	WPA-018	16100-3123		1	1	1	K13D	K13D, FM2K	K13D, FM2K					2016-04-25 18:29:30.60134+07	2016-04-25 18:33:17.05911+07
+19	WPA-019	16100-3801		1	1	1	EL100	EL100	EL100					2016-04-25 18:29:30.604685+07	2016-04-25 18:33:17.062101+07
+20	WPA-020	16100-2753		1	1	1	EM100, M10C	EM100, FM226, FM227, FM3MN	EM100, FM226, FM227, FM3MN	Gear: 22; FM3M Short Wheel Base;			FM3M ฐานล้อสั้น	2016-04-25 18:29:30.608467+07	2016-04-25 18:33:17.067977+07
+21	WPA-021	16100-2864		1	1	1	M10C	M10C, FM3MK	M10C, FM3MK				FM3M ฐานล้อยาว	2016-04-25 18:29:30.61226+07	2016-04-25 18:33:17.070437+07
+22	WPA-022	16100-1313		1	1	1	EP100	P09C	P09C					2016-04-25 18:29:30.618315+07	2016-04-25 18:33:17.072915+07
+23	WPA-023	16100-3354		1	1	1	P11C-TH	P11C-TH, FM2PK	P11C-TH, FM2PK	Gear:22; MEGA	เฟือง 22 ฟัน; MEGA			2016-04-25 18:29:30.622092+07	2016-04-25 18:33:17.075213+07
+24	WPA-084	16100-3354 A		1	1	1	P11C	P11C (Gear 23)	P11C (เฟือง 23 ฟัน)	Gear:23; MEGA	เฟือง 23 ฟัน; MEGA			2016-04-25 18:29:30.627182+07	2016-04-25 18:33:17.077853+07
+25	WPA-080	16100-E0021	16100-E0022	1	1	1	J08C-T	J08C-T, J08E	J08C-T, J08E	Series 500; Common Rail	ซีรี่ส์ 500; คอมมอน เรล			2016-04-25 18:29:30.63041+07	2016-04-25 18:33:17.080074+07
+26	WPA-082	16100-E0390	16100-E0391	1	1	1	A09C	A09C, FM1A	A09C, FM1A					2016-04-25 18:29:30.63329+07	2016-04-25 18:33:17.082996+07
+27	WPA-090	16100-E0341	16100-4240	1	1	1	W04D-T	W04D-T, DUTRO, WU	DUTRO, W04D-T, WU	Series 300; Common Rail; EURO3	ซีรีส์ 300; คอมมอน เรล; ยูโร3			2016-04-25 18:29:30.63595+07	2016-04-25 18:33:17.085783+07
+28	WPA-095	16100-E0780		1	1	1	N04C	N04C, XZU		Series 300; Common Rail; EURO3	ซีรีส์ 300; คอมมอน เรล; ยูโร3			2016-04-25 18:29:30.639784+07	2016-04-25 18:33:17.087884+07
+29	WPA-097	16100-E0401		1	1	1	J05E	J05E, FC9J	J05E, FC9J	Series 500; Common Rail	ซีรี่ส์ 500; คอมมอน เรล			2016-04-25 18:29:30.642325+07	2016-04-25 18:33:17.090152+07
+30	WPA-024	5-13610-012-0		2	1	1	C190	KBD, C190	KBD, C190					2016-04-25 18:29:30.644937+07	2016-04-25 18:33:17.098772+07
+31	WPA-025	8-94104-755-1		2	1	1	C223	KBZ, C223	KBZ, C223					2016-04-25 18:29:30.647884+07	2016-04-25 18:33:17.106613+07
+32	WPA-026	5-13610-179-0		2	1	1	C240	S250, C240, ELF	S250, C240, ELF					2016-04-25 18:29:30.650262+07	2016-04-25 18:33:17.122132+07
+33	WPA-027	5-13610-179-0 A		2	1	1		S250 (8 Holes Flange)	S250 หน้าแปลนรถยก					2016-04-25 18:29:30.652876+07	2016-04-25 18:33:17.135835+07
+34	WPA-028	5-13610-041-3		2	1	1	C330	S250/76, C330	S250/76, C330					2016-04-25 18:29:30.65699+07	2016-04-25 18:33:17.145792+07
+35	WPA-029	5-13610-150-1		2	1	1	4BA1	S250/79, 4BA1	S250/79, 4BA1					2016-04-25 18:29:30.660661+07	2016-04-25 18:33:17.155369+07
+36	WPA-030	5-13610-027-2		2	1	1	4BB1	KS21, 4BB1	KS21, 4BB1					2016-04-25 18:29:30.665783+07	2016-04-25 18:33:17.162727+07
+37	WPA-031	5-13610-027-2		2	1	1		KS21 คอสูง	KS21 คอสูง					2016-04-25 18:29:30.668245+07	2016-04-25 18:33:17.16486+07
+38	WPA-032	5-13610-171-1		2	1	1	4BD1	KS22, 4BD1	KS22, 4BD1					2016-04-25 18:29:30.670768+07	2016-04-25 18:33:17.1687+07
+39	WPA-033	5-13610-016-0		2	1	1	6BB1, D500	6BB1, D500	6BB1, D500					2016-04-25 18:29:30.673367+07	2016-04-25 18:33:17.172432+07
+40	WPA-034	5-13610-144-0		2	1	1	6BD1	JCM, 6BD1	JCM, 6BD1					2016-04-25 18:29:30.676523+07	2016-04-25 18:33:17.180334+07
+41	WPA-035	5-13610-099-0		2	1	1	6BD1	6BD1 TRACTOR (SHORT)	6BD1 แทรกเตอร์ (คอสั้น)					2016-04-25 18:29:30.678712+07	2016-04-25 18:33:17.18997+07
+42	WPA-036	5-13610-098-0		2	1	1	6BD1	6BD1 TRACTOR (TALL)	6BD1 แทรกเตอร์ (คอยาว)					2016-04-25 18:29:30.68093+07	2016-04-25 18:33:17.198253+07
+43	WPA-037			2	1	1	6BF1	6BF1	6BF1	Flange Diameter : 	หน้าแปลน			2016-04-25 18:29:30.683759+07	2016-04-25 18:33:17.205939+07
+44	WPA-038	1-13610-470-1		2	1	1		JUMBO 200	JUMBO 200 แรง					2016-04-25 18:29:30.692953+07	2016-04-25 18:33:17.213862+07
+45	WPA-039	9-13610-069-0		2	1	1	DA220	S68	S68					2016-04-25 18:29:30.702485+07	2016-04-25 18:33:17.221127+07
+46	WPA-040	9-13610-450-0		2	1	1	DA120	TX74	TX74					2016-04-25 18:29:30.711396+07	2016-04-25 18:33:17.22372+07
+47	WPA-041	5-13610-169-3		2	1	1	C240 (Fork Lift)	TCM (FORK LIFT)	TCM (รถยก)					2016-04-25 18:29:30.71336+07	2016-04-25 18:33:17.225721+07
+48	WPA-042	5-13610-184-0		2	1	1	4BC2	NKR 110, 4BC2	NKR 110, 4BC2					2016-04-25 18:29:30.715315+07	2016-04-25 18:33:17.228175+07
+49	WPA-043	8-97021-171-0		2	1	1	4BE1	NPR 115, 4BE1	NPR 115, 4BE1					2016-04-25 18:29:30.717447+07	2016-04-25 18:33:17.235948+07
+50	WPA-044	8-97019-676-0		2	1	1	4HF1, 4HG1	NPR 120, 4HF1	NPR 120, 4HF1					2016-04-25 18:29:30.719827+07	2016-04-25 18:33:17.244218+07
+51	WPA-045	1-13610-819-0		2	1	1	6BG1	ROCKY 175, 6BG1	ROCKY 175, 6BG1					2016-04-25 18:29:30.728241+07	2016-04-25 18:33:17.25246+07
+52	WPA-046	8-94393-447-3		2	1	1	6HE1, 6HH1(12V)	ROCKY 195, 6HE1, 6HH1 (12V)	ROCKY 195, 6HE1, 6HH1(12V)					2016-04-25 18:29:30.735993+07	2016-04-25 18:33:17.255755+07
+53	WPA-047	1-13610-842-1		2	1	1	6SA1	ROCKY 210, 6SA1	ROCKY 210, 6SA1					2016-04-25 18:29:30.743912+07	2016-04-25 18:33:17.263477+07
+54	WPA-048	1-13610-676-1		2	1	1	6SD1	ROCKY 240, 6SD1 (มู่เล่ย์2ร่อง)	ROCKY 240, 6SD1 (มู่เล่ย์2ร่อง)					2016-04-25 18:29:30.745923+07	2016-04-25 18:33:17.273551+07
+55	WPA-050	8-94390-599-4	8-97602-773-0	2	1	1	6HH1(24V)	DECA 200, 6HH1 (24V)	DECA 200, 6HH1(24V)					2016-04-25 18:29:30.747841+07	2016-04-25 18:33:17.281662+07
+56	WPA-051			2	1	1		6HE1 (3 Grooves Pulley)	6HE1 (มู่เล่ย์3ร่อง)					2016-04-25 18:29:30.749773+07	2016-04-25 18:33:17.283748+07
+1	WPK-104			1	1	2	N04C	N04C, XZU						2016-04-25 18:24:49.105124+07	2016-04-25 18:33:17.52988+07
+3	WPA-002	16100-1123		1	1	1	DM100	KM (Long Shaft)	KM แกนยาว					2016-04-25 18:29:30.500116+07	2016-04-25 18:33:16.990106+07
+59	WPA-054	1-13650-159-1		2	1	1	6SD1-TCS	6SD1-TCS, DECA 320	DECA 320		ขนาดท่อ 			2016-04-25 18:29:30.777627+07	2016-04-25 18:33:17.289661+07
+60	WPA-078			2	1	1		6SD1 เครื่องเก่า/นอก	6SD1		ขนาดท่อ			2016-04-25 18:29:30.786041+07	2016-04-25 18:33:17.293291+07
+61	WPA-083	8-98042-848-2		2	1	1	6HF1, 6HK1	6HK1, 6HF1, DECA 240	6HK1, 6HF1, DECA 240					2016-04-25 18:29:30.788341+07	2016-04-25 18:33:17.295189+07
+62	WPA-093	1-87310-954-0	1-87310-991-0	2	1	1	6UZ1	DECA 360, 6UZ1	DECA 360, 6UZ1					2016-04-25 18:29:30.790629+07	2016-04-25 18:33:17.296997+07
+63	WPA-055	ME996861		3	1	1	4D31	CANTER 4D31, FE444	CANTER 4D31, FE444					2016-04-25 18:29:30.792901+07	2016-04-25 18:33:17.302547+07
+64	WPA-056	ME996867		3	1	1	4D32	CANTER 4D32, 4D34	CANTER 4D32, 4D34					2016-04-25 18:29:30.795343+07	2016-04-25 18:33:17.304655+07
+65	WPA-057	31645-02012		3	1	1	4DR5	CANTER 4DR5	CANTER 4DR5					2016-04-25 18:29:30.798288+07	2016-04-25 18:33:17.306825+07
+66	WPA-058			3	1	1	4DR5	CANTER 4DR5 (หน้าแปลนใหญ่)	CANTER 4DR5 (MODEL 2)					2016-04-25 18:29:30.801535+07	2016-04-25 18:33:17.309071+07
+67	WPA-059	ME075047		3	1	1	6D15	FUSO 6D15	FUSO 6D15					2016-04-25 18:29:30.808192+07	2016-04-25 18:33:17.314032+07
+68	WPA-060	ME075049		3	1	1	6D16	FUSO FN527, 6D16	FUSO FN527, 6D16					2016-04-25 18:29:30.816263+07	2016-04-25 18:33:17.320151+07
+69	WPA-061	ME075156		3	1	1	6D16 TURBO	FUSO FN527 TURBO, 6D16 TURBO	FUSO FN527 TURBO, 6D16 TURBO					2016-04-25 18:29:30.827257+07	2016-04-25 18:33:17.322092+07
+70	WPA-062	ME075258		3	1	1	6D16 EURO	FUSO FN528 EURO, FN627	FUSO FN528 EURO, FN627					2016-04-25 18:29:30.834105+07	2016-04-25 18:33:17.324034+07
+72	WPA-064			3	1	1	6D17	FUSO 6D17 (ใช้จาระบี)	FUSO 6D17 (MODEL 2)					2016-04-25 18:29:30.838628+07	2016-04-25 18:33:17.329106+07
+73	WPA-065	ME088301		3	1	1	6D31	FUSO 6D31	FUSO 6D31					2016-04-25 18:29:30.840874+07	2016-04-25 18:33:17.331139+07
+74	WPA-066	ME088537		3	1	1	6D31T	FUSO 6D31T (KOMATSU SK200)	FUSO 6D31T (KOMATSU SK200)			KOMATSU SK200	KOMATSU SK200	2016-04-25 18:29:30.850048+07	2016-04-25 18:33:17.333095+07
+75	WPA-092			3	1	1	6D16 CRANE	FUSO CRANE	FUSO รถเครน					2016-04-25 18:29:30.860865+07	2016-04-25 18:33:17.33508+07
+76	WPA-098	ME993933		3	1	1	6M60T, 6M61	FUSO 6M60T, 6M61	FUSO 6M60T, 6M61					2016-04-25 18:29:30.867709+07	2016-04-25 18:33:17.337171+07
+77	WPA-067	21010-Z5425		4	1	1	FD6	FD6, CP180	FD6, CP180				รูยึดเสื้อ 9 รู	2016-04-25 18:29:30.87136+07	2016-04-25 18:33:17.344889+07
+78	WPA-068	21008-96072		4	1	1	PD6, PE6, PE6-T	PD, PE, CW30, CW430	PD, PE, CW30, CW430					2016-04-25 18:29:30.875133+07	2016-04-25 18:33:17.353456+07
+79	WPA-069	21010-96264		4	1	1	PF6-T	PF6-T, CWM454 (Model 1)	PF6-T, CWM454 (แบบที่ 1)					2016-04-25 18:29:30.879411+07	2016-04-25 18:33:17.361397+07
+81	WPA-070	21008-96165		4	1	1	PF6-T	PF6-T, CWM454 (Model 3)	PF6-T, CWM454 (แบบที่ 3)	TADANO, Shaft 15 mm.				2016-04-25 18:29:30.908961+07	2016-04-25 18:33:17.377544+07
+82	WPA-081	21010-Z5525		4	1	1	FE6T	FE6T, PKB214	FE6T, PKB214					2016-04-25 18:29:30.913505+07	2016-04-25 18:33:17.385414+07
+83	WPA-091			4	1	1	FE6	FE6	FE6				รูยึดเสื้อ 7 รู	2016-04-25 18:29:30.916473+07	2016-04-25 18:33:17.392938+07
+84	WPA-071			5	1	1	2J (Fork Lift)	2Jรถยก(หน้าแปลนเล็ก)	2Jรถยก(หน้าแปลนเล็ก)					2016-04-25 18:29:30.926382+07	2016-04-25 18:33:17.402101+07
+85	WPA-072			5	1	1	2J (Fork Lift)	2Jรถยก(หน้าแปลนใหญ่)	2Jรถยก(หน้าแปลนใหญ่)					2016-04-25 18:29:30.935068+07	2016-04-25 18:33:17.403959+07
+86	WPA-073			5	1	1	2J (Air Con)	2Jเครื่องแอร์,รถทัวร์	2Jเครื่องแอร์,รถทัวร์					2016-04-25 18:29:30.942338+07	2016-04-25 18:33:17.405943+07
+87	WPA-074	16100-59076		5	1	1	11B	11B	11B					2016-04-25 18:29:30.944791+07	2016-04-25 18:33:17.407927+07
+88	WPA-075	16100-59145		5	1	1	13B	13B	13B					2016-04-25 18:29:30.947089+07	2016-04-25 18:33:17.409918+07
+89	WPA-076	16100-59166		5	1	1	14B	14B	14B					2016-04-25 18:29:30.949448+07	2016-04-25 18:33:17.411857+07
+90	WPA-077	16100-59165		5	1	1	15B	15B	15B					2016-04-25 18:29:30.952363+07	2016-04-25 18:33:17.414758+07
+91	WPA-094			6	1	1		DAEWOO	DAEWOO					2016-04-25 18:29:30.960954+07	2016-04-25 18:33:17.416618+07
+92	WPK-001			1	1	2	DM100, DQ100	KM350, KM500, DM100 - DQ100	KM350, KM500, DM100, DQ100					2016-04-25 18:29:30.968682+07	2016-04-25 18:33:17.418451+07
+93	WPK-002			1	1	2	DM100, DQ100	KM350, DM100 (แกนยาว)						2016-04-25 18:29:30.977357+07	2016-04-25 18:33:17.423372+07
+94	WPK-003			1	1	2	EC100	KL, EC100						2016-04-25 18:29:30.979676+07	2016-04-25 18:33:17.425364+07
+95	WPK-004			1	1	2	EC100	KL, EC100 (แกนยาว)						2016-04-25 18:29:30.982114+07	2016-04-25 18:33:17.427371+07
+96	WPK-005			1	1	2	EH100	KT920, EH100 (แกนเล็ก)						2016-04-25 18:29:30.984738+07	2016-04-25 18:33:17.42923+07
+97	WPK-006			1	1	2	EH300	KT920, EH300 (แกนใหญ่)						2016-04-25 18:29:30.987411+07	2016-04-25 18:33:17.433524+07
+98	WPK-007			1	1	2	EH700	KT725, EH700						2016-04-25 18:29:30.997148+07	2016-04-25 18:33:17.436701+07
+99	WPK-008			1	1	2	W04D	W04D, KM777, KM505						2016-04-25 18:29:31.008325+07	2016-04-25 18:33:17.438852+07
+100	WPK-009			1	1	2	W06D	W06D (ใช้หน้าแปลน)						2016-04-25 18:29:31.015985+07	2016-04-25 18:33:17.440813+07
+101	WPK-010			1	1	2	W06E	W06E (ไม่ใช้หน้าแปลน)						2016-04-25 18:29:31.018621+07	2016-04-25 18:33:17.442705+07
+102	WPK-011			1	1	2	H06C	H06C (ไม่ใช้หน้าแปลน)						2016-04-25 18:29:31.021214+07	2016-04-25 18:33:17.4447+07
+103	WPK-012			1	1	2	H07C	H07C, F18 (ใช้หน้าแปลน)						2016-04-25 18:29:31.023793+07	2016-04-25 18:33:17.446707+07
+104	WPK-013			1	1	2	H07D	H07D						2016-04-25 18:29:31.026548+07	2016-04-25 18:33:17.448655+07
+105	WPK-014			1	1	2	J05C	J05C, FC4J						2016-04-25 18:29:31.029594+07	2016-04-25 18:33:17.450539+07
+106	WPK-102	04016-1068		1	1	2	J08C, J08C-T	J08C, FM1J						2016-04-25 18:29:31.032155+07	2016-04-25 18:33:17.453583+07
+107	WPK-016			1	1	2		RU1J						2016-04-25 18:29:31.041903+07	2016-04-25 18:33:17.455706+07
+108	WPK-017			1	1	2	K13C	K13C						2016-04-25 18:29:31.050366+07	2016-04-25 18:33:17.457728+07
+109	WPK-018	04016-1036		1	1	2	K13D	K13D, FM2K						2016-04-25 18:29:31.060542+07	2016-04-25 18:33:17.465615+07
+110	WPK-019			1	1	2	EK100	EK100 ขันเก่า						2016-04-25 18:29:31.06306+07	2016-04-25 18:33:17.473544+07
+111	WPK-020			1	1	2	EK100	EK100 ขันใหม่						2016-04-25 18:29:31.065633+07	2016-04-25 18:33:17.48471+07
+112	WPK-021			1	1	2	EL100	EL100						2016-04-25 18:29:31.068072+07	2016-04-25 18:33:17.492802+07
+113	WPK-022	04016-1032		1	1	2	EM100, M10C	EM100, FM227						2016-04-25 18:29:31.070845+07	2016-04-25 18:33:17.496498+07
+114	WPK-023			1	1	2	EM100	EM100 รุ่นขัน						2016-04-25 18:29:31.079947+07	2016-04-25 18:33:17.498412+07
+115	WPK-024	04016-1046		1	1	2	M10C	M10C, FM3M						2016-04-25 18:29:31.094471+07	2016-04-25 18:33:17.500219+07
+116	WPK-025			1	1	2	P09C	EP100, PO9C						2016-04-25 18:29:31.098477+07	2016-04-25 18:33:17.505394+07
+117	WPK-026	04016-1066		1	1	2	P11C-TH	P11C-TH, FM2PK						2016-04-25 18:29:31.109172+07	2016-04-25 18:33:17.507399+07
+118	WPK-103			1	1	2	P11C-TH	P11C-TH, FM2PK (เฟือง 23 ฟัน)						2016-04-25 18:29:31.128299+07	2016-04-25 18:33:17.509317+07
+58	WPA-053	1-13650-002-0		2	1	1	6SD1-TCN	6SD1-TCN, DECA 270	DECA 270		ขนาดท่อ			2016-04-25 18:29:30.768949+07	2016-04-25 18:33:17.287745+07
+2	WPA-001	16100-1122		1	1	1	DM100, DQ100	KM350, KM500, DM100, DQ100	KM		แกนสั้น			2016-04-25 18:29:30.485049+07	2016-04-25 18:33:16.965405+07
+16	WPA-016	16100-3465		1	1	1	J07C, J08C, J08C-T	J08C, J07C, FL1J, FM1J, FC3J(Hi-Tech)	J08C, J07C, FL1J, FM1J, FC3J(Hi-Tech)	MEGA; Super Turbo; EURO2				2016-04-25 18:29:30.59386+07	2016-04-25 18:33:17.053107+07
+57	WPA-052	8-97602-781-0		2	1	1	6HE1-T	DECA 230, 6HE1-TC	DECA 230 (มู่เล่ย์4ร่อง), 6HE1-TC					2016-04-25 18:29:30.752+07	2016-04-25 18:33:17.285808+07
+71	WPA-063	ME075293		3	1	1	6D17	FUSO 6D17 (ใช้น้ำมันเลี้ยง)	FUSO 6D17 (OIL TYPE)					2016-04-25 18:29:30.836367+07	2016-04-25 18:33:17.325919+07
+80	WPA-099	21010-96211	21010-96125	4	1	1	PF6-T	PF6-T, CWM454 (Model 2)	PF6-T, CWM454 (แบบที่ 2)					2016-04-25 18:29:30.89821+07	2016-04-25 18:33:17.370153+07
+119	WPK-093			1	1	2	EF550	EF550 รุ่นอัด						2016-04-25 18:29:31.136786+07	2016-04-25 18:33:17.511272+07
+120	WPK-027			1	1	2	EF750	EF550, 750 รุ่นขัน						2016-04-25 18:29:31.142329+07	2016-04-25 18:33:17.515431+07
+121	WPK-028			1	1	2	EF750	EF750 ไม่พร้อมเฟือง						2016-04-25 18:29:31.147077+07	2016-04-25 18:33:17.519385+07
+122	WPK-087			1	1	2	J08C-T (Common Rail)	J08C-T, J08E, J05E						2016-04-25 18:29:31.150319+07	2016-04-25 18:33:17.521313+07
+123	WPK-092			1	1	2	A09C	A09C, FM1A						2016-04-25 18:29:31.153188+07	2016-04-25 18:33:17.5233+07
+124	WPK-094			1	1	2	W04D-T	W04D-TN, DUTRO, WU41, WU42						2016-04-25 18:29:31.155917+07	2016-04-25 18:33:17.525639+07
+125	WPK-095			1	1	2	P11C-UV, P11C-VU	P11C-UV, FM2PK						2016-04-25 18:29:31.158907+07	2016-04-25 18:33:17.527986+07
+\.
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: webadmin
+--
+
+SELECT pg_catalog.setval('products_id_seq', 127, true);
+
+
+--
+-- Data for Name: subcategories; Type: TABLE DATA; Schema: public; Owner: webadmin
+--
+
+COPY subcategories (id, category_id, name, name_th, created_at, last_modified_at) FROM stdin;
+1	1	Coolant Pump Assy	ปั๊มน้ำ	2016-04-25 16:31:52.888551+07	2016-04-25 16:31:52.888551+07
+2	1	Coolant Pump Repair Kit	ชุดซ่อมปั๊มน้ำ	2016-04-25 16:31:52.951425+07	2016-04-25 16:31:52.951425+07
+\.
+
+
+--
+-- Name: subcategories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: webadmin
+--
+
+SELECT pg_catalog.setval('subcategories_id_seq', 2, true);
+
+
+--
+-- Name: car_brands_name_key; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY car_brands
+    ADD CONSTRAINT car_brands_name_key UNIQUE (name);
+
+
+--
+-- Name: car_brands_pkey; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY car_brands
+    ADD CONSTRAINT car_brands_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_name_key; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_name_key UNIQUE (name);
+
+
+--
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_product_id_key; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_product_id_key UNIQUE (product_id);
+
+
+--
+-- Name: subcategories_name_key; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY subcategories
+    ADD CONSTRAINT subcategories_name_key UNIQUE (name);
+
+
+--
+-- Name: subcategories_pkey; Type: CONSTRAINT; Schema: public; Owner: webadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY subcategories
+    ADD CONSTRAINT subcategories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: update_modtime; Type: TRIGGER; Schema: public; Owner: webadmin
+--
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON car_brands FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+
+--
+-- Name: update_modtime; Type: TRIGGER; Schema: public; Owner: webadmin
+--
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON categories FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+
+--
+-- Name: update_modtime; Type: TRIGGER; Schema: public; Owner: webadmin
+--
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON products FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+
+--
+-- Name: update_modtime; Type: TRIGGER; Schema: public; Owner: webadmin
+--
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON subcategories FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ek
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ek;
+GRANT ALL ON SCHEMA public TO ek;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

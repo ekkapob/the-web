@@ -89,74 +89,38 @@
 
   <div class="product-container bg-blue">
     <div class="container">
-
       <div class="row">
         <div class="col-sm-12">
           <div class="category">Coolant Water Pump</div>
         </div>
-        <div class="col-sm-4 product">
-          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
-          <div>
-            <div class="header">KM350, KM500, DM100</div>
-            <div class="info">INFO 123 456 789</div>
+        {{#each coolantPumpAssyProducts}}
+          <div class="col-sm-4 product">
+            <a href="/products/{{id}}">
+            <img src="{{imgSrc primary_image id category subcategory}}"
+                 alt="{{id}}">
+            </a>
+            <div class="details">
+              <a href="/products/{{id}}">
+                <div class="header">{{name}}</div>
+              </a>
+              <div class="info">{{details}}</div>
+              <div class="part-details">
+                <div>
+                  <span>Part No: 16100-1122</span>
+                  <span class="icon-truck"></span>
+                  <a href="/products?car_brands={{car_brand}}">
+                    <span>{{car_brand}}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-4 product">
-          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
-          <div>
-            <div class="header">KM350, KM500, DM100</div>
-            <div class="info">INFO 123 456 789</div>
-          </div>
-        </div>
-        <div class="col-sm-4 product">
-          <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
-          <div>
-            <div class="header">KM350, KM500, DM100</div>
-            <div class="info">INFO 123 456 789</div>
-          </div>
-        </div>
-
+        {{/each}}
       </div>
-
-    </div>
-  </div>
-  <div class="product-container bg-dark-blue">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="category">Coolant Water Pump</div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4 product">
-            <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
-            <div>
-              <div class="header">KM350, KM500, DM100</div>
-              <div class="info">INFO 123 456 789</div>
-            </div>
-          </div>
-          <div class="col-sm-4 product">
-            <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
-            <div>
-              <div class="header">KM350, KM500, DM100</div>
-              <div class="info">INFO 123 456 789</div>
-            </div>
-          </div>
-          <div class="col-sm-4 product">
-            <img src="/assets/images/products/water_pump_assy/WPA-001.jpg" alt="KM350">
-            <div>
-              <div class="header">KM350, KM500, DM100</div>
-              <div class="info">INFO 123 456 789</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </div>
   <div class="text-center">
-    <a href="/products">[ See All Products ]</a>
+    <a class="btn" href="/products">See All Products</a>
   </div>
 
 </div>

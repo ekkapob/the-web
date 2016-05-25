@@ -13,6 +13,8 @@ CREATE TABLE products (
   details_th text,
   remark text,
   remark_th text,
+  images text[],
+  primary_image text,
   created_at timestamp with time zone default now(),
   last_modified_at timestamp with time zone default now()
 );

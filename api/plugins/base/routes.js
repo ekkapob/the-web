@@ -21,6 +21,11 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/api/v1/products/random',
+    handler: Products.random
+  },
+  {
+    method: 'GET',
     path: '/api/v1/categories',
     handler: Categories.index
   },

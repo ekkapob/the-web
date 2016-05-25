@@ -32,6 +32,7 @@
         border-top: none;
         .image {
           position: relative;
+          margin-bottom: 0.5em;
         }
         a {
           color: $light-red;
@@ -52,9 +53,17 @@
         }
         img {
           width: 100%;
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: cover;
+          @media (max-width: $screen-xs-max) {
+          }
+          @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+            max-height: 255px;
+          }
+          @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+            max-height: 170px;
+          }
+          @media (min-width: $screen-lg-min) {
+            max-height: 210px;
+          }
         }
         .info {
           text-align: center;
