@@ -101,12 +101,14 @@
             </a>
             <div class="details">
               <a href="/products/{{id}}">
-                <div class="header">{{name}}</div>
+                <div class="header text-ellipsis">{{name}}</div>
               </a>
-              <div class="info">{{details}}</div>
+              <div class="info text-ellipsis">{{details}}</div>
               <div class="part-details">
                 <div>
-                  <span>Part No: 16100-1122</span>
+                  <span>Part No:
+                    <span class="strong">{{part_no}}</span>
+                  </span>
                   <span class="icon-truck"></span>
                   <a href="/products?car_brands={{car_brand}}">
                     <span>{{car_brand}}</span>
@@ -133,26 +135,45 @@
         <hr/>
       </div>
     </div>
-    <div class="brands">
-      <a href="/products?car_brands=NISSAN">
-        <img src="/assets/images/cars/nissan.png" alt="Nissan Parts">
-      </a>
-      <a href="/products?car_brands=MITSUBISHI">
-        <img src="/assets/images/cars/mitsubishi.png" alt="Mitsubishi Parts">
-      </a>
-      <a href="/products?car_brands=TOYOTA">
-        <img src="/assets/images/cars/toyota.png" alt="Toyota Parts">
-      </a>
-      <a href="/products?car_brands=HINO">
-        <img src="/assets/images/cars/hino.png" alt="Hino Parts">
-      </a>
-      <a href="/products?car_brands=DAEWOO">
-        <img src="/assets/images/cars/daewoo.png" alt="Daewoo Parts">
-      </a>
-      <a href="/products?car_brands=ISUZU">
-        <img src="/assets/images/cars/isuzu.png" alt="Isuzu Parts">
-      </a>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 car-images">
+        <img class="small" src="/assets/images/truck.png" alt="">
+        <img class="medium" src="/assets/images/truck.png" alt="">
+        <img class="big" src="/assets/images/truck.png" alt="">
+      </div>
     </div>
+    <div class="row brands">
+      <div class="col-md-2">
+        <a href="/products?car_brands=NISSAN">
+          <span class="red">N</span>ISSAN
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="/products?car_brands=MITSUBISHI">
+          <span class="red">M</span>ITSUBISHI
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="/products?car_brands=TOYOTA">
+          <span class="red">T</span>OYOTA
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="/products?car_brands=HINO">
+          <span class="red">H</span>INO
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="/products?car_brands=DAEWOO">
+          <span class="red">D</span>AEWOO
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="/products?car_brands=ISUZU">
+          <span class="red">I</span>SUZU
+        </a>
+      </div>
+   </div>
   </div>
 </div>
 

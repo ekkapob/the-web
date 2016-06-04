@@ -199,6 +199,7 @@ exports.random = (request, reply) => {
   let q = Squel.select()
             .from('products')
             .field('products.product_id AS id')
+            .field('products.part_no AS part_no')
             .field('products.primary_image')
             .field('products.name')
             .field('car_brands.name AS car_brand')

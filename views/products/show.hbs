@@ -28,21 +28,21 @@
           {{/if}}
         </div>
         <hr />
-        {{#if product.details}}
-          <p class="details">{{product.details}}</p>
-        {{/if}}
         <blockquote>
           {{#if product.part_no}}
-            <p>Part no.:&nbsp;<span>{{product.part_no}}</span></p>
+            <p>Part no.:&nbsp;<span class="id">{{product.part_no}}</span></p>
           {{/if}}
           {{#if product.substitute_part_no}}
             <p>Substitute part no.:&nbsp;
-            <span>{{product.substitute_part_no}}</span></p>
+            <span class="id">{{product.substitute_part_no}}</span></p>
           {{/if}}
           {{#if product.engine_model}}
-            <p>Engine model:&nbsp;<span>{{product.engine_model}}</span></p>
+            <p>Engine model:&nbsp;<span class="id">{{product.engine_model}}</span></p>
           {{/if}}
         </blockquote>
+        {{#if product.details}}
+          <p class="details">{{product.details}}</p>
+        {{/if}}
         {{#if product.remark}}
           <div class="remark">
             <p>Remark:</p>

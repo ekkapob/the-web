@@ -1,31 +1,27 @@
 <div class="col-md-7 col-lg-7 images">
-  <div class="col-md-2 hidden-xs hidden-sm image-thumbnails">
-    {{#if product.images}}
-      {{#each product.images}}
-        <div>
-          <img src="{{imgSrc this
-              ../product.product_id
-              ../product.category
-              ../product.subcategory}}"
-               alt="{{../product.product_id}} {{@index}}"
-             class="{{#if @first}}selected{{/if}}">
-        </div>
-      {{/each}}
-    {{else}}
-      <div>
-        <img src="/assets/images/products/unavailable.jpg"
-             alt="{{../product.product_id}}"
-             class="selected">
-      </div>
-    {{/if}}
-  </div>
-  <div class="col-md-10 display-image">
-    {{#if product.primary_image}}
-      <img class="img-responsive"
-        src="{{imgSrc product.primary_image product.product_id product.category
-        product.subcategory}}" alt="{{product.product_id}}">
-    {{else}}
-      <img class="img-responsive" src="/assets/images/products/unavailable.jpg">
-    {{/if}}
+  <div class="row">
+    <div class="col-md-12 display-image">
+      {{#if product.primary_image}}
+        <img class="img-responsive"
+          src="{{imgSrc product.primary_image product.product_id product.category
+          product.subcategory}}" alt="{{product.product_id}}">
+      {{else}}
+        <img class="img-responsive" src="/assets/images/products/unavailable.jpg">
+      {{/if}}
+    </div>
+    <div class="col-md-12 hidden-xs hidden-sm image-thumbnails">
+      {{#if product.images}}
+        {{#each product.images}}
+          <div>
+            <img src="{{imgSrc this
+                ../product.product_id
+                ../product.category
+                ../product.subcategory}}"
+                alt="{{../product.product_id}} {{@index}}"
+              class="{{#if @first}}selected{{/if}}">
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
   </div>
 </div>
