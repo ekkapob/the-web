@@ -1,4 +1,4 @@
-var dbname = 'web_dev';
+var dbname = process.env.DB;
 var conn = `postgres://webadmin:Ekka1994@localhost/${dbname}`;
 var _ = require('lodash');
 var fs = require('fs');

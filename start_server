@@ -1,0 +1,3 @@
+source .env
+pm2 start --interpreter babel-node api/index.js --name api
+pm2 start --interpreter babel-node index.js --name web

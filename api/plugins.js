@@ -1,8 +1,9 @@
+var db  = process.env.DB;
 module.exports = [
   {
     register: require('hapi-node-postgres'),
     options: {
-      connectionString: 'postgres://webadmin:Ekka1994@localhost/web_dev',
+      connectionString: `postgres://webadmin:Ekka1994@localhost/${db}`,
       native: true
     }
   },

@@ -2,13 +2,12 @@ var fs = require('fs-extra');
 var Squel = require('squel').useFlavour('postgres');
 var sourceDir = 'images/final';
 
-var dbname = 'web_dev';
+var dbname = process.env.DB;
 var conn = `postgres://webadmin:Ekka1994@localhost/${dbname}`;
 var Client = require('pg-native')
 var client = new Client();
 
 client.connectSync(conn);
-
 
 var directories = fs.readdirSync(sourceDir).filter((name) => {
   var path = `${__dirname}/${sourceDir}/${name}`;
