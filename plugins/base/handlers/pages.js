@@ -1,12 +1,12 @@
 var Async = require('async');
 var Boom = require('boom');
-var Wreck = require('wreck');
 var Requests = require('../requests');
 var Querystring = require('querystring');
 var _ = require('lodash');
 
 exports.locale = (request, reply) => {
   request.yar.set('locale', { value: request.params.locale });
+  // console.log(request.info.referrer);
   reply.redirect(request.info.referrer);
 };
 
@@ -86,8 +86,14 @@ exports.product = (request, reply) => {
   }, (err, result) => {
     // TODO: redirect to 404 or any proper page
     if (err) return reply.view('products');
+
+    let inCart = 0;
+    if (_.has(request.yar.get('cart'), result.product.product_id)){
+      inCart = request.yar.get('cart')[result.product.product_id];
+    }
     reply.view('products/show', {
       product: result.product,
+      inCart,
       recommended: result.recommended
     });
   });

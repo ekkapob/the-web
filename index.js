@@ -26,7 +26,12 @@ Server.register(Plugins, (err) => {
     layoutPath: './views/layout',
     partialsPath: './views/partials',
     helpersPath: './views/helpers',
-    isCached: false
+    isCached: false,
+    context: function(request){
+      return {
+        cart: request.yar.get('cart')
+      };
+    }
   });
 
   Server.route({

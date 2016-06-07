@@ -1,0 +1,81 @@
+#order-steps {
+  margin: 3em 0;
+  .row {
+    margin: 0;
+  }
+  .step {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    background-color: $grey;
+    color: $dark-grey;
+    span {
+      border: 2px solid white;
+      padding: 1px 6px;
+      border-radius: 20px;
+      font-size: 1em;
+      margin-right: 0.3em;
+    }
+    .text {
+      display: inline-block;
+    }
+  }
+  #step-1 {
+    color: white;
+    background-color: #70B4FF;
+    .arrow {
+      border-left-color: #70B4FF;
+    }
+  }
+  #step-2 {
+    color: white;
+    background-color: $medium-grey;
+    .arrow {
+      border-left-color: $medium-grey;
+    }
+  }
+  &.confirm-contact {
+    #step-1 {
+      background-color: $medium-grey;
+      .arrow {
+        border-left-color: $medium-grey;
+      }
+    }
+    #step-2 {
+      background-color: $orange;
+      .arrow {
+        border-left-color: $orange;
+      }
+    }
+  }
+  &.summary {
+    .step {
+      background-color: #5cb85c;
+      color: white;
+    }
+    #step-1 {
+      background-color: $medium-grey;
+      .arrow {
+        border-left-color: $medium-grey;
+      }
+    }
+    #step-2 {
+      background-color: $dark-grey;
+      .arrow {
+        border-left-color: $dark-grey;
+      }
+    }
+  }
+  .arrow {
+    position: absolute;
+    right: -31px;
+    width: 0;
+    height: 0;
+    border-top: 32px solid transparent;
+    border-bottom: 32px solid transparent;
+    border-left: 32px solid red;
+    z-index: 100;
+  }
+}

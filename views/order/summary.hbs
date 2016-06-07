@@ -1,0 +1,102 @@
+<div id="order-summary">
+  {{> order_steps step="summary"}}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 class="text-center">Your Order Summary ({{cartTotal cart}}
+          {{pluralize (cartTotal cart) 'item' 'items' }})</h3>
+      </div>
+    </div>
+    <div class="orders">
+      {{> orders summary=true}}
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="bottom-total">
+          Total of <span>{{cartTotal cart}}</span> {{pluralize (cartTotal cart) 'item' 'items' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-section">
+    <div class="container">
+      <div class="contact-info">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3 class="text-center">Your Contact Information</h3>
+          </div>
+        </div>
+        <div class="row contact-details-container">
+          <div class="contact-details">
+            <div class="title">Name</div>
+            <div class="details">{{contact.name}}</div>
+          </div>
+          <div class="contact-details">
+            <div class="title">Email</div>
+            <div class="details">{{contact.email}}</div>
+          </div>
+          <div class="contact-details">
+            <div class="title">Phone</div>
+            <div class="details">{{contact.phone}}</div>
+          </div>
+          <div class="contact-details">
+            <div class="title">Address</div>
+            <div class="details">
+              {{contact.address}}
+            </div>
+          </div>
+          <div class="contact-details">
+            <div class="title">Country</div>
+            <div class="details">
+              {{contact.country}}
+            </div>
+          </div>
+          <div class="contact-details">
+            <div class="title">City</div>
+            <div class="details">
+              {{contact.city}}
+            </div>
+          </div>
+          <div class="contact-details">
+            <div class="title">Zip</div>
+            <div class="details">
+              {{contact.zip}}
+            </div>
+          </div>
+          <div class="contact-details block">
+            <div class="title">Remarks to Saleperson</div>
+            <div class="details">
+              {{contact.remarks}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="order-page-action text-center">
+            <div><a href="/orders">Back to Edit Order?</a></div>
+            <form action="/orders/place_order" method="post" accept-charset="utf-8">
+              <button id="order-place-order" type="submit" class="btn btn-success">
+                Place Order
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row"> -->
+  <!--   <div class="col&#45;md&#45;12"> -->
+  <!--     <div class="order&#45;page&#45;action text&#45;center"> -->
+  <!--       <div><a href="/orders">Back to Edit Order?</a></div> -->
+  <!--       <form action="/orders/place_order" method="post" accept&#45;charset="utf&#45;8"> -->
+  <!--         <button type="submit" class="btn btn&#45;success"> -->
+  <!--           Place Order -->
+  <!--         </button> -->
+  <!--       </form> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </div> -->
+
+</div>

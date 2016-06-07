@@ -1,0 +1,83 @@
+<div id="confirm-contact">
+  {{> order_steps step="confirm-contact"}}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Customer Information</h2>
+        <form action="/orders/confirm" method="POST">
+          <div class="form-group">
+            <label for="contact-name">Full Name <small>(required)</small></label>
+            <input type="text" class="form-control" id="contact-name"
+                                                    name="name"
+                                                    value="{{store.name}}"
+                                                    placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email address <small>(required)</small></label>
+            <input type="email" class="form-control" id="contact-email"
+                                                     placeholder="Email"
+                                                     name="email"
+                                                     value="{{store.email}}"
+                                                     required>
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Phone <small>(required)</small></label>
+            <input type="number" class="form-control" id="contact-phone"
+                                                     placeholder="Phone number"
+                                                     name="phone"
+                                                     value="{{store.phone}}"
+                                                     required>
+          </div>
+          <!-- <div class="form-group has-error"> -->
+          <div class="form-group">
+            <label for="contact-address">Address <small>(required)</small></label>
+            <textarea class="form-control"
+                      rows="5" id="contact-address"
+                      placeholder="Address"
+                      name="address" required>{{store.address}}</textarea>
+            <div class="help-block"></div>
+          </div>
+          <div class="address-container">
+            <div class="address-group country">
+              <div class="form-group">
+                <label for="contact-country">Country</label>
+                <select class="form-control"
+                        id="contact-country"
+                        name="country"
+                        data-store="{{store.country}}"></select>
+              </div>
+            </div>
+            <div class="address-group city">
+              <div class="form-group">
+                <label for="contact-city">State / City</label>
+                <select class="form-control" id="contact-city"
+                                             data-store="{{store.city}}"
+                                             name="city"></select>
+              </div>
+            </div>
+            <div class="address-group zip">
+              <div class="form-group">
+                <label for="contact-city">Postal code <small>(required)</small></label>
+                <input type="text" class="form-control"
+                                   id="contact-name"
+                                   placeholder="Postal code"
+                                   name="zip" value="{{store.zip}}" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-remark">Remarks to Salesperson</label>
+            <textarea class="form-control"
+                      rows="3" id="contact-remark"
+                      placeholder="Additional information"
+                      name="remarks">{{store.remarks}}</textarea>
+          </div>
+          <div class="order-page-action text-center">
+            <div><a href="/orders">Back to Edit Order?</a></div>
+            <button type="submit" class="btn btn-success">Confirm Contact Info</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

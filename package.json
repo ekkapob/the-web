@@ -19,10 +19,13 @@
     "inert": "^3.2.0",
     "joi": "^8.0.5",
     "lodash": "^4.7.0",
+    "moment": "^2.13.0",
     "pg": "^4.5.3",
     "pg-native": "^1.10.0",
     "pg-promise": "^3.8.1",
+    "randomstring": "^1.1.5",
     "squel": "^5.0.4",
+    "superagent": "^2.0.0",
     "vision": "^4.0.1",
     "wreck": "^7.2.0",
     "yar": "^7.0.0"

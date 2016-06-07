@@ -1,0 +1,48 @@
+#order-success {
+  .info {
+    font-size: 1.5em;
+    margin: 3em 0;
+    .title {
+      color: $light-red;
+      margin-bottom: 1em;
+    }
+    .summary {
+      color: $text-black;
+    }
+    .email {
+      color: $light-black;
+      .info {
+        font-size: 1em;
+        margin: 0;
+        span {
+          color: $light-red;
+        }
+      }
+      .details {
+        font-size: 0.8em;
+        a {
+          color: $light-black;
+          text-decoration: underline;
+        }
+      }
+    }
+    .order {
+      margin: 2em 0;
+      font-size: 1.2em;
+      div {
+        display: inline-block;
+        background-color: $grey;
+        padding: 1em 2em;
+        border-radius: 4px;
+        color: $light-black;
+      }
+      span {
+        color: $black;
+        border-bottom: 2px solid $black;
+      }
+    }
+  }
+  .order-page-action {
+    margin: 0 0 4em;
+  }
+}

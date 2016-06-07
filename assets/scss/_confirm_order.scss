@@ -1,0 +1,46 @@
+#cart {
+  margin: 3em 0;
+  .attr {
+    color: $dark-grey;
+    span {
+      color: $black;
+    }
+  }
+  #cart-summary {
+    .summary-text {
+      color: $dark-grey;
+      font-size: 1.5em;
+      border-bottom: 2px solid $grey;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+      span {
+        color: $black;
+      }
+    }
+  }
+}
+
+.order-page-action {
+  margin-top: 2em;
+  div {
+    margin-bottom: 1em;
+    a {
+      color: $light-black;
+      font-size: 1.1em;
+      text-decoration: underline;
+    }
+  }
+  .btn {
+    span {
+      border-bottom: 2px solid white;
+      padding-bottom: 2px;
+    }
+  }
+  .btn-success {
+    font-size: 1.3em;
+    padding: 1em 2em;
+    background-color: $green;
+    box-shadow: 0 3px 0px $dark-green;
+    border: none;
+  }
+}

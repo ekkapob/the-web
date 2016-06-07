@@ -1,0 +1,78 @@
+#order-summary {
+  // margin-bottom: 3em;
+  .orders {
+    margin-bottom: 1.5em;
+  }
+  .bottom-total {
+    text-align: right;
+    font-size: 1.3em;
+    span {
+      margin: 0 0.2em;
+      font-size: 1.5em;
+      background: $grey;
+      padding: 0 0.5em;
+      border-radius: 4px;
+    }
+  }
+  .order {
+    margin-top: 2em;
+    .product-details {
+      .order-info {
+        font-size: 1.2em;
+        align-items: baseline;
+        .amount {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+  .contact-info {
+    margin-top: 3em;
+  }
+  .contact-details-container {
+    width: 65%;
+    margin: 2em auto;
+
+    background: white;
+    padding: 3em;
+    box-shadow: 0 1px 2px $medium-grey;
+    border-radius: 4px;
+
+    .contact-details {
+      font-size: 1.1em;
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 0.5em;
+      &.block {
+        display: block;
+        .title {
+          margin-top: 1em;
+        }
+        .details {
+          margin-top: 0.5em;
+        }
+        div {
+          display: block;
+        }
+      }
+      div {
+        display: inline-block;
+      }
+      .title {
+        min-width: 6em;
+        color: $dark-grey;
+      }
+      .details {
+        font-size: 1.3em;
+      }
+    }
+  }
+  .contact-section {
+    background-color: $dark-blue;
+    margin-top: 3em;
+    padding-bottom: 3em;
+  }
+  .order-page-action {
+    margin-top: 0;
+  }
+}

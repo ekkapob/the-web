@@ -1,0 +1,18 @@
+#confirm-contact {
+  .address-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .address-group {
+    width: 32%;
+  }
+  .form-group {
+    small {
+      color: $light-red;
+    }
+  }
+  form {
+    margin-top: 2em;
+    margin-bottom: 5em;
+  }
+}

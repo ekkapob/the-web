@@ -43,6 +43,36 @@ CREATE TABLE subcategories (
   last_modified_at timestamp with time zone default now()
 );
 
+CREATE TABLE orders (
+  id serial primary key,
+  ref_id text unique not null,
+  customer_id int not null,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now()
+);
+
+CREATE TABLE order_details (
+  id serial primary key,
+  product_id int not null,
+  quantity int not null,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now()
+);
+
+CREATE TABLE customers (
+  id serial primary key,
+  name text,
+  email text,
+  phone text,
+  address text,
+  country text,
+  city text,
+  zip text,
+  remarks text,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now()
+);
+
 CREATE OR REPLACE FUNCTION update_last_modified_at()	
 RETURNS TRIGGER AS $$
 BEGIN
@@ -61,4 +91,13 @@ CREATE TRIGGER update_modtime BEFORE UPDATE ON categories
 FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
 
 CREATE TRIGGER update_modtime BEFORE UPDATE ON subcategories
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON orders
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON order_details
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON customers
 FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();

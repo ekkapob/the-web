@@ -2,6 +2,8 @@ const CarBrands = require('./handlers/car_brands');
 const Categories = require('./handlers/categories');
 const Subcategories = require('./handlers/subcategories');
 const Products = require('./handlers/products');
+const Customers = require('./handlers/customers');
+const Orders = require('./handlers/orders');
 
 module.exports = [
   {
@@ -38,5 +40,20 @@ module.exports = [
     method: 'GET',
     path: '/api/v1/car_brands',
     handler: CarBrands.index
+  },
+  {
+    method: 'POST',
+    path: '/api/v1/customers',
+    handler: Customers.create
+  },
+  {
+    method: 'POST',
+    path: '/api/v1/orders',
+    handler: Orders.create
+  },
+  {
+    method: 'POST',
+    path: '/api/v1/order_details',
+    handler: Orders.createOrderDetails
   }
 ];

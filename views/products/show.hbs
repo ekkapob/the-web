@@ -49,10 +49,31 @@
             <p>{{product.remark}}</p>
           </div>
         {{/if}}
+        <hr />
         <div class="order">
-          <button class="btn btn-order">
-            <span>Order<span class="icon-cart"></span></span>
+          <div class="in-cart-msg {{#unless inCart}}hidden{{/unless}}">Already in Cart</div>
+          <div class="spinner">
+            <span class="decrease-order glyphicon glyphicon-minus"></span>
+            {{#if inCart}}
+              <input type="number" pattern="[0-9]*" min="0"
+                value="{{inCart}}" id="order-amount"/>
+            {{else}}
+              <input type="number" pattern="[0-9]*" min="0"
+                value="1" id="order-amount"/>
+            {{/if}}
+            <span class="increase-order glyphicon glyphicon-plus"></span>
+          </div>
+          <button class="btn btn-order" data-product-id="{{product.product_id}}">
+            <span>
+              {{#if inCart}}
+                Update
+              {{else}}
+                Order
+              {{/if}}
+              <span class="icon-cart"></span>
+            </span>
           </button>
+          <div id="flash-ordered-msg" hidden>1 item is added to your cart</div>
         </div>
       </div>
     </div>

@@ -7,5 +7,6 @@ module.exports = [
       native: true
     }
   },
-  require('./plugins/base')
+  require('./plugins/base'),
+  require('./plugins/mailer')
 ];

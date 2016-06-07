@@ -23,7 +23,7 @@ a {
 }
 
 #loading {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   z-index: 100;
@@ -36,3 +36,12 @@ a {
   }
 }
 
+.disable-number-spinner {
+  input[type="number"] {
+    -moz-appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    }
+  }
+}

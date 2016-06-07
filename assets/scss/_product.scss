@@ -106,7 +106,11 @@
     }
   }
   .order {
-    margin-top: 2em;
+    margin-top: 1.5em;
+    text-align: center;
+    .in-cart-msg {
+      color: $light-red;
+    }
     [class^="icon-"], [class*=" icon-"] {
       font-size: 1.5em;
       color: white;
@@ -119,6 +123,34 @@
       border-bottom: 4px solid $dark-green;
       & > span {
         display: flex;
+      }
+    }
+    #flash-ordered-msg {
+      font-size: 1.2em;
+      margin-top: 0.2em;
+    }
+    .spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8em;
+      input[type="number"] {
+        -moz-appearance: textfield;
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+        }
+        text-align: center;
+        width: 4em;
+        margin: 0 0.8em;
+        padding: 0 0.5em;
+        font-size: 1.2em;
+      }
+      span {
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5em;
+        background-color: #E8E8E8;
       }
     }
   }

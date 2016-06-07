@@ -1,0 +1,26 @@
+<div id="cart">
+  {{> order_steps}}
+  <div id="cart-summary" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="summary-text">
+          You have <span class="order-total">{{total}} {{pluralize total 'item' 'items'}}</span> in your order
+        </div>
+      </div>
+    </div>
+    {{> orders}}
+    <div class="order-page-action text-center">
+      {{#if orders}}
+        <div><a href="/products">Continue Shopping?</a></div>
+        <a class="btn btn-success" href="/orders/contact">
+          Confirm Order <span class="order-total">{{total}} {{pluralize total 'item' 'items'}}</span>
+        </a>
+      {{else}}
+        <a class=" btn btn-success" href="/products">
+          Continue Shopping
+        </a>
+      {{/if}}
+    </div>
+
+  </div>
+</div>
