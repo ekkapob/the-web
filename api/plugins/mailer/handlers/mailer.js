@@ -1,17 +1,23 @@
-import Boom     from 'boom';
-import Sendgrid from '../libs/sendgrid'
-import Fs       from 'fs';
+import Async      from 'async';
+import Boom       from 'boom';
+import Sendgrid   from '../libs/sendgrid';
+import ImgSrc     from '../helpers/imgSrc';
+import Fs         from 'fs';
+import Handlebars from 'handlebars';
+import Request    from 'superagent';
 
 function sendgridData(params) {
   return {
     personalizations: [
       {
-        to: [ { email: 'ekkapob@gmail.com' } ],
+        to: [ { email: params.to } ],
         bcc: [ { email: 'hello@traautoparts.com' } ],
         subject: params.subject
       }
     ],
-    from: { email: 'hello@traautoparts.com' },
+    from: {
+      name: 'TRA Autoparts',
+      email: 'hello@traautoparts.com' },
     content: [ {
         type: 'text/html',
         value: params.content
@@ -19,19 +25,68 @@ function sendgridData(params) {
   };
 }
 
+function fetchProduct(productId) {
+  var apiUrl = 'http://localhost:4001/api/v1';
+  return (cb) => {
+    Request.get(`${apiUrl}/products/${productId}`)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body.product[0]);
+      });
+  };
+}
+
 exports.orderAccepted = (request, reply) => {
   const { ref_id } = request.payload.order;
-  const { email } = request.payload.customer;
+  const { customer } = request.payload;
   const { cart } = request.payload;
-  Sendgrid.mail(sendgridData({
-    subject: `Order ...got accepted`,
-    content: orderAcceptedContent()
-  }), (err, res) => {
+  const data = {
+    ref_id,
+    customer,
+    order: []
+  };
+  let fetchProducts = [];
+  for (var key in cart) {
+    fetchProducts.push(fetchProduct(key));
+  }
+  Async.parallel(fetchProducts, (err, results) => {
     if (err) return reply(Boom.badRequest());
-    reply({ref_id});
+    injectProductInfo(cart, results);
+    const data = {
+      ref_id,
+      customer,
+      products: results
+    };
+
+    Sendgrid.mail(sendgridData({
+      subject: `We've got your order ${ref_id}`,
+      to: customer.email,
+      content: orderAcceptedContent(data)
+    }), (err, res) => {
+      if (err) return reply(Boom.badRequest());
+      reply({ref_id});
+    });
+
   });
+
 };
 
-function orderAcceptedContent() {
-  return Fs.readFileSync(`${__dirname}/../templates/order_accepted.hbs`, 'utf8');
+function injectProductInfo(cart, products) {
+  products.forEach((product) => {
+    const {
+      product_id,
+      primary_image,
+      category,
+      subcategory } = product;
+    product.quantity = cart[product_id];
+    product.img_src = ImgSrc(primary_image, product_id, category, subcategory);
+  });
+}
+
+function orderAcceptedContent(data) {
+  const source = Fs.readFileSync(`${__dirname}/../templates/order_accepted.hbs`,
+                                 'utf8');
+  const template = Handlebars.compile(source);
+  const result = template(data);
+  return template(data);
 }

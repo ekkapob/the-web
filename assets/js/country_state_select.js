@@ -1,10 +1,10 @@
 $(function(){
   var $contactCountry = $('#contact-country');
   initCountryOptions();
-  initStateOptions($contactCountry.val());
+  // initStateOptions($contactCountry.val());
 
   $contactCountry.change(function(){
-    initStateOptions($contactCountry.val());
+    // initStateOptions($contactCountry.val());
     // $contactCountry.val(
     //   $contactCountry.find('option:selected').text()
     // );
@@ -12,13 +12,18 @@ $(function(){
 });
 
 function initCountryOptions() {
+  var $countrySelect = $('#contact-country');
   var options = [];
   for (key in countryList) {
-    var selected = (key == 'TH') ? 'selected' : '';
-    options.push('<option value="' + key + '" '+ selected + '>'
-                 + countryList[key] + '</option>');
+    var value = countryList[key];
+    var store = $countrySelect.data('store');
+    var preselect = (!store) ? 'Thailand' : store;
+    var selected = (value == preselect) ? 'selected' : '';
+
+    options.push('<option value="' + value + '" '+ selected + '>'
+                 + value + '</option>');
   }
-  $('#contact-country').append(options.join());
+  $countrySelect.append(options.join());
 }
 
 function initStateOptions(country) {

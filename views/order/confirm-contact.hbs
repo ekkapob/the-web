@@ -49,10 +49,12 @@
             </div>
             <div class="address-group city">
               <div class="form-group">
-                <label for="contact-city">State / City</label>
-                <select class="form-control" id="contact-city"
-                                             data-store="{{store.city}}"
-                                             name="city"></select>
+                <label for="contact-city">State / City <small>(required)</small></label>
+                <input type="text" class="form-control"
+                                   id="contact-city"
+                                   placeholder="City"
+                                   value="{{store.city}}"
+                                   name="city" required>
               </div>
             </div>
             <div class="address-group zip">

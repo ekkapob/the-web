@@ -119,8 +119,6 @@ exports.createOrderDetail = (params) => {
 exports.emailOrderAccepted = (params) => {
   let { customer, cart } = params;
   return (order, cb) => {
-    console.log('////////');
-    console.log(order);
     Request.post(`${apiUrl}/mail/order_accepted`)
       .send({ order, customer, cart })
       .end((err, res) => {

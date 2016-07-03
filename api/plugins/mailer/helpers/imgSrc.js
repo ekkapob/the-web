@@ -1,4 +1,5 @@
 import _ from 'lodash';
+const hostname = 'http://www.traautoparts.com';
 
 module.exports = (img, product_id, category, subcategory) => {
   var path;
@@ -8,5 +9,5 @@ module.exports = (img, product_id, category, subcategory) => {
     var subCategoryDir = subcategory.toLowerCase().replace(/ /g, '_');
     path = [ '/assets/images/products', subCategoryDir, product_id, img ];
   }
-  return path.join('/');
+  return hostname + path.join('/');
 }
