@@ -25,6 +25,21 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/tra_history',
+    handler: Pages.traHistory
+  },
+  {
+    method: 'GET',
+    path: '/how_to_order',
+    handler: Pages.howToOrder
+  },
+  {
+    method: 'GET',
+    path: '/contact_us',
+    handler: Pages.contactUs
+  },
+  {
+    method: 'GET',
     path: '/products/{productId}',
     handler: Pages.product
   },

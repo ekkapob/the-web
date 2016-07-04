@@ -25,25 +25,6 @@ exports.index = (request, reply) => {
   });
 };
 
-// var products = [
-//   {
-//     id: 'WPA-003',
-//     car: 'HINO',
-//     img: '/water_pump_assy/WPA-001.jpg',
-//     name: 'KL (Long Shaft)',
-//     details: 'MEGA, Super Turbo, EURO2',
-//     partNo: '5-123-456-123',
-//     engineModel: 'EH700'
-//   },
-//   {
-//     id: 'WPA-003',
-//     car: 'HINO',
-//     img: '/water_pump_assy/WPA-001.jpg',
-//     name: 'KL (Long Shaft)',
-//     partNo: '5-123-456-123',
-//   }
-// ];
-
 exports.products = (request, reply) => {
   const { page, carBrands, categories } = request.query;
   const query = Querystring.stringify(request.query);
@@ -98,3 +79,15 @@ exports.product = (request, reply) => {
     });
   });
 };
+
+exports.contactUs = (request, reply) => {
+  reply.view('contact_us');
+};
+
+exports.howToOrder = (request, reply) => {
+  reply.view('how_to_order');
+};
+
+exports.traHistory = (request, reply) => {
+  reply.view('tra_history');
+}

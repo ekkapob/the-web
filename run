@@ -1,5 +1,6 @@
 # pm2 start api/index.js --name="api" --watch
 # nodemon api/index.js &
+pkill -9 node
 source .env
 nodemon --exec babel-node --presets=es2015 -- api/index.js &
 # nodemon --exec babel-node --presets=es2015 -- api/index.js &
