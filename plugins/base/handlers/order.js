@@ -102,7 +102,8 @@ exports.placeOrder = (request, reply) => {
       refId: result.ref_id,
       email: contact.email,
     });
-    request.yar.reset();
+    request.yar.clear('cart');
+    // request.yar.reset();
   });
 };
 
