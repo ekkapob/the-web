@@ -1,4 +1,17 @@
 {
-	"Hello": "สวัสดี",
-	"jHello": "jHello"
+  "Hello": "สวัสดี",
+  "jHello": "jHello",
+  "products": "สินค้า",
+  "tra_history": "เกี่ยวกับ TRA",
+  "how_to_order": "วิธีการสั่งซื้อ",
+  "contact_us": "ติดต่อเรา",
+  "product_summary": "ปั้มน้ำหล่อเย็น | อุปกรณ์ซ่อมบำรุง",
+  "our_products": "รายการสินค้า",
+  "coolant_water_pump": "ปั้มน้ำหล่อเย็น",
+  "see_all_products": "สิ้นค้าทั้งหมด",
+  "auto_parts_by_cars": "อะไหล่รถยนต์ตามยี่ห้อ",
+  "tra_trading_office": "บริษัท ที อาร์ เอ เทรดดิ้ง จำกัด",
+  "tra_address": "579 ถ. บำรุงเมือง แขวง คลองมหานาค เขต ป้อมปราบศัตรูพ่าย กรุงเทพมหานคร 10100",
+  "tra_trading_company_name": "บริษัท ที อาร์ เอ เทรดดิ้ง จำกัด",
+  "back_to_top": "กลับสู่ด้านบน"
 }

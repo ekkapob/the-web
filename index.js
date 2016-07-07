@@ -28,7 +28,14 @@ Server.register(Plugins, (err) => {
     helpersPath: './views/helpers',
     isCached: false,
     context: function(request){
+      let headerLocale = request.headers['set-locale'];
+      // [LANG] Need to set locale manually on development
+      if (process.env.ENV == 'development') {
+        headerLocale = process.env.LANG;
+      }
       return {
+        lang: headerLocale,
+        urlPath: request.url.path,
         cart: request.yar.get('cart')
       };
     }

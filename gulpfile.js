@@ -41,7 +41,7 @@ Gulp.task('nodemon', () => {
   Nodemon({
     script: 'index.js',
     exec: 'babel-node',
-    ext: 'hbs js'
+    ext: 'hbs js json'
   })
   .on('restart', () => {
     console.log('[restarted server!]');

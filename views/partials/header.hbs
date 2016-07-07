@@ -3,9 +3,7 @@
     <div class="container">
       <div class="row">
         <div id="locale-menu" class="col-md-2 col-sm-2">
-          <a href="/locale/th">
-            <img src="/assets/images/locales/th.png" alt="">
-          </a>
+          {{languageToggle lang urlPath}}
         </div>
         <div class="col-md-10 col-sm-10 text-right">
           <ul class="contacts">
@@ -54,17 +52,17 @@
           </a>
           <ul>
             <li class="dropdown-menus">
-              <a href="/products">Products<span class="glyphicon glyphicon-chevron-down"></span></a>
+              <a href="/products">{{__ 'products'}}<span class="glyphicon glyphicon-chevron-down"></span></a>
               {{> product_menus }}
             </li>
             <li>
-              <a href="/tra_history">TRA History</a>
+              <a href="/tra_history">{{__ 'tra_history'}}</a>
             </li>
             <li>
-              <a href="/how_to_order">How to Order</a>
+              <a href="/how_to_order">{{__ 'how_to_order'}}</a>
             </li>
             <li>
-              <a href="/contact_us">Contact Us</a>
+              <a href="/contact_us">{{__ 'contact_us'}}</a>
             </li>
           </ul>
           <form action="/search" method="get">

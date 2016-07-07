@@ -9,4 +9,4 @@ module.exports = (img, product_id, category, subcategory) => {
     path = [ '/assets/images/products', subCategoryDir, product_id, img ];
   }
   return path.join('/');
-}
+};

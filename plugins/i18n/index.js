@@ -7,23 +7,37 @@ exports.register = (server, options, next) => {
   server.ext('onPreAuth', function(request, reply){
     request.i18n = {};
     I18n.init(request, request.i18n);
-    const locale = request.yar.get('locale');
-    if (locale) { request.i18n.setLocale(locale.value ); }
-    reply.continue();
+    return reply.continue();
   });
-  
+
   server.ext( "onPreResponse", function ( request, reply ){
     var response = request.response;
     if (response.variety === 'view') {
-      response.source.context = _.assign(
-          response.source.context,
-          request.i18n,
-          { locale: request.i18n.getLocale() }
-      );
+      const locale = getLocale(request);
+      request.i18n.setLocale(locale);
+      response.source.context = _.assign(response.source.context,
+                                         request.i18n,
+                                         { locale: locale });
+      response.source.context.languageCode = locale;
     }
-    reply.continue();
+    return reply.continue();
   });
   next();
 };
+
+function getLocale(request) {
+  // [LANG] Set locale manually on development
+  if (process.env.ENV == 'development') {
+    return process.env.LANG;
+  }
+  return request.headers['set-locale'];
+  // development
+  // let defaultLocale = 'en'
+  // let hostRegexp = /^(http|https):\/\/(en|th)\./;
+  // if (!request.info.referrer) return defaultLocale;
+  // let result = request.info.referrer.match(hostRegexp);
+  // if (!result) return defaultLocale;
+  // return result[2];
+}
 
 exports.register.attributes = require('./package');

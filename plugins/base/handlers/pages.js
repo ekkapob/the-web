@@ -5,7 +5,7 @@ var Querystring = require('querystring');
 var _ = require('lodash');
 
 exports.locale = (request, reply) => {
-  request.yar.set('locale', { value: request.params.locale });
+  // request.yar.set('locale', { value: request.params.locale });
   // console.log(request.info.referrer);
   reply.redirect(request.info.referrer);
 };

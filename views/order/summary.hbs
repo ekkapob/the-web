@@ -7,11 +7,13 @@
           {{pluralize (cartTotal cart) 'item' 'items' }})</h3>
       </div>
     </div>
-    <div class="orders">
-      {{> orders summary=true}}
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 orders">
+        {{> orders summary=true}}
+      </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-md-10 col-md-offset-1">
         <div class="bottom-total">
           Total of <span>{{cartTotal cart}}</span> {{pluralize (cartTotal cart) 'item' 'items' }}
         </div>

@@ -2,12 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="brand">TRA</div>
-      <div class="text">coolant pump assy | repair kit</div>
+      <div class="text th th-medium">{{__ 'product_summary'}}</div>
     </div>
     <div class="btn-container">
-      <a class="btn" href="/products">
-        Our Products
-      </a>
+      <a class="btn th" href="/products">{{__ 'our_products'}}</a>
     </div>
     <div class="img-container">
       <img src="/assets/images/truck.png" alt="">
@@ -81,9 +79,7 @@
 <div id="home-products">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 section-title">
-        Our Products
-      </div>
+      <div class="col-sm-12 section-title th th-big">{{__ 'our_products'}}</div>
     </div>
   </div>
 
@@ -91,7 +87,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <div class="category">Coolant Water Pump</div>
+          <div class="category th th-big">{{__ 'coolant_water_pump'}}</div>
         </div>
         {{#each coolantPumpAssyProducts}}
           <div class="col-sm-4 product">
@@ -122,7 +118,7 @@
     </div>
   </div>
   <div class="text-center">
-    <a class="btn" href="/products">See All Products</a>
+    <a class="btn th" href="/products">{{__ 'see_all_products'}}</a>
   </div>
 
 </div>
@@ -130,9 +126,7 @@
 <div id="car-manufacturers">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 section-title">
-        Auto Parts by Car Manufacturers
-        <hr/>
+      <div class="col-sm-12 section-title th th-big">{{__ 'auto_parts_by_cars'}}<hr/>
       </div>
     </div>
     <div class="row">
@@ -179,13 +173,7 @@
 
 {{> tra_map }}
 
-<div class="back-to-top">
-  <a href="#">[ Back to Top ]</a>
+<div class="back-to-top th">
+  <a href="#">[ {{__ 'back_to_top'}} ]</a>
 </div>
 
-<!-- This is a index.hbs -->
-<!-- {{__ "Hello"}} -->
-<!-- {{locale}} -->
-<!-- {{#each products}} -->
-<!--   {{> product}} -->
-<!-- {{/each}} -->
