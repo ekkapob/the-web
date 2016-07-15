@@ -40,8 +40,8 @@ Gulp.task('nodemon', () => {
   // https://github.com/hapijs/hapi/issues/1564
   Nodemon({
     script: 'index.js',
-    exec: 'babel-node',
-    ext: 'hbs js json'
+    exec: 'source app.env; babel-node',
+    ext: 'hbs js json env'
   })
   .on('restart', () => {
     console.log('[restarted server!]');

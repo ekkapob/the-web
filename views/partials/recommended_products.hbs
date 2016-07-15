@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="header">Recommended Products</div>
+        <div class="header th th-medium">{{__ 'recommended_products'}}</div>
         <hr/>
         <div class="product-container">
           <div class="row">
@@ -17,9 +17,9 @@
                   <a href="/products/{{id}}" class="name">{{name}}</a>
                   <div class="details">
                     {{#if subcategory}}
-                      <p class="text-ellipsis">{{subcategory}}</p>
+                      <p class="text-ellipsis th th-small">{{../__ subcategory}}</p>
                     {{else}}
-                      <p class="text-ellipsis">{{category}}</p>
+                      <p class="text-ellipsis th th-small">{{../__ category}}</p>
                     {{/if}}
                     <p class="text-ellipsis">{{car_brand}}</p>
                   </div>

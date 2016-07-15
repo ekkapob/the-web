@@ -2,7 +2,8 @@
   <div class="order">
     <div class="row">
       <div class="col-md-12 attr">
-        Product ID: <span>{{product_id}}</span>
+        <span class="th th-small">{{../__ 'product_id'}}: </span>
+        <span class="product-id">{{product_id}}</span>
       </div>
     </div>
     <div class="row info">
@@ -15,7 +16,7 @@
         <div class="product-details">
           <div>{{details}}</div>
           <div class="order-info pull-right">
-            <span>Order</span>
+            <span class="th">{{../__ 'order'}}</span>
             <div class="amount">
               {{#if ../summary}}
                 <div>{{order}}</div>
@@ -26,32 +27,38 @@
                 <span class="increase glyphicon glyphicon-plus-sign"></span>
               {{/if}}
             </div>
-            <span>{{ pluralize order 'item' 'items' }}</span>
+            <span class="th">{{ pluralize order 'item' 'items' ../lang }}</span>
           </div>
         </div>
         <div class="product-part-details">
           {{#unless ../summary}}
             <div class="pull-right">
-              <button class="btn btn-default update-btn hidden"
+              <button class="btn btn-default update-btn th th-small hidden"
                       data-product-id="{{product_id}}"
                       data-order-input-id="#{{product_id}}_order_input">
                 <span class="glyphicon glyphicon-refresh"></span>
-                update
+                {{../__ 'update'}}
               </button>
-              <a class="btn btn-danger delete-btn" data-url="/orders/{{product_id}}">
+              <a class="btn btn-danger delete-btn th th-small" data-url="/orders/{{product_id}}">
                 <span class="glyphicon glyphicon-trash"></span>
-                delete
+                {{../__ 'delete_lowcase'}}
               </a>
             </div>
           {{/unless}}
           {{#if part_no}}
-            <div class="attr">Part No: <span>{{part_no}}</span></div>
+            <div class="attr">
+              <span class="th th-small">{{../__ 'part_no'}}: </span>
+              <span class="info">{{part_no}}</span></div>
           {{/if}}
           {{#if engine_model}}
-            <div class="attr">Engine Model: <span>{{engine_model}}</span></div>
+            <div class="attr">
+              <span class="th th-small">{{../__ 'engine_model'}}: </span>
+              <span class="info">{{engine_model}}</span></div>
           {{/if}}
           {{#if substitute_part_no}}
-            <div class="attr">Substitute Part No: <span>{{substitute_part_no}}</span></div>
+            <div class="attr">
+              <span class="th th-small">{{../__ 'substitute_part_no'}}: </span>
+              <span class="info">{{substitute_part_no}}</span></div>
           {{/if}}
         </div>
       </div>

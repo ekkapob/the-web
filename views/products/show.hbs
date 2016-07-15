@@ -13,11 +13,11 @@
           <span class="category">
             {{#if product.category}}
               <span class="icon-gear"></span>
-              <a href="#">{{product.category}}</a>
+              <a class="th th-small" href="#">{{__ product.category}}</a>
             {{/if}}
             {{#if product.subcategory}}
               <span>|</span>
-              <a href="#">{{product.subcategory}}</a>
+              <a class="th th-small" href="#">{{__ product.subcategory}}</a>
             {{/if}}
           </span>
           {{#if product.car_brand}}
@@ -30,14 +30,22 @@
         <hr />
         <blockquote>
           {{#if product.part_no}}
-            <p>Part no.:&nbsp;<span class="id">{{product.part_no}}</span></p>
+          <p>
+            <span class="th th-small">{{__ 'part_no'}}:&nbsp;</span>
+            <span class="id">{{product.part_no}}</span>
+          </p>
           {{/if}}
           {{#if product.substitute_part_no}}
-            <p>Substitute part no.:&nbsp;
-            <span class="id">{{product.substitute_part_no}}</span></p>
+            <p>
+              <span class="th th-small">{{__ 'substitute_part_no'}}:&nbsp;</span>
+              <span class="id">{{product.substitute_part_no}}</span>
+            </p>
           {{/if}}
           {{#if product.engine_model}}
-            <p>Engine model:&nbsp;<span class="id">{{product.engine_model}}</span></p>
+            <p>
+              <span class="th th-small">{{__ 'engine_model'}}:&nbsp;</span>
+              <span class="id">{{product.engine_model}}</span>
+            </p>
           {{/if}}
         </blockquote>
         {{#if product.details}}
@@ -51,7 +59,7 @@
         {{/if}}
         <hr />
         <div class="order">
-          <div class="in-cart-msg {{#unless inCart}}hidden{{/unless}}">Already in Cart</div>
+          <div class="in-cart-msg th th-small {{#unless inCart}}hidden{{/unless}}">{{__ 'already_in_cart'}}</div>
           <div class="spinner">
             <span class="decrease-order glyphicon glyphicon-minus"></span>
             {{#if inCart}}
@@ -64,11 +72,11 @@
             <span class="increase-order glyphicon glyphicon-plus"></span>
           </div>
           <button class="btn btn-order" data-product-id="{{product.product_id}}">
-            <span>
+            <span class="th th-small">
               {{#if inCart}}
-                Update
+                {{__ 'update'}}
               {{else}}
-                Order
+                {{__ 'order_btn'}}
               {{/if}}
               <span class="icon-cart"></span>
             </span>

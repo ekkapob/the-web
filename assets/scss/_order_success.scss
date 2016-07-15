@@ -14,7 +14,7 @@
       .info {
         font-size: 1em;
         margin: 0;
-        span {
+        .email-info {
           color: $light-red;
         }
       }
@@ -36,10 +36,10 @@
         border-radius: 4px;
         color: $light-black;
       }
-      span {
-        color: $black;
-        border-bottom: 2px solid $black;
-      }
+    }
+    .underline {
+      color: $black;
+      border-bottom: 2px solid $black;
     }
   }
   .order-page-action {

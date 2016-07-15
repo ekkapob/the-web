@@ -1,27 +1,26 @@
 body[lang='th'] {
   @mixin th() {
-    font-family: 'thai_sans_lite_regular' !important;
-    font-size: 24px !important;
+    font-family: 'kanitlight', sans-serif !important;
+    font-size: 18px;
   }
   .th {
     @include th();
-    &.btn {
-      padding: 0.2em 1em !important;
-    }
   }
 
   .th-big {
-    font-size: 3.8rem !important;
+    font-size: 3.2rem !important;
     letter-spacing: 1px !important;
   }
 
   .th-medium {
-    font-size: 2.7rem !important;
+    font-size: 2.3rem !important;
   }
 
-  nav ul li {
-    a {
-      @include th();
-    }
+  .th-small {
+    font-size: 1.5rem !important;
+  }
+
+  .nav-menus > ul > li > a {
+    @include th();
   }
 }

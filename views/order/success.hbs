@@ -2,17 +2,20 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 info text-center">
-        <h3 class="title">We've Got Your Order</h3>
-        <div class="summary">We are processing your order and will contact you back shortly.</div>
+        <h3 class="title th th-big">{{__ 'we_got_your_order'}}</h3>
+        <div class="summary th th-medium">{{__ 'we_are_processing_your_order'}}</div>
         <div class="order">
-          <div>Your order number is <span>{{ refId }}</span></div>
+          <div>
+            <span class="th th-medium">{{__ 'your_order_number'}}</span>
+            <span class="underline">{{ refId }}</span></div>
           </div>
         <div class="email">
           <div class="info">
-            Email confirmation has been sent to <span>{{ email }}</span>
+            <span class="th th-medium">{{__ 'confirmation_email_sent'}}</span>
+            <span class="email-info">{{ email }}</span>
           </div>
           <div class="details">
-            If you don't receive the email, please contact
+            <span class="th">{{__ 'contact_us_if_no_email'}}</span>
             <a href="mailto:hello@traautoparts.com?Subject=Not%20Received%20Order%20Id">
               hello@traautoparts.com</a>
           </div>
@@ -22,7 +25,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="order-page-action text-center">
-            <a class="btn btn-success" href="/products">Continue Shopping</a>
+          <a class="btn btn-success th" href="/products">{{__ 'continue_shopping'}}</a>
           </div>
       </div>
     </div>

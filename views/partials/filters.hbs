@@ -1,8 +1,8 @@
 <div class="filters">
   <div class="filter">
-    <div class="title">
-      <span>Car Manufacturers</span>
-      {{pillEmpty 'ALL' query_params.car_brands}}
+    <div class="title th">
+      <span>{{__ 'car_manufacturers'}}</span>
+      {{pillEmpty 'all' query_params.car_brands lang}}
     </div>
     <ul>
       {{#each carBrands}}
@@ -21,20 +21,20 @@
     </ul>
   </div>
   <div class="filter">
-    <div class="title">
-      <span>Categories</span>
-      {{pillEmpty 'ALL' query_params.categories}}
+    <div class="title th">
+      <span>{{__ 'categories'}}</span>
+      {{pillEmpty 'all' query_params.categories lang}}
     </div>
     <ul>
       {{#each categories}}
         <li>
-          <div class="checkbox">
+          <div class="checkbox th th-small">
             <label>
               <input type="checkbox"
                       name="categories"
                       value="{{name}}"
                       {{inputChecked 'categories' name ../query_params}}>
-              {{name}}
+              {{../__ name}}
             </label>
           </div>
         </li>
@@ -42,20 +42,20 @@
     </ul>
   </div>
   <div class="filter">
-    <div class="title">
-      <span>Subcategories</span>
-      {{pillEmpty 'ALL' query_params.subcategories}}
+    <div class="title th">
+      <span>{{__ 'subcategories'}}</span>
+      {{pillEmpty 'all' query_params.subcategories lang}}
     </div>
     <ul>
       {{#each subcategories}}
       <li>
-        <div class="checkbox">
+        <div class="checkbox th th-small">
           <label>
             <input type="checkbox"
                    name="subcategories"
                    value="{{name}}"
                    {{inputChecked 'subcategories' name ../query_params}}>
-            {{name}}
+            {{../__ name}}
           </label>
         </div>
       </li>

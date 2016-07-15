@@ -3,8 +3,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="text-center">Your Order Summary ({{cartTotal cart}}
-          {{pluralize (cartTotal cart) 'item' 'items' }})</h3>
+        <h3 class="text-center th th-big">{{__ 'your_order_summary'}} ({{cartTotal cart}}
+          {{pluralize (cartTotal cart) 'item' 'items' lang }})</h3>
       </div>
     </div>
     <div class="row">
@@ -14,8 +14,9 @@
     </div>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <div class="bottom-total">
-          Total of <span>{{cartTotal cart}}</span> {{pluralize (cartTotal cart) 'item' 'items' }}
+        <div class="bottom-total th">
+          {{__ 'total_of'}} <span>{{cartTotal cart}}</span> {{pluralize
+          (cartTotal cart) 'item' 'items' lang }}
         </div>
       </div>
     </div>
@@ -25,48 +26,48 @@
       <div class="contact-info">
         <div class="row">
           <div class="col-sm-12">
-            <h3 class="text-center">Your Contact Information</h3>
+            <h3 class="text-center th th-medium">{{__ 'your_contact_information'}}</h3>
           </div>
         </div>
         <div class="row contact-details-container">
-          <div class="contact-details">
-            <div class="title">Name</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'full_name'}}</div>
             <div class="details">{{contact.name}}</div>
           </div>
-          <div class="contact-details">
-            <div class="title">Email</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'email'}}</div>
             <div class="details">{{contact.email}}</div>
           </div>
-          <div class="contact-details">
-            <div class="title">Phone</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'phone'}}</div>
             <div class="details">{{contact.phone}}</div>
           </div>
-          <div class="contact-details">
-            <div class="title">Address</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'address'}}</div>
             <div class="details">
               {{contact.address}}
             </div>
           </div>
-          <div class="contact-details">
-            <div class="title">Country</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'country'}}</div>
             <div class="details">
               {{contact.country}}
             </div>
           </div>
-          <div class="contact-details">
-            <div class="title">City</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'state_city'}}</div>
             <div class="details">
               {{contact.city}}
             </div>
           </div>
-          <div class="contact-details">
-            <div class="title">Zip</div>
+          <div class="contact-details th">
+            <div class="title">{{__ 'postal_code'}}</div>
             <div class="details">
               {{contact.zip}}
             </div>
           </div>
-          <div class="contact-details block">
-            <div class="title">Remarks to Saleperson</div>
+          <div class="contact-details block th">
+            <div class="title">{{__ 'remarks'}}</div>
             <div class="details">
               {{contact.remarks}}
             </div>
@@ -76,10 +77,11 @@
       <div class="row">
         <div class="col-md-12">
           <div class="order-page-action text-center">
-            <div><a href="/orders">Back to Edit Order?</a></div>
+            <div><a href="/orders" class="th">{{__ 'back_to_edit_order?'}}</a></div>
             <form action="/orders/place_order" method="post" accept-charset="utf-8">
-              <button id="order-place-order" type="submit" class="btn btn-success">
-                Place Order
+              <button id="order-place-order" type="submit" class="btn
+                btn-success th">
+                {{__ 'place_order'}}
               </button>
             </form>
           </div>

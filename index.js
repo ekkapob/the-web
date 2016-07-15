@@ -35,6 +35,7 @@ Server.register(Plugins, (err) => {
       }
       return {
         lang: headerLocale,
+        th: headerLocale == 'th',
         urlPath: request.url.path,
         cart: request.yar.get('cart')
       };

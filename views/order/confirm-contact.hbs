@@ -3,17 +3,19 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h2>Customer Information</h2>
+        <h2 class="th th-big">{{__ 'customer_information'}}</h2>
         <form action="/orders/confirm" method="POST">
           <div class="form-group">
-            <label for="contact-name">Full Name <small>(required)</small></label>
+            <label for="contact-name" class="th">{{__ 'full_name'}}
+              <small class="th th-small">({{__ 'required'}})</small></label>
             <input type="text" class="form-control" id="contact-name"
                                                     name="name"
                                                     value="{{store.name}}"
                                                     placeholder="Full Name" required>
           </div>
           <div class="form-group">
-            <label for="contact-email">Email address <small>(required)</small></label>
+            <label for="contact-email" class="th">{{__ 'email'}}
+              <small class="th th-small">({{__ 'required'}})</small></label>
             <input type="email" class="form-control" id="contact-email"
                                                      placeholder="Email"
                                                      name="email"
@@ -21,7 +23,8 @@
                                                      required>
           </div>
           <div class="form-group">
-            <label for="contact-phone">Phone <small>(required)</small></label>
+            <label for="contact-phone" class="th">{{__ 'phone'}}
+              <small class="th th-small">({{__ 'required'}})</small></label>
             <input type="number" class="form-control" id="contact-phone"
                                                      placeholder="Phone number"
                                                      name="phone"
@@ -30,7 +33,8 @@
           </div>
           <!-- <div class="form-group has-error"> -->
           <div class="form-group">
-            <label for="contact-address">Address <small>(required)</small></label>
+            <label for="contact-address" class="th">{{__ 'address'}}
+              <small class="th th-small">({{__ 'required'}})</small></label>
             <textarea class="form-control"
                       rows="5" id="contact-address"
                       placeholder="Address"
@@ -40,7 +44,7 @@
           <div class="address-container">
             <div class="address-group country">
               <div class="form-group">
-                <label for="contact-country">Country</label>
+                <label for="contact-country" class="th">{{__ 'country'}}</label>
                 <select class="form-control"
                         id="contact-country"
                         name="country"
@@ -49,7 +53,8 @@
             </div>
             <div class="address-group city">
               <div class="form-group">
-                <label for="contact-city">State / City <small>(required)</small></label>
+                <label for="contact-city" class="th">{{__ 'state_city'}} 
+                  <small class="th th-small">({{__ 'required'}})</small></label>
                 <input type="text" class="form-control"
                                    id="contact-city"
                                    placeholder="City"
@@ -59,7 +64,8 @@
             </div>
             <div class="address-group zip">
               <div class="form-group">
-                <label for="contact-city">Postal code <small>(required)</small></label>
+                <label for="contact-city" class="th">{{__ 'postal_code'}}
+                  <small class="th th-small">({{__ 'required'}})</small></label>
                 <input type="text" class="form-control"
                                    id="contact-name"
                                    placeholder="Postal code"
@@ -68,15 +74,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-remark">Remarks to Salesperson</label>
+            <label for="contact-remark" class="th">{{__ 'remarks'}}</label>
             <textarea class="form-control"
                       rows="3" id="contact-remark"
-                      placeholder="Additional information"
+                      placeholder="{{__ 'additional_information'}}"
                       name="remarks">{{store.remarks}}</textarea>
           </div>
           <div class="order-page-action text-center">
-            <div><a href="/orders">Back to Edit Order?</a></div>
-            <button type="submit" class="btn btn-success">Confirm Contact Info</button>
+            <div><a href="/orders" class="th">{{__ 'back_to_edit_order?'}}</a></div>
+            <button type="submit" class="btn btn-success th">{{__ 'confirm_contact_info_btn'}}</button>
           </div>
         </form>
       </div>

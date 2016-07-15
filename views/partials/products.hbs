@@ -29,12 +29,14 @@
         {{/if}}
         <div class="part-info">
           {{#if part_no}}
-            <div class="text-ellipsis">part no:&nbsp;
+            <div class="text-ellipsis">
+              <span class="th th-small">{{../__ 'part_no'}}:&nbsp;</span>
               <span class="number">{{part_no}}</span>
             </div>
           {{/if}}
           {{#if engine_model}}
-            <div class="text-ellipsis">engine model:&nbsp;
+            <div class="text-ellipsis">
+              <span class="th th-small">{{../__ 'engine_model'}}:&nbsp;</span>
               <span class="number">{{engine_model}}</span>
             </div>
           {{/if}}
