@@ -60,3 +60,4 @@ function getMsg(amount) {
   if (amount < 2) return amount + ' item is added to your cart.';
   return amount + ' items are added to your cart.';
 }
+

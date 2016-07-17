@@ -1,4 +1,5 @@
 header {
+  position: relative;
   ul {
     list-style: none;
     display: inline;
@@ -142,6 +143,45 @@ header {
     .cart {
       height: 32px;
       display: block;
+    }
+    .right-menu {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    #mobile-menu {
+      &:hover {
+        color: $text-black;
+      }
+      &.active {
+        color: $light-red;
+      }
+      span {
+        font-size: 2em;
+        margin-left: 0.5em;
+      }
+    }
+  }
+
+  #mobile-menus {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px $medium-grey;
+    z-index: 100;
+    li {
+      display: block;
+      padding: 1.5em 0;
+      border-bottom: 2px solid $light-grey;
+      &:last-child {
+        border: none;
+      }
+      a {
+        font-size: 1.5em;
+        color: $text-black;
+        letter-spacing: 2px;
+      }
     }
   }
 }

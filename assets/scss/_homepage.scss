@@ -61,7 +61,7 @@
     display: flex;
     padding: 0 3em;
     margin-bottom: 2em;
-    & > div {
+    div {
       margin-left: 2em;
     }
     .title {
@@ -103,7 +103,9 @@
       margin: 1.5em 0;
     }
     .product {
-      // margin-top: 5em;
+      @media (max-width: $screen-xs-max) {
+        margin-bottom: 2em;
+      }
       .details {
         text-align: center;
         .header {
@@ -168,6 +170,9 @@
 
 #car-manufacturers {
   margin: 6em 0;
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: 3em;
+  }
   .car-images {
     display: flex;
     justify-content: center;
@@ -185,10 +190,25 @@
     .big {
       width: 21%;
     }
+    @media (max-width: $screen-xs-max) {
+      .small {
+        width: 22%;
+      }
+      .medium {
+        width: 25%;
+      }
+      .big {
+        width: 28%;
+      }
+    }
   }
   .brands {
     display: flex;
     justify-content: space-around;
+    @media (max-width: $screen-xs-max) {
+      line-height: 2;
+      display: block;
+    }
     div {
       text-align: center;
     }
@@ -227,6 +247,11 @@
   iframe {
     width: 100%;
   }
+  @media (max-width: 414px) {
+    .section-title {
+      font-size: 2em !important;
+    }
+  }
 }
 
 .back-to-top {
@@ -237,4 +262,3 @@
     color: $light-red;
   }
 }
-

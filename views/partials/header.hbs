@@ -2,10 +2,10 @@
   <div id="top-bar">
     <div class="container">
       <div class="row">
-        <div id="locale-menu" class="col-md-2 col-sm-2">
+        <div id="locale-menu" class="col-md-2 col-sm-2 col-xs-2">
           {{languageToggle lang urlPath}}
         </div>
-        <div class="col-md-10 col-sm-10 text-right">
+        <div class="col-md-10 col-sm-10 text-right hidden-xs">
           <ul class="contacts">
             <li>
               <a href="https://www.facebook.com/tra.autoparts" target="_blank">
@@ -40,17 +40,24 @@
           </ul>
           <a class="sign-in" href="#">Admin</a>
         </div>
+        <div class="col-xs-10 text-right visible-xs-block">
+          <div>
+            <img src="/assets/images/contacts/phone.png"
+                 alt="TRA Auto Parts Phone"></img>
+            <span>+(66)89-896-8525</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <nav>
     <div class="container">
       <div class="row">
-        <div class="col-sm-11 col-md-11 nav-menus">
+        <div class="col-xs-2 col-sm-11 col-md-11 nav-menus">
           <a href="/">
             <img id="site-logo" src="/assets/images/tra_logo.png" alt="">
           </a>
-          <ul>
+          <ul class="hidden-xs">
             <li class="dropdown-menus">
               <a href="/products">{{__ 'products'}}<span class="glyphicon glyphicon-chevron-down"></span></a>
               {{> product_menus }}
@@ -66,7 +73,7 @@
             </li>
           </ul>
           <form action="/search" method="get">
-            <div class="input-group">
+            <div class="input-group hidden-xs">
               <input id="top-search" type="text" class="form-control"
                 placeholder="{{__ 'search'}}" value="" name="query"
                 autocomplete="off">
@@ -76,12 +83,28 @@
             </div>
           </form>
         </div>
-        <div class="col-sm-1 col-md-1 text-right">
-          <a id="top-shopping-cart" href="/orders">
-            <div id="cart-items">{{cartTotal cart}}</div>
-            <img class="cart" src="/assets/images/cart.png" alt="Shopping Cart"></a>
+        <div class="col-xs-10 col-sm-1 col-md-1 text-right">
+          <div class="right-menu">
+            <a id="top-shopping-cart" href="/orders">
+              <div id="cart-items">{{cartTotal cart}}</div>
+              <img class="cart" src="/assets/images/cart.png" alt="Shopping Cart">
+            </a>
+            <div id="mobile-menu" class="visible-xs-block" data-target="#mobile-menus">
+              <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </nav>
+  <div id="mobile-menus">
+    <div class="container text-center">
+      <ul>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/tra_history">TRA History</a></li>
+        <li><a href="/how_to_order">How to Order</a></li>
+        <li><a href="/contact_us">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
 </header>

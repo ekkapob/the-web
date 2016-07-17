@@ -4,7 +4,7 @@ var global = {
       if (!data) return;
       var total = 0;
       for (var key in data) {
-        let order = data[key];
+        var order = data[key];
         if (isNaN(order)) continue;
         total += order;
       }
@@ -26,3 +26,4 @@ var global = {
     $('#loading').addClass('hidden');
   }
 };
+
