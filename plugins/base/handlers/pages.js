@@ -10,6 +10,19 @@ exports.locale = (request, reply) => {
   reply.redirect(request.info.referrer);
 };
 
+exports.handle404 = (request, reply) => {
+  const query = '?subcategoryId=1&limit=3'
+  Async.parallel({
+    coolantPumpAssy:
+      Requests.randomCoolantPumpAssy({ query: '?subcategoryId=1' })
+  },
+  (err, results) => {
+    reply.view('404', {
+      coolantPumpAssyProducts: results.coolantPumpAssy.products
+    });
+  });
+};
+
 exports.index = (request, reply) => {
   // console.log(request.i18n.getLocale());
   // console.log(request.i18n.__("Hello"));
@@ -65,8 +78,8 @@ exports.product = (request, reply) => {
     product: Requests.product(request.params),
     recommended: Requests.recommended(request.params)
   }, (err, result) => {
-    // TODO: redirect to 404 or any proper page
     if (err) return reply.view('products');
+    if (_.isEmpty(result.product)) return reply.redirect('/product_not_found');
 
     let inCart = 0;
     if (_.has(request.yar.get('cart'), result.product.product_id)){

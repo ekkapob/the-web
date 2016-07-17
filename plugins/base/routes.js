@@ -76,7 +76,6 @@ module.exports = [
   {
     method: 'GET',
     path: '/{param*}',
-    handler: (request, reply) => {
-      reply.view('404');
+    handler: Pages.handle404
   }
-}];
+];

@@ -11,3 +11,17 @@
     }
   }
 }
+
+.missing-page {
+  padding-bottom: 5em;
+  h2 {
+    color: $light-black;
+  }
+  .content {
+    a {
+      color: $text-black;
+      padding-bottom: 0.5em;
+      border-bottom: 2px solid $light-red;
+    }
+  }
+}
