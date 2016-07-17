@@ -11,13 +11,13 @@
             <input type="text" class="form-control" id="contact-name"
                                                     name="name"
                                                     value="{{store.name}}"
-                                                    placeholder="Full Name" required>
+                                                    placeholder="{{__ 'full_name'}}" required>
           </div>
           <div class="form-group">
             <label for="contact-email" class="th">{{__ 'email'}}
               <small class="th th-small">({{__ 'required'}})</small></label>
             <input type="email" class="form-control" id="contact-email"
-                                                     placeholder="Email"
+                                                     placeholder="{{__ 'email'}}"
                                                      name="email"
                                                      value="{{store.email}}"
                                                      required>
@@ -26,7 +26,7 @@
             <label for="contact-phone" class="th">{{__ 'phone'}}
               <small class="th th-small">({{__ 'required'}})</small></label>
             <input type="number" class="form-control" id="contact-phone"
-                                                     placeholder="Phone number"
+                                                      placeholder="{{__ 'phone'}}"
                                                      name="phone"
                                                      value="{{store.phone}}"
                                                      required>
@@ -37,7 +37,7 @@
               <small class="th th-small">({{__ 'required'}})</small></label>
             <textarea class="form-control"
                       rows="5" id="contact-address"
-                      placeholder="Address"
+                               placeholder="{{__ 'address'}}"
                       name="address" required>{{store.address}}</textarea>
             <div class="help-block"></div>
           </div>
@@ -57,7 +57,7 @@
                   <small class="th th-small">({{__ 'required'}})</small></label>
                 <input type="text" class="form-control"
                                    id="contact-city"
-                                   placeholder="City"
+                                   placeholder="{{__ 'state_city'}}"
                                    value="{{store.city}}"
                                    name="city" required>
               </div>
@@ -68,7 +68,7 @@
                   <small class="th th-small">({{__ 'required'}})</small></label>
                 <input type="text" class="form-control"
                                    id="contact-name"
-                                   placeholder="Postal code"
+                                   placeholder="{{__ 'postal_code'}}"
                                    name="zip" value="{{store.zip}}" required>
               </div>
             </div>
