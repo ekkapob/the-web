@@ -169,7 +169,7 @@ header {
     width: 100%;
     background-color: white;
     box-shadow: 0 2px 4px $medium-grey;
-    z-index: 100;
+    z-index: 150;
     li {
       display: block;
       padding: 1.5em 0;
@@ -184,4 +184,17 @@ header {
       }
     }
   }
+  // &.fixed {
+  //   nav {
+  //     position: fixed;
+  //     top: 0;
+  //     width: 100%;
+  //     background: white;
+  //     z-index: 200;
+  //   }
+  //   #mobile-menus {
+  //     position: fixed;
+  //     top: 70px;
+  //   }
+  // }
 }
