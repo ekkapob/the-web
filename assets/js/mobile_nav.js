@@ -3,7 +3,7 @@ $(function(){
 });
 
 function initMobileNav() {
-  $('#mobile-menu').bind('tap', function(e){
+  $('#mobile-menu').on('click', function(e){
     e.preventDefault();
     var $this = $(this);
     var target = $(this).data('target');
