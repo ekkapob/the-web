@@ -5,10 +5,19 @@ var Nodemon = require('gulp-nodemon');
 var Sass = require('gulp-sass');
 var Sourcemaps = require('gulp-sourcemaps');
 var Autoprefixer = require('gulp-autoprefixer');
+var Uglify = require('gulp-uglify');
+var Pump = require('pump');
+var Rename = require('gulp-rename');
+
+
+var assets = ['sass', 'scripts'];
+if (process.env.ENV == 'production') {
+  assets.push('compress-js');
+}
 
 Gulp.task('start', ['assets', 'nodemon', 'browser-sync', 'watch']);
 
-Gulp.task('assets', ['sass', 'scripts']);
+Gulp.task('assets', assets);
 
 Gulp.task('sass', () => {
   Gulp.src('./assets/scss/app.scss')
@@ -20,6 +29,15 @@ Gulp.task('sass', () => {
     .pipe(Sourcemaps.write('./'))
     .pipe(Gulp.dest('./assets/css'))
     .pipe(BrowserSync.stream());
+});
+
+Gulp.task('compress-js', (cb) => {
+  Pump([
+    Gulp.src('./assets/js/dist/app.js'),
+    Uglify(),
+    Rename('app.min.js'),
+    Gulp.dest('./assets/js/dist')
+    ], cb);
 });
 
 Gulp.task('watch', () => {

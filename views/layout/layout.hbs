@@ -19,6 +19,10 @@
       integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
       crossorigin="anonymous"></script>
     <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile&#45;1.4.5.min.js"></script> -->
-    <script src="/assets/js/dist/app.js"></script>
+    {{#if production}}
+      <script src="/assets/js/dist/app.min.js"></script>
+    {{else}}
+      <script src="/assets/js/dist/app.js"></script>
+    {{/if}}
   </body>
 </html>

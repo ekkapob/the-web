@@ -37,6 +37,7 @@ Server.register(Plugins, (err) => {
         lang: headerLocale,
         th: headerLocale == 'th',
         urlPath: request.url.path,
+        production: process.env.ENV == 'production',
         cart: request.yar.get('cart')
       };
     }

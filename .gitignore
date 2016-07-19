@@ -2,6 +2,7 @@
 node_modules
 assets/vendors
 assets/js/dist/app.js
+assets/js/dist/app.min.js
 assets/css/app.css
 assets/css/app.css.map
 assets/images/products
