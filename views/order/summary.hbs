@@ -3,8 +3,13 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="text-center th th-big">{{__ 'your_order_summary'}} ({{cartTotal cart}}
+        <h3 class="text-center hidden-xs th th-big">{{__ 'your_order_summary'}} ({{cartTotal cart}}
           {{pluralize (cartTotal cart) 'item' 'items' lang }})</h3>
+        <div class="visible-xs-block">
+          <h3 class="text-center th th-big">{{__ 'your_order_summary'}}</h3>
+          <h3 class="th th-big">( {{cartTotal cart}} {{pluralize (cartTotal cart) 'item' 'items'
+            lang }} )</h3>
+        </div>
       </div>
     </div>
     <div class="row">

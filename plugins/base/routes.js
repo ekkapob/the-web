@@ -1,6 +1,6 @@
-const Pages = require('./handlers/pages');
-const Order = require('./handlers/order');
-const Cart = require('./handlers/cart');
+import Pages  from './handlers/pages';
+import Order  from './handlers/order';
+import Cart   from './handlers/cart';
 
 module.exports = [
   {
@@ -66,7 +66,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/orders/confirm',
-    handler: Order.confirm
+    handler: Order.confirm,
   },
   {
     method: 'POST',

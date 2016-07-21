@@ -45,7 +45,7 @@
   "confirm_order_btn": "ยืนยันสินค้า",
 
   "customer_information": "ข้อมูลในการติดต่อลูกค้า",
-  "required": "จำเป็น",
+  "required": "*",
   "full_name": "ชื่อ - นามสกุล",
   "email": "อีเมล์",
   "phone": "เบอร์โทรศัพท์",
@@ -74,6 +74,13 @@
   "contact_us_if_no_email": "หากไม่ได้รับอีเมล์ กรุณาติดต่อ",
 
   "show_categories": "แสดงหมวดสินค้า",
+
+  "name_is_invalid": "ชื่อ ไม่ถูกต้อง",
+  "email_is_invalid": "อีเมล์ ไม่ถูกต้อง",
+  "phone_is_invalid": "เบอร์โทรศัพท์ ไม่ถูกต้อง",
+  "address_is_invalid": "ที่อยู่ ไม่ถูกต้อง",
+  "city_is_invalid": "จังหวัด ไม่ถูกต้อง",
+  "zip_is_invalid": "รหัสไปรษณีย์ ไม่ถูกต้อง",
 
   "Engine Group": "เครื่องยนต์",
   "Coolant Pump Assy": "ปั้มน้ำหล่อเย็น",

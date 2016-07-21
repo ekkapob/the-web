@@ -75,4 +75,19 @@
   .order-page-action {
     margin-top: 0;
   }
+
+  @media (max-width: $screen-sm-max) {
+    .contact-details-container {
+      width: 100%;
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    padding-top: 2em;
+    h3 {
+      text-align: center;
+    }
+    .contact-details-container {
+      width: 100%;
+    }
+  }
 }

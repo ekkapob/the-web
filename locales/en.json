@@ -45,7 +45,7 @@
   "confirm_order_btn": "Confirm Order",
 
   "customer_information": "Customer Information",
-  "required": "required",
+  "required": "*",
   "full_name": "Full Name",
   "email": "Email",
   "phone": "Phone",
@@ -74,6 +74,13 @@
   "contact_us_if_no_email": "If you don't receive the email, please contact",
 
   "show_categories": "Show Categories",
+
+  "name_is_invalid": "Name is invalid",
+  "email_is_invalid": "Email is invalid",
+  "phone_is_invalid": "Phone is invalid",
+  "address_is_invalid": "Address is invalid",
+  "city_is_invalid": "City is invalid",
+  "zip_is_invalid": "Postal code is invalid",
 
   "Engine Group": "Engine Group",
   "Coolant Pump Assy": "Coolant Pump Assy",

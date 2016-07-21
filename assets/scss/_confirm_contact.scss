@@ -15,4 +15,23 @@
     margin-top: 2em;
     margin-bottom: 5em;
   }
+  @media (max-width: $screen-xs-max) {
+    padding-top: 2em;
+    h2 {
+      text-align: center;
+    }
+    .address-container {
+      display: block;
+    }
+    .address-group {
+      display: inline-block;
+      width: 48%;
+      &.country {
+        display: block;
+      }
+      &.zip {
+        float: right;
+      }
+    }
+  }
 }

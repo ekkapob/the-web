@@ -1,8 +1,10 @@
-import Async    from 'async';
-import Boom     from 'boom'; 
-import Cart     from '../utils/cart';
-import Requests from '../requests';
-import _        from 'lodash';
+import Async      from 'async';
+import Boom       from 'boom'; 
+import Cart       from '../utils/cart';
+import Validation from '../utils/validation';
+import Requests   from '../requests';
+import Joi        from 'joi';
+import _          from 'lodash';
 
 exports.index = (request, reply) => {
   let cart = request.yar.get('cart');
@@ -58,6 +60,27 @@ exports.contact = (request, reply) => {
 exports.confirm = (request, reply) => {
   let { name, email, address, phone, country, city, zip, remarks } = request.payload;
   let contact = { name, email, phone, address, country, city, zip, remarks };
+
+  // Contact form validation
+  const errors = Validation.validate(request.payload, {
+    name: Joi.string().required(),
+    // email: Joi.string().email().required(),
+    email: Joi.string().regex(Validation.emailRegex()).required(),
+    phone: Joi.string().regex(/^[\d]+$/).required(),
+    address: Joi.string().required(),
+    country: Joi.string().required(),
+    city: Joi.string().required(),
+    zip: Joi.string().required(),
+    remarks: Joi.any().optional()
+  });
+
+  if(!_.isEmpty(errors)) {
+    return reply.view('order/confirm-contact', {
+      errors,
+      store: contact
+    })
+  }
+
   request.yar.set('contact', contact);
   let cart = request.yar.get('cart');
   let orders = [];
