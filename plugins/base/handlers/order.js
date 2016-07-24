@@ -64,9 +64,8 @@ exports.confirm = (request, reply) => {
   // Contact form validation
   const errors = Validation.validate(request.payload, {
     name: Joi.string().required(),
-    // email: Joi.string().email().required(),
     email: Joi.string().regex(Validation.emailRegex()).required(),
-    phone: Joi.string().regex(/^[\d]+$/).required(),
+    phone: Joi.string().required(),
     address: Joi.string().required(),
     country: Joi.string().required(),
     city: Joi.string().required(),

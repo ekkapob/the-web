@@ -90,4 +90,18 @@
       width: 100%;
     }
   }
+
+  @media (max-width: 550px) {
+    .contact-details-container {
+      padding: 2em 0;
+      .contact-details{
+        .title {
+          min-width: 8em;
+        }
+        .details {
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
 }

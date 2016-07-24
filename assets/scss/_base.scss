@@ -8,10 +8,14 @@ a {
   }
 }
 
-.text-ellipsis {
+@mixin ellipsis() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-ellipsis {
+  @include ellipsis();
 }
 
 .pill {
