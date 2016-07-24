@@ -32,4 +32,24 @@ footer {
       }
     }
   }
+  .mobile {
+    .row {
+      margin: 0;
+    }
+    ul {
+      &.menu {
+        li {
+          display: inline-block;
+          padding: 0 0.2em;
+          margin-bottom: 1em;
+          &:last-child {
+            border: none;
+          }
+        }
+      }
+    }
+    a img {
+      width: 10%;
+    }
+  }
 }
