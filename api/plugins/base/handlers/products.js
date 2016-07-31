@@ -89,9 +89,14 @@ function fetchProduct(request, productId) {
               .field('subcategories.name AS subcategory')
               .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
               .left_join('categories', null, 'products.category_id = categories.id')
-              .left_join('subcategories', null, 'products.subcategory_id = subcategories.id')
-              .where('products.product_id = ?', productId)
-              .toParam();
+              .left_join('subcategories', null, 'products.subcategory_id = subcategories.id');
+
+    if (productId == 'random') {
+      q = q.order('RANDOM()').limit(1).toParam();
+    } else {
+      q = q.where('products.product_id = ?', productId).toParam();
+    }
+
     request.pg.client.query(q.text, q.values, (err, result) => {
       if (err) return cb(true);
       cb(null, result.rows);
@@ -225,6 +230,86 @@ exports.random = (request, reply) => {
     });
   });
 }
+
+function fieldExpr(where, field, query) {
+  where.or(`regexp_replace(${field}, E'[\\-\\s]','','g') ~* ?`, `.*${query}.*`);
+}
+
+exports.search = (request, reply) => {
+  let { query, page, limit } = request.query;
+  // const queryRegexp = `(${query.replace(/-/g, '').replace(/\s/g, '|')})`;
+  const queries = query.replace(/-/g, '').split(' ');
+
+  limit = parseInt(limit) || 21;
+  page = parseInt(page);
+  page = isNaN(page) ? 1 : page;
+  page = (page <= 0) ? 1 : page;
+  const offset = (page - 1) * limit;
+
+  let whereClause = Squel.expr();
+  queries.forEach((query) => {
+    let fieldsWhere = Squel.expr();
+    ['products.product_id', 'products.part_no', 'products.name',
+      'products.name_th', 'products.details', 'products.details_th',
+      'products.engine_model', 'car_brands.name', 'categories.name',
+      'subcategories.name' ]
+      .forEach((field) => {
+        fieldExpr(fieldsWhere, field, query)
+      });
+    whereClause.and(
+      fieldsWhere
+    );
+  })
+
+  // let whereClause = Squel.expr();
+  // ['products.product_id', 'products.part_no', 'products.name',
+  //   'products.name_th', 'products.details', 'products.details_th',
+  //   'products.engine_model', 'car_brands.name', 'categories.name',
+  //   'subcategories.name' ]
+  //   .forEach((field) => {
+  //   productSeachExpr(whereClause, field, queryRegexp)
+  // });
+
+  let q = Squel.select()
+            .from('products')
+            .field('COUNT(1) OVER() AS all_records')
+            .field('products.product_id')
+            .field('products.name')
+            .field('products.name_th')
+            .field('products.details')
+            .field('products.details_th')
+            .field('products.part_no')
+            .field('products.engine_model')
+            .field('products.primary_image')
+            .field('car_brands.name AS car_name')
+            .field('categories.name AS category')
+            .field('subcategories.name AS subcategory')
+            .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
+            .left_join('categories', null, 'products.category_id = categories.id')
+            .left_join('subcategories', null, 'products.subcategory_id = subcategories.id')
+            .where(whereClause)
+            .limit(limit)
+            .offset(offset)
+            .order('products.product_id')
+            .toParam();
+
+  request.pg.client.query(q.text, q.values, (err, result) => {
+    if (err) return reply(Boom.badRequest());
+    const all_records = result.rows[0]?
+      parseInt(result.rows[0].all_records) : 0;
+
+    console.log(page);
+    reply({
+      all_records,
+      products: result.rows,
+      page,
+      limit,
+      query_params: {
+        query
+      }
+    });
+  })
+};
 
 function excludeProductId(productId) {
   return (value) => {

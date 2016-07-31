@@ -11,7 +11,6 @@ exports.locale = (request, reply) => {
 };
 
 exports.handle404 = (request, reply) => {
-  const query = '?subcategoryId=1&limit=3'
   Async.parallel({
     coolantPumpAssy:
       Requests.randomCoolantPumpAssy({ query: '?subcategoryId=1' })
@@ -92,6 +91,29 @@ exports.product = (request, reply) => {
     });
   });
 };
+
+exports.productSearch = (request, reply) => {
+  const query = Querystring.stringify(request.query);
+  Async.parallel({
+    search: Requests.productSearch({ query: `?${query}` }),
+    recommended: Requests.recommended({ productId: 'random' })
+  }, (err, result) => {
+    if (err) return reply.view('products');
+    const { all_records, page, limit, query_params, products } = result.search;
+    // return reply.redirect('/product_not_found');
+    reply.view('products/search_results', {
+      all_records,
+      not_found: (all_records == 0),
+      products: products,
+      query: request.query.query,
+      path: '/products/search',
+      page,
+      pages: Math.ceil(all_records/limit),
+      query_params,
+      recommended: result.recommended
+    });
+  });
+}
 
 exports.contactUs = (request, reply) => {
   reply.view('contact_us');

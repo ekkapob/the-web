@@ -44,6 +44,11 @@ module.exports = [
     handler: Pages.product
   },
   {
+    method: 'GET',
+    path: '/products/search',
+    handler: Pages.productSearch
+  },
+  {
     method: 'DELETE',
     path: '/orders/{productId}',
     handler: Order.delete

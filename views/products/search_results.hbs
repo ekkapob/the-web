@@ -1,0 +1,29 @@
+<div id="products-search" class="{{#if not_found}}no-products{{/if}}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 product-list-container">
+        <div class="text-center">
+          {{#if not_found}}
+            <h3 class="th th-big">{{__ 'not_found'}}</h3>
+          {{else}}
+            <h3 class="th th-big">{{__ 'found'}}&nbsp;{{all_records}}&nbsp;{{__ 'product_item'}}</h3>
+          {{/if}}
+          <h4 class="th">{{__ 'from_keywords'}}:&nbsp;<span>{{query}}</span></h4>
+        </div>
+        {{#if not_found}}
+          <div id="no-product-guide" class="text-center">
+            <h4 class="th">{{__ 'checkout_other_products'}}</h4>
+            <a class="btn th" href="/products">{{__ 'browse_all_products'}}</a>
+          </div>
+        {{else}}
+          {{> products}}
+          {{paginations page pages path query_params}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+{{#if not_found}}
+  {{> recommended_products }}
+{{/if}}
+

@@ -82,6 +82,16 @@
   "city_is_invalid": "City is invalid",
   "zip_is_invalid": "Postal code is invalid",
 
+  "finding_products?": "Are you trying to find Our Products?",
+  "checkout_products": "Check Them Out",
+  "checkout_other_products": "Please check out our products or recommended products below",
+  "browse_all_products": "Browse All Products",
+
+  "found": "Found",
+  "not_found": "No Product Found",
+  "product_item": "products",
+  "from_keywords": "from keywords",
+
   "Engine Group": "Engine Group",
   "Coolant Pump Assy": "Coolant Pump Assy",
   "Coolant Pump Repair Kit" : "Coolant Pump Repair Kit"

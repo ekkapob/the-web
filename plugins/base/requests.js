@@ -56,6 +56,17 @@ exports.product = (params) => {
   };
 };
 
+exports.productSearch = (params) => {
+  const { query } = params;
+  return (cb) => {
+    Request.get(`${apiUrl}/products/search${query}`)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  }
+}
+
 exports.recommended = (params) => {
   const { productId } = params;
   return (cb) => {

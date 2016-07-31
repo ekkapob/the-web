@@ -82,6 +82,16 @@
   "city_is_invalid": "จังหวัด ไม่ถูกต้อง",
   "zip_is_invalid": "รหัสไปรษณีย์ ไม่ถูกต้อง",
 
+  "finding_products?": "ดูรายการสินค้าทั้งหมด",
+  "checkout_products": "สินค้าทั้งหมด",
+  "checkout_other_products": "ค้นหาจากสินค้าทั้งหมด หรือจากสินค้าแนะนำด้านล่าง",
+  "browse_all_products": "ดูสิ้นค้าทั้งหมด",
+
+  "found": "พบสินค้าทั้งหมด",
+  "not_found": "ไม่พบสินค้า",
+  "product_item": "ชิ้น",
+  "from_keywords": "จากคำค้นหา",
+
   "Engine Group": "เครื่องยนต์",
   "Coolant Pump Assy": "ปั้มน้ำหล่อเย็น",
   "Coolant Pump Repair Kit": "อุปกรณ์ซ่อมปั๊ม"

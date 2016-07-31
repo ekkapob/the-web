@@ -72,10 +72,11 @@
               <a href="/contact_us">{{__ 'contact_us'}}</a>
             </li>
           </ul>
-          <form action="/search" method="get">
+          <form action="/products/search" method="get">
             <div class="input-group hidden-xs">
               <input id="top-search" type="text" class="form-control"
-                placeholder="{{__ 'search'}}" value="" name="query"
+                                                 placeholder="{{__ 'search'}}"
+                                                 value="{{query}}" name="query"
                 autocomplete="off">
                 <button class="btn" type="submit">
                   <span class="glyphicon glyphicon-search"></span>

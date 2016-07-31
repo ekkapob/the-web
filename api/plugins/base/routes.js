@@ -18,6 +18,11 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/api/v1/products/search',
+    handler: Products.search
+  },
+  {
+    method: 'GET',
     path: '/api/v1/recommended_products/{productId}',
     handler: Products.recommended
   },
