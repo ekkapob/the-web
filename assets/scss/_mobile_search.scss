@@ -1,17 +1,14 @@
 #mobile-search-form {
-  div {
-    position: relative;
+  .input-group {
+    display: flex;
+    margin-bottom: 1.5em;
     input {
       font-size: 1.5em;
       padding: 1em 2em 1em 0.5em;
-      margin-bottom: 1em;
     }
-    span {
-      position: absolute;
-      right: 0;
-      padding: 0.5em;
+    button {
       font-size: 1.5em;
-      color: $light-black;
+      background: none;
     }
   }
 }

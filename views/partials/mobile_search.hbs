@@ -1,11 +1,13 @@
 <div class="col-xs-12 visible-xs-block">
   <form id="mobile-search-form" action="/products/search">
-    <div>
+    <div class="input-group">
       <input type="text" class="form-control"
                          placeholder="{{__ 'search_for_products'}}"
                          name="query"
                          value="{{query}}">
-      <span class="glyphicon glyphicon-search"></span>
+      <button class="btn" type="submit">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
     </div>
   </form>
 </div>
