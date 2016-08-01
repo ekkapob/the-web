@@ -2,13 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1 product-list-container">
+        {{> mobile_search}}
         <div class="text-center">
           {{#if not_found}}
             <h3 class="th th-big">{{__ 'not_found'}}</h3>
           {{else}}
             <h3 class="th th-big">{{__ 'found'}}&nbsp;{{all_records}}&nbsp;{{__ 'product_item'}}</h3>
           {{/if}}
-          <h4 class="th">{{__ 'from_keywords'}}:&nbsp;<span>{{query}}</span></h4>
+          <h4 class="th hidden-xs">{{__ 'from_keywords'}}:&nbsp;<span>{{query}}</span></h4>
         </div>
         {{#if not_found}}
           <div id="no-product-guide" class="text-center">

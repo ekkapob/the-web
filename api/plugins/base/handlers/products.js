@@ -237,7 +237,6 @@ function fieldExpr(where, field, query) {
 
 exports.search = (request, reply) => {
   let { query, page, limit } = request.query;
-  // const queryRegexp = `(${query.replace(/-/g, '').replace(/\s/g, '|')})`;
   const queries = query.replace(/-/g, '').split(' ');
 
   limit = parseInt(limit) || 21;
@@ -259,16 +258,7 @@ exports.search = (request, reply) => {
     whereClause.and(
       fieldsWhere
     );
-  })
-
-  // let whereClause = Squel.expr();
-  // ['products.product_id', 'products.part_no', 'products.name',
-  //   'products.name_th', 'products.details', 'products.details_th',
-  //   'products.engine_model', 'car_brands.name', 'categories.name',
-  //   'subcategories.name' ]
-  //   .forEach((field) => {
-  //   productSeachExpr(whereClause, field, queryRegexp)
-  // });
+  });
 
   let q = Squel.select()
             .from('products')
@@ -298,7 +288,6 @@ exports.search = (request, reply) => {
     const all_records = result.rows[0]?
       parseInt(result.rows[0].all_records) : 0;
 
-    console.log(page);
     reply({
       all_records,
       products: result.rows,
