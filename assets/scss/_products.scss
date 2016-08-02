@@ -171,6 +171,9 @@
           border-radius: 2px;
           margin: 0 0.5em;
         }
+        @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+          font-size: 1.1em;
+        }
       }
       ul {
         padding-left: 0.5em;

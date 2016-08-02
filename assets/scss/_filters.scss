@@ -28,6 +28,7 @@
     left: -300px;
     box-shadow: 0 2px 2px #E2E2E2;
     transition: left 1s;
+    top: 62px;
     &.opened {
       left: 0;
     }

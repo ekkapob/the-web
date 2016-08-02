@@ -5,7 +5,7 @@
         <div id="locale-menu" class="col-md-2 col-sm-2 col-xs-2">
           {{languageToggle lang urlPath}}
         </div>
-        <div class="col-md-10 col-sm-10 text-right hidden-xs">
+        <div class="col-md-10 col-sm-10 text-right hidden-xs hidden-sm">
           <ul class="contacts">
             <li>
               <a href="https://www.facebook.com/tra.autoparts" target="_blank">
@@ -40,7 +40,7 @@
           </ul>
           <a class="sign-in" href="#">Admin</a>
         </div>
-        <div class="col-xs-10 text-right visible-xs-block">
+        <div class="col-xs-10 text-right visible-xs-block visible-sm-block">
           <div>
             <img src="/assets/images/contacts/phone.png"
                  alt="TRA Auto Parts Phone"></img>
@@ -57,7 +57,7 @@
           <a href="/">
             <img id="site-logo" src="/assets/images/tra_logo.png" alt="">
           </a>
-          <ul class="hidden-xs">
+          <ul class="hidden-xs hidden-sm">
             <li class="dropdown-menus">
               <a href="/products">{{__ 'products'}}<span class="glyphicon glyphicon-chevron-down"></span></a>
               {{> product_menus }}
@@ -90,7 +90,7 @@
               <div id="cart-items">{{cartTotal cart}}</div>
               <img class="cart" src="/assets/images/cart.png" alt="Shopping Cart">
             </a>
-            <div id="mobile-menu" class="visible-xs-block" data-target="#mobile-menus">
+            <div id="mobile-menu" class="visible-xs-block visible-sm-block" data-target="#mobile-menus">
               <span class="glyphicon glyphicon-menu-hamburger"></span>
             </div>
           </div>
