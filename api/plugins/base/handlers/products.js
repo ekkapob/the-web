@@ -251,7 +251,7 @@ exports.search = (request, reply) => {
     ['products.product_id', 'products.part_no', 'products.name',
       'products.name_th', 'products.details', 'products.details_th',
       'products.engine_model', 'car_brands.name', 'categories.name',
-      'subcategories.name' ]
+      'subcategories.name', 'categories.name_th', 'subcategories.name_th' ]
       .forEach((field) => {
         fieldExpr(fieldsWhere, field, query)
       });
