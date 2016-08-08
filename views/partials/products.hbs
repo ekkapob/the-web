@@ -24,9 +24,7 @@
       </div>
       <div class="info">
         <a href="/products/{{product_id}}"><div class="name text-ellipsis">{{name}}</div></a>
-        {{#if details}}
-          <div class="details text-ellipsis">{{details}}</div>
-        {{/if}}
+        <div class="th th">{{../__ subcategory}}</div>
         <div class="part-info">
           {{#if part_no}}
             <div class="text-ellipsis">
@@ -39,6 +37,9 @@
               <span class="th th-small">{{../__ 'engine_model'}}:&nbsp;</span>
               <span class="number">{{engine_model}}</span>
             </div>
+          {{/if}}
+          {{#if details}}
+            <div class="details text-ellipsis">{{details}}</div>
           {{/if}}
         </div>
       </div>

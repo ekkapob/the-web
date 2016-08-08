@@ -1,6 +1,15 @@
 <div id="product-show">
   <div class="container">
     <div class="row">
+      <div class="col-md-12">
+        <ul>
+          <li>Products</li>
+          <li>Engine Group</li>
+          <li>Coolant Assy Pump</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
       {{> product_images}}
       <div class="col-md-5 col-lg-5 info">
         <p class="title">
@@ -13,11 +22,11 @@
           <span class="category">
             {{#if product.category}}
               <span class="icon-gear"></span>
-              <a class="th th-small" href="#">{{__ product.category}}</a>
+              <a class="th" href="#">{{__ product.category}}</a>
             {{/if}}
             {{#if product.subcategory}}
               <span>|</span>
-              <a class="th th-small" href="#">{{__ product.subcategory}}</a>
+              <a class="th" href="#">{{__ product.subcategory}}</a>
             {{/if}}
           </span>
           {{#if product.car_brand}}
