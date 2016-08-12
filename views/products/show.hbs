@@ -1,12 +1,17 @@
+<div class="breadcrumb-section">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a href="/products">{{__ 'products'}}</a></li>
+      <li><a href="/products?categories={{product.category}}">{{__ product.category}}</a></li>
+      <li><a href="/products?subcategories={{product.subcategory}}">{{__ product.subcategory}}</a></li>
+      <li class="active">{{product.product_id}}</li>
+    </ul>
+  </div>
+</div>
 <div id="product-show">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <ul>
-          <li>Products</li>
-          <li>Engine Group</li>
-          <li>Coolant Assy Pump</li>
-        </ul>
       </div>
     </div>
     <div class="row">

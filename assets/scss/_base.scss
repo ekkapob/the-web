@@ -53,3 +53,12 @@ a {
 .form-control {
   padding: 10px;
 }
+
+.breadcrumb-section {
+  background-color: $light-grey;
+  .breadcrumb {
+    background-color: $light-grey;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+}
