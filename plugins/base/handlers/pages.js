@@ -25,10 +25,10 @@ exports.handle404 = (request, reply) => {
 exports.index = (request, reply) => {
   // console.log(request.i18n.getLocale());
   // console.log(request.i18n.__("Hello"));
-  const query = '?subcategoryId=1&limit=3'
+  const query = '?subcategoryId=1&limit=10'
   Async.parallel({
     coolantPumpAssy:
-      Requests.randomCoolantPumpAssy({ query: '?subcategoryId=1' })
+      Requests.randomCoolantPumpAssy({ query })
   },
   (err, results) => {
     reply.view('index', {

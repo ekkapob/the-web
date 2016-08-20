@@ -20,7 +20,10 @@
     .product-name {
       color: $light-red;
       font-size: 1.3em;
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
+    }
+    .product-category {
+      color: $dark-grey;
     }
     .product-details {
       color: $dark-grey;

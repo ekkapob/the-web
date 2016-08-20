@@ -1,0 +1,33 @@
+#home-products {
+  .coolant-products {
+    .slick-slide {
+      margin-bottom: 2em;
+      height: initial;
+    }
+    .slick-dots li button:before {
+      font-size: 12px;
+    }
+  }
+}
+
+#product-show {
+  .slick-slider {
+    margin-bottom: 3em;
+  }
+  .slick-slide {
+    height: initial;
+  }
+  .slick-prev,
+  .slick-next {
+    z-index: 50;
+    &:before {
+      font-size: 40px;
+    }
+  }
+  .slick-prev {
+    left: 10px;
+  }
+  .slick-next {
+    right: 30px;
+  }
+}

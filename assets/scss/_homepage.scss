@@ -103,6 +103,7 @@
       margin: 1.5em 0;
     }
     .product {
+      padding: 0.5em;
       @media (max-width: $screen-xs-max) {
         margin-bottom: 2em;
       }
@@ -151,7 +152,7 @@
       }
       @media (min-width: $screen-sm-min) {
         img {
-          width: 95%;
+          // width: 95%;
         }
       }
     }
