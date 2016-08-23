@@ -1,0 +1,33 @@
+<div id="signin">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div id="signin-container">
+          <h3 class="text-center th th-medium">{{__ 'sign_in'}}</h3>
+          <div class="text-center">
+            <img src="/assets/images/signin.png" alt="signin">
+          </div>
+          <form action="/signin" method="post">
+            <div class="form-group">
+              <label for="username" class="th">{{__ 'username'}}</label>
+              <input type="text" class="form-control" id="username"
+                name="username"
+                placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label for="password" class="th">{{__ 'password'}}</label>
+              <input type="password" class="form-control" id="password"
+                name="password"
+                placeholder="Password">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+          </form>
+          <div class="register text-center th th-small">
+            <a href="/signup">{{__ 'register'}}</a> {{__ 'for_new_account'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

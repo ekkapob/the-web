@@ -1,0 +1,152 @@
+<div class="products content container-fluid">
+  <div class="row">
+    <div class="col-md-12"><h2>Product</h2></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form method="POST" action="/dashboard/products/create" enctype="multipart/form-data">
+        {{#unless create}}
+          <input type="hidden" name="_method" value="PUT">
+        {{/unless}}
+        <div class="form-group {{#if errors.product_id}}has-error{{/if}}">
+          <label for="product_id">Product ID <span class="asterisk">*</span>
+          </label>
+          <input type="text" class="form-control" value="{{product.product_id}}"
+            name="product_id" id="product_id" placeholder="ID" required>
+          {{#if errors.product_id}}
+            <div class="error-msg">{{errors.product_id}}</div>
+          {{/if}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="part_no">Part No.</label>
+              <input type="text" name="part_no" value="{{product.part_no}}"
+                class="form-control" id="part_no" placeholder="Part No.">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="substitute_part_no">Substitute Part No.</label>
+              <input type="text" class="form-control" name="substitute_part_no"
+                     value="{{product.substitute_part_no}}"
+                     id="substitute_part_no" placeholder="Substitute Part No.">
+
+            </div>
+          </div>
+        </div>
+        <div class="form-group {{#if errors.name}}has-error{{/if}}">
+          <label for="product_name">Product Name <span class="asterisk">*</span></label>
+          <input type="text" class="form-control"
+                             name="name"
+                             id="product_name"
+                             placeholder="Product name"
+                             value="{{product.name}}"
+                             required>
+
+          {{#if errors.name}}
+            <div class="error-msg">{{errors.name}}</div>
+          {{/if}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Category</label>
+              <select name="category" class="form-control">
+                {{#each categories}}
+                  {{#if ../product.category}}
+                    <option value="{{id}}"
+                      {{#isEqual name ../product.category}}selected{{/isEqual}}>{{name}}</option>
+                  {{else}}
+                    <option value="{{id}}">{{name}}</option>
+                  {{/if}}
+                {{/each}}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Subcategory</label>
+              <select name="subcategory" class="form-control">
+                {{#each subcategories}}
+                  {{#if ../product.subcategory}}
+                    <option value="{{id}}|{{name}}"
+                      {{#isEqual name ../product.subcategory}}selected{{/isEqual}}>{{name}}</option>
+                  {{else}}
+                    <option value="{{id}}|{{name}}">{{name}}</option>
+                  {{/if}}
+                {{/each}}
+
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Car brand</label>
+          <select name="carBrand" class="form-control">
+            {{#each car_brands}}
+              {{#if ../product.car_brand}}
+                <option value="{{id}}"
+                  {{#isEqual name ../product.car_brand}}selected{{/isEqual}}>{{name}}</option>
+              {{else}}
+                <option value="{{id}}">{{name}}</option>
+              {{/if}}
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="engine_model">Engine model</label>
+          <input type="text" class="form-control"
+                             name="engine_model"
+                             id="engine_model"
+                             placeholder="Engine model"
+                             value="{{product.engine_model}}">
+        </div>
+        <div class="form-group">
+          <label for="details">Details</label>
+          <textarea class="form-control" id="details" rows="3"
+            name="details" placeholder="Details">{{product.details}}</textarea>
+        </div>
+
+        {{#if product.images}}
+          <div class="images">
+            {{#each product.images}}
+            <div class="image"><a class="set-primary-image" href="#"><img data-product-id="{{../product.product_id}}" data-image="{{this}}" class="img-responsive {{#isEqual this ../product.primary_image}}primary-image{{/isEqual}}"
+              src="{{imgSrc this ../product.product_id ../product.category
+              ../product.subcategory}}" alt=""></a>
+              <div class="pull-right">
+                <a href="#" class="remove-image link-danger"
+                  {{#isEqual this ../product.primary_image}}data-is-primary-image="true"{{/isEqual}}
+                  data-product-id="{{../product.product_id}}"
+                  data-image={{this}}>remove</a>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        {{/if}}
+        <div class="form-group">
+          <label for="images">Images ( 5MB per upload )</label>
+          <input type="file" id="images" name="images" accept="image/*" multiple>
+          {{#if anyErrors}}
+            <div class="error-msg">If you've selected images, you have to reselect them.</div>
+          {{/if}}
+        </div>
+
+        <div class="form-group">
+          <label for="remark">Remark</label>
+          <textarea class="form-control"
+                    id="remark" rows="3" name="remark"
+                    placeholder="Remark">{{product.remark}}</textarea>
+        </div>
+        <center class="form-action">
+          <button type="submit" class="btn btn-lg btn-primary">
+            {{#if create}}Submit{{else}}Update{{/if}}
+          </button>
+          <a href="/dashboard/products" class="m-l-2 btn btn-lg btn-default">
+            Back to Products
+          </a>
+        </center>
+      </form>
+    </div>
+  </div>
+</div>

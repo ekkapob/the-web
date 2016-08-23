@@ -138,3 +138,15 @@ exports.emailOrderAccepted = (params) => {
       });
   }
 }
+
+// exports.signin = (params) => {
+//   return (cb) => {
+//     Request.post(`${apiUrl}/signin`)
+//       .send(params)
+//       .end((err, res) => {
+//         console.log(res);
+//         if (err) return cb(true);
+  //       cb(null, res.body);
+  //     });
+//   // }
+// }

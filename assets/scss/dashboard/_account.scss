@@ -1,0 +1,21 @@
+.account {
+  .contact-container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: $light-grey;
+    padding: 1em;
+    margin-bottom: 3em;
+    @media (max-width: $screen-sm-max) {
+      width: 100%;
+    }
+    .title {
+      color: $dark-grey;
+    }
+    .row {
+      margin: 0.5em;
+    }
+    .btn {
+      margin-top: 1em;
+    }
+  }
+}

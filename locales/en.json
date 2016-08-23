@@ -82,6 +82,9 @@
   "city_is_invalid": "City is invalid",
   "zip_is_invalid": "Postal code is invalid",
 
+  "username_is_invalid": "Username is invalid",
+  "password_is_invalid": "Password must be the same with password confirmation",
+
   "finding_products?": "Are you trying to find Our Products?",
   "checkout_products": "Check Them Out",
   "checkout_other_products": "Please check out our products or recommended products below",
@@ -95,5 +98,16 @@
 
   "Engine Group": "Engine Group",
   "Coolant Pump Assy": "Coolant Pump Assy",
-  "Coolant Pump Repair Kit" : "Coolant Pump Repair Kit"
+  "Coolant Pump Repair Kit" : "Coolant Pump Repair Kit",
+
+  "sign_up": "Sign up",
+  "sign_in": "Sign in",
+  "register": "Register",
+ "for_new_account": "here for new member",
+  "user_information": "User Information",
+  "username": "Username",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "change_password": "Change password",
+  "change_confirm_password": "Change password confirmation"
 }

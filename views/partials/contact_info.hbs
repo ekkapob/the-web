@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="th th-big">{{__ 'customer_information'}}</h2>
+      <form action="/orders/confirm" method="POST">
+        {{> contact_form}}
+        <div class="order-page-action text-center">
+          <div><a href="/orders" class="th">{{__ 'back_to_edit_order?'}}</a></div>
+          <button type="submit" class="btn btn-success th">{{__ 'confirm_contact_info_btn'}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

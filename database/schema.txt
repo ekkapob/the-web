@@ -46,7 +46,8 @@ CREATE TABLE subcategories (
 CREATE TABLE orders (
   id serial primary key,
   ref_id text unique not null,
-  customer_id int not null,
+  customer_id int,
+  user_id int,
   created_at timestamp with time zone default now(),
   last_modified_at timestamp with time zone default now()
 );
@@ -72,6 +73,23 @@ CREATE TABLE customers (
   remarks text,
   created_at timestamp with time zone default now(),
   last_modified_at timestamp with time zone default now()
+);
+
+CREATE TABLE users (
+  id serial primary key,
+  username text,
+  hash_password text,
+  role text,
+  name text,
+  email text,
+  phone text,
+  address text,
+  country text,
+  city text,
+  zip text,
+  created_at timestamp with time zone default now(),
+  last_modified_at timestamp with time zone default now(),
+  UNIQUE (username, email)
 );
 
 CREATE OR REPLACE FUNCTION update_last_modified_at()	
@@ -101,4 +119,7 @@ CREATE TRIGGER update_modtime BEFORE UPDATE ON order_details
 FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
 
 CREATE TRIGGER update_modtime BEFORE UPDATE ON customers
+FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();
+
+CREATE TRIGGER update_modtime BEFORE UPDATE ON users
 FOR EACH ROW EXECUTE PROCEDURE update_last_modified_at();

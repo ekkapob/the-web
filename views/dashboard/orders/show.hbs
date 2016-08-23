@@ -1,0 +1,84 @@
+<div class="order content container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="p-b-0">Order</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <span class="grey-text">Order date: </span>{{formatDateTime ordered_at}}
+    </div>
+    <div class="col-md-12">
+      <span class="grey-text">Reference ID: </span> {{ref_id}}
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="title">Products</h3>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-condensed">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th style="width:150px">Image</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Ordered Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each orderDetails}}
+              <tr>
+                <th>{{itemOrderFromIndex @index}}</th>
+                <td>
+                  <a href="/dashboard/products/{{product_id}}">
+                    <img class="img-responsive"
+                         src="{{imgSrc primary_image product_id '' subcategory_name}}"
+                         alt="image product"/>
+                  </a>
+                  </td>
+                <td><a href="/dashboard/products/{{product_id}}">{{product_id}}</a></td>
+                <td>{{product_name}}</td>
+                <td>{{quantity}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="title">Customer</h3>
+    </div>
+    <div class="col-md-12 customer-info">
+      <h5>
+        <div>
+          <span class="grey-text">Name: </span>{{customer.customer_name}}
+        </div>
+        <div>
+          <span class="grey-text">Email: </span>{{customer.email}}
+        </div>
+        <div>
+          <span class="grey-text">Phone: </span>{{customer.phone}}
+        </div>
+        <div>
+          <span class="grey-text">Address </span>{{customer.address}}
+        </div>
+        <div>
+          <span class="grey-text">City: </span>{{customer.city}}
+        </div>
+        <div>
+          <span class="grey-text">Zip: </span>{{customer.zip}}
+        </div>
+        <div>
+          <span class="grey-text">Country: </span>{{customer.country}}
+        </div>
+      </h5>
+    </div>
+  </div>
+
+</div>

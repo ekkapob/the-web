@@ -5,7 +5,10 @@ import S        from 'squel';
 const Squel = S.useFlavour('postgres');
 
 exports.index = (request, reply) => {
-  let { limit, car_brands, categories, subcategories, page } = request.query;
+  let {
+    limit, car_brands, categories, subcategories, page
+  } = request.query;
+
   car_brands = prepare(car_brands);
   categories = prepare(categories);
   subcategories = prepare(subcategories);
@@ -26,6 +29,8 @@ exports.index = (request, reply) => {
             .field('products.engine_model')
             .field('products.primary_image')
             .field('products.images')
+            .field('products.created_at')
+            .field('products.last_modified_at')
             .field('car_brands.name AS car_name')
             .field('categories.name AS category')
             .field('subcategories.name AS subcategory')
@@ -35,6 +40,7 @@ exports.index = (request, reply) => {
   if (!_.isEmpty(car_brands)) q.where('car_brands.name IN ?', car_brands);
   if (!_.isEmpty(categories)) q.where('categories.name IN ?', categories);
   if (!_.isEmpty(subcategories)) q.where('subcategories.name IN ?', subcategories);
+
   q.order('products.created_at')
     .limit(limit)
     .offset(offset);
@@ -59,6 +65,52 @@ exports.index = (request, reply) => {
   });
 };
 
+exports.create = (request, reply) => {
+  const { product_id, part_no, substitute_part_no,
+    name, category, subcategory,
+    carBrand, engine_model, details, remark, images
+  } = request.payload;
+
+  if (_.isEmpty(product_id) || _.isEmpty(name)) return reply(Boom.badRequest());
+
+  Async.waterfall([
+    fetchProduct(request, product_id)
+  ], (err, result) => {
+    if (err) return reply(Boom.badRequest());
+    if (result[0]) return reply(Boom.badRequest());
+
+    let q = Squel.insert()
+              .into('products')
+              .set('product_id', product_id)
+              .set('substitute_part_no', substitute_part_no)
+              .set('engine_model', engine_model)
+              .set('part_no', part_no)
+              .set('name', name)
+              .set('details', details)
+              .set('remark', remark);
+
+    if (!_.isEmpty(images)) {
+      q.set('images', `{${images.join(',')}}`);
+      q.set('primary_image', images[0]);
+    }
+    if (category && !isNaN(parseInt(category))) {
+      q.set('category_id', parseInt(category));
+    }
+    if (subcategory && !isNaN(parseInt(subcategory))) {
+      q.set('subcategory_id', parseInt(subcategory));
+    }
+    if (carBrand && !isNaN(parseInt(carBrand))) {
+      q.set('car_brand_id', parseInt(carBrand));
+    }
+    q = q.toParam();
+    request.pg.client.query(q.text, q.values, (err, result) => {
+      if (err) { return reply(Boom.badRequest()); }
+      reply().code(201);
+    });
+
+  });
+};
+
 exports.show = (request, reply) => {
   const { productId } = request.params;
   Async.waterfall([
@@ -68,6 +120,96 @@ exports.show = (request, reply) => {
     reply({
       product: result
     });
+  });
+};
+
+exports.updatePrimaryImage = (request, reply) => {
+  const { productId } = request.params;
+  const { image_name } = request.payload;
+  Async.waterfall([
+    fetchProduct(request, productId)
+  ], (err, result) => {
+    if (err) return reply(Boom.badRequest());
+    if (_.isEmpty(result[0])) return reply(Boom.badRequest());
+    let q = Squel.update()
+              .table('products')
+              .set('primary_image', image_name)
+              .where('product_id = ?', productId)
+              .toParam();
+    request.pg.client.query(q.text, q.values, (err, result) => {
+      if (err) return reply(Boom.badRequest());
+      reply().code(200);
+    });
+  });
+}
+
+exports.delete = (request, reply) => {
+  const { productId } = request.params;
+  let q = Squel.delete()
+            .from('products')
+            .where('product_id = ?', productId)
+            .toParam();
+  request.pg.client.query(q.text, q.values, (err, result) => {
+    if (err) return reply(Boom.badRequest());
+    reply().code(200);
+  });
+};
+
+exports.removeImage = (request, reply) => {
+  const { productId } = request.params;
+  const { image_name } = request.payload;
+
+  Async.parallel([
+    fetchProduct(request, productId)
+  ], (err, result) => {
+    var productResult = result[0];
+    var product = productResult[0];
+    var subcategory = product.subcategory
+    let q = Squel.update()
+              .table('products')
+              .set("images = array_remove(images, '" + image_name + "')");
+    if (product.primary_image == image_name) {
+      q = q.set('primary_image', null);
+    }
+    q = q.where('product_id = ?', productId).toParam();
+
+    request.pg.client.query(q.text, q.values, (err, result) => {
+      if (err) return reply(Boom.badRequest());
+      reply({
+        deleted_image_name: image_name,
+        subcategory
+      });
+    });
+  });
+
+};
+
+exports.update = (request, reply) => {
+  const { product_id, part_no, substitute_part_no,
+    name, category, subcategory,
+    carBrand, engine_model, details, remark, images
+  } = request.payload;
+  let q = Squel.update()
+            .table('products')
+            .set('product_id', product_id)
+            .set('part_no', part_no)
+            .set('substitute_part_no', substitute_part_no)
+            .set('name', name)
+            .set('category_id', category)
+            .set('subcategory_id', subcategory)
+            .set('car_brand_id', carBrand)
+            .set('engine_model', engine_model)
+            .set('details', details)
+            .set('remark', remark);
+
+  if (!_.isEmpty(images)) {
+    q = q.set("images = array_cat(images, '{" + images.join(',') + "}')")
+  }
+  q = q.where('product_id = ?', product_id).toParam();
+
+  request.pg.client.query(q.text, q.values, (err, result) => {
+    if (err) return reply(Boom.badRequest());
+    reply().code(200);
   });
 };
 

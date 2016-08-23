@@ -37,8 +37,14 @@
                 <span>+(66)2-224-9268</span>
               </div>
             </li>
+            {{#if user.name}}
+              <li class="user">
+                <span>Hello <a href="/dashboard/accounts">{{user.name}}</a></span>
+              </li>
+            {{else}}
+              <li><a href="/signin">Sign in | Register</a></li>
+            {{/if}}
           </ul>
-          <a class="sign-in" href="#">Admin</a>
         </div>
         <div class="col-xs-10 text-right visible-xs-block visible-sm-block">
           <div>

@@ -8,5 +8,6 @@ module.exports = [
     }
   },
   require('./plugins/base'),
-  require('./plugins/mailer')
+  require('./plugins/mailer'),
+  require('./plugins/authentication')
 ];

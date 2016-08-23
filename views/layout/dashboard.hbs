@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+  </head>
+  <body lang="{{lang}}">
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-12">
+          <a class="home" href="/">
+            <img src="/assets/images/dashboard/home.png" alt="home">
+            <span>Home</span>
+          </a>
+          <ul>
+            <li><a href="#">Log out</a></li>
+            <li><a href="#">Account</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="row">
+        <div id="side-container" class="col-sm-2 col-md-1">
+          <ul id="side-menu">
+            <li>
+              <a href="/dashboard/accounts">
+                <img src="/assets/images/dashboard/account.png" alt="Account">
+                <div>Account</div>
+              </a>
+            </li>
+            <li>
+              <a href="/dashboard/categories">
+                <img src="/assets/images/dashboard/categories.png" alt="Categories">
+                <div>Categories</div>
+              </a>
+            </li>
+            <li>
+              <a href="/dashboard/products">
+                <img src="/assets/images/dashboard/products.png" alt="Products">
+                <div>Products</div>
+              </a>
+            </li>
+            <li>
+              <a href="/dashboard/orders">
+                <img src="/assets/images/dashboard/orders.png" alt="Orders">
+                <div>Orders</div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="/assets/images/dashboard/members.png" alt="Members">
+                <div>Members</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="content-container" class="col-sm-10 col-md-11">
+          {{{ content }}}
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" 
+      integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+      crossorigin="anonymous"></script>
+    <script src="/assets/js/dist/dashboard/bundle.js"></script>
+  </body>
+</html>

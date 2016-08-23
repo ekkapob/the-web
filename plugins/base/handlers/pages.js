@@ -100,7 +100,6 @@ exports.productSearch = (request, reply) => {
   }, (err, result) => {
     if (err) return reply.view('products');
     const { all_records, page, limit, query_params, products } = result.search;
-    // return reply.redirect('/product_not_found');
     reply.view('products/search_results', {
       all_records,
       not_found: (all_records == 0),

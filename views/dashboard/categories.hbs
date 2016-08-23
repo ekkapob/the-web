@@ -1,0 +1,94 @@
+<div class="product-category content container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Product Categories</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <h4>Categories</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Name (th)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categories}}
+            <tr>
+              <th scope="row">{{id}}</th>
+              <td><input type="text" value="{{name}}"></td>
+              <td><input type="text" value="{{name_th}}"></td>
+              <td>
+                <button class="btn btn-info btn-sm category-update-btn"
+                  data-id="{{id}}">Update</button>
+              </td>
+            </tr>
+          {{/each}}
+          <tr class="new-item">
+            <form method="POST" action="/dashboard/categories">
+              <th scope="row">*</th>
+              <td>
+                <input name="name" type="text" placeholder="Category (eng)">
+              </td>
+              <td>
+                <input name="name_th" type="text" placeholder="Category (th)">
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" type="submit">New</button>
+              </td>
+            </form>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-7">
+      <h4>Subcategories</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th width="100px">Category ID</th>
+            <th>Name</th>
+            <th>Name (th)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each subcategories}}
+            <tr>
+              <th scope="row">{{id}}</th>
+              <td><input type="text" value="{{category_id}}"></td>
+              <td><input type="text" value="{{name}}"></td>
+              <td><input type="text" value="{{name_th}}"></td>
+              <td>
+                <button class="btn btn-info btn-sm subcategory-update-btn"
+                  data-id="{{id}}">Update</button>
+              </td>
+            </tr>
+          {{/each}}
+          <tr class="new-item">
+            <form method="POST" action="/dashboard/subcategories">
+              <th scope="row">*</th>
+              <td>
+                <input name="category_id" type="text" placeholder="Category ID">
+              </td>
+              <td>
+                <input name="name" type="text" placeholder="Subcategory (eng)">
+              </td>
+              <td>
+                <input name="name_th" type="text" placeholder="Subcategory (th)">
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" type="submit">New</button>
+              </td>
+            </form>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

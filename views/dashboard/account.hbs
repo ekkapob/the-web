@@ -1,0 +1,49 @@
+<div class="account content container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Account</h2>
+    </div>
+  </div>
+  <div class="contact-container">
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'full_name'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.name '-'}}</div>
+    </div>
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'email'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.email '-'}}</div>
+    </div>
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'phone'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.phone '-'}}</div>
+    </div>
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'address'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.address '-'}}</div>
+    </div>
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'country'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.country '-'}}</div>
+    </div>
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'state_city'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.city '-'}}</div>
+    </div>
+    <div class="row">
+      <div class="title col-sm-4 col-md-3 th">{{__ 'postal_code'}}</div>
+      <div class="col-sm-8 col-md-9 th">{{defaultContent account.zip '-'}}</div>
+    </div>
+    <!-- <div class="row"> -->
+    <!--   <div class="title col&#45;md&#45;12 th">{{__ 'remarks'}}</div> -->
+    <!-- </div> -->
+    <!-- <div class="row"> -->
+    <!--   <div class="col&#45;md&#45;12 th">{{defaultContent account.remarks '&#45;'}}</div> -->
+    <!-- </div> -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <a class="btn btn-info" href="/dashboard/accounts/{{account.id}}/edit">Edit</a>
+      </div>
+    </div>
+  </div>
+
+</div>

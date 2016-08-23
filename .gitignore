@@ -7,4 +7,6 @@ assets/css/app.css
 assets/css/app.css.map
 assets/images/products
 
+app.secret
+
 img_process/images/*

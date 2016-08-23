@@ -2,6 +2,7 @@ var dbname = process.env.DB;
 module.exports = [
   require('inert'),
   require('vision'),
+  // require('hapi-auth-cookie'),
   {
     register: require('yar'),
     options: {
@@ -27,5 +28,10 @@ module.exports = [
       directory: __dirname + '/locales'
     }
   },
-  require('./plugins/base')
+  {
+    register: require('./plugins/base')
+  },
+  {
+    register: require('./plugins/dashboard')
+  }
 ];

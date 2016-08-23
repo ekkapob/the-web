@@ -1,8 +1,17 @@
-import Pages  from './handlers/pages';
-import Order  from './handlers/order';
-import Cart   from './handlers/cart';
+import Pages      from './handlers/pages';
+import Order      from './handlers/order';
+import Cart       from './handlers/cart';
 
 module.exports = [
+  {
+    method: 'GET',
+    path: '/assets/{param*}',
+    handler: {
+      directory: {
+        path: 'assets'
+      }
+    }
+  },
   {
     method: 'GET',
     path: '/locale/{locale}',
@@ -83,4 +92,27 @@ module.exports = [
     path: '/{param*}',
     handler: Pages.handle404
   }
+  // {
+  //   method: 'GET',
+  //   path: '/signin',
+  //   handler: Authen.signin_screen
+  // },
+  // {
+  //   method: 'POST',
+  //   path: '/signin',
+  //   handler: Authen.signin
+  // },
+  // {
+  //   method: 'GET',
+  //   path: '/dashboard',
+  //   handler: Dashboard.index
+  // }
+  // {
+  //   method: 'GET',
+  //   path: '/myaccount',
+  //   handler: (request, reply) => {
+  //     if (!request.yar.get('user_id')) return reply.redirect('/login');
+  //     reply('hello, ');
+  //   }
+  // }
 ];

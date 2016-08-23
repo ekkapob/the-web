@@ -1,0 +1,130 @@
+<div class="account content container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Account</h2>
+    </div>
+  </div>
+  <div class="contact-container">
+    {{#if errors}}
+      <div class="alert alert-danger m-b-3" role="alert">
+        {{#each errors}}
+          {{this}}
+        {{/each}}
+      </div>
+    {{/if}}
+    <form method="POST" action="/dashboard/accounts">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="id" value="{{account.id}}">
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'full_name'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                               name="name" value="{{account.name}}"
+              placeholder="Full name" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'change_password'}}</div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control" name="password"
+              placeholder="{{__ 'change_password'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'change_confirm_password'}}</div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control" name="confirm_password"
+              placeholder="{{__ 'change_confirm_password'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'email'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                               name="email" value="{{account.email}}"
+              placeholder="{{__ 'email'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'phone'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                               name="phone" value="{{account.phone}}"
+              placeholder="{{__ 'phone'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'address'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                               name="address" value="{{account.address}}"
+              placeholder="{{__ 'address'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'country'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <select class="form-control"
+              id="contact-country"
+              name="country"
+              data-store="{{account.country}}"></select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'state_city'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                               name="city" value="{{account.city}}"
+              placeholder="{{__ 'state_city'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="title col-sm-4 col-md-3 th">{{__ 'postal_code'}}
+          <small class="th th-small">{{__ 'required'}}</small>
+        </div>
+        <div class="col-sm-8 col-md-9 th">
+          <div class="form-group">
+            <input type="text" class="form-control"
+                               name="zip" value="{{account.zip}}"
+              placeholder="{{__ 'postal_code'}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <a class="btn btn-default" href="/dashboard/accounts">Back</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

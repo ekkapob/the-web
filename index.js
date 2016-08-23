@@ -1,4 +1,6 @@
-const Hapi = require('hapi');
+import Hapi from 'hapi';
+import _    from 'lodash';
+
 const Server = new Hapi.Server({
   connections: {
     router: {
@@ -10,7 +12,7 @@ const Plugins = require('./plugins');
 
 Server.connection({ port: 4000 });
 Server.bind({
-  apiUrl: 'http://localhost:4001/api/v1',
+  apiUrl: 'http://localhost:4001/api/v1'
 });
 
 Server.register(Plugins, (err) => {
@@ -38,20 +40,18 @@ Server.register(Plugins, (err) => {
         th: headerLocale == 'th',
         urlPath: request.url.path,
         production: process.env.ENV == 'production',
-        cart: request.yar.get('cart')
+        cart: request.yar.get('cart'),
+        user: request.yar.get('authenticated')
       };
     }
   });
 
-  Server.route({
-    method: 'GET',
-    path: '/assets/{param*}',
-    handler: {
-      directory: {
-        path: 'assets'
-      }
-    }
-  });
+  // const routes = _.concat(
+  //   // require('./plugins/base/routes'),
+  //   require('./plugins/dashboard/routes')
+  // );
+  //
+  // Server.route(routes);
 
   Server.start(() => {
     console.log('Started Server at ', Server.info.uri);
