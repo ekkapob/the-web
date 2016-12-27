@@ -109,5 +109,8 @@
   "password": "Password",
   "confirm_password": "Confirm password",
   "change_password": "Change password",
-  "change_confirm_password": "Change password confirmation"
+  "change_confirm_password": "Change password confirmation",
+  "edit_user": "Edit user information",
+  "register_member_to_save_info": "Register member to save your information",
+  "edit_account_info": "Edit Account Information"
 }

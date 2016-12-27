@@ -52,8 +52,11 @@ var amountMissing = () => {
 }
 
 exports.contact = (request, reply) => {
+  const user = request.yar.get('authenticated');
+  let store = (!user)? request.yar.get('contact'): user;
   reply.view('order/confirm-contact', {
-    store: request.yar.get('contact')
+    signedIn: user != undefined,
+    store
   });
 };
 
@@ -101,24 +104,38 @@ exports.confirm = (request, reply) => {
       total: Cart.total(cart),
       orders: results,
       contact,
+      signedIn: request.yar.get('authenticated') != undefined,
       summary: true
     });
   });
 };
 
 exports.placeOrder = (request, reply) => {
-  let contact = request.yar.get('contact');
+  let user = request.yar.get('authenticated');
+  let contact = (!user) ? request.yar.get('contact') : user;
+  const signedInUser = (!user) ? false : true;
   let cart = request.yar.get('cart');
   if (!contact || !cart) return reply.redirect('/orders');
-  Async.waterfall([
-    Requests.createCustomer(contact),
-    Requests.createOrder(),
+
+  let requests = [];
+  if (!signedInUser) { 
+    requests.push(
+      Requests.createCustomer(contact),
+      Requests.createOrder()
+    );
+  } else {
+    requests.push(Requests.createOrder({user_id: user.user_id}));
+  }
+
+  requests.push(
     Requests.createOrderDetail(cart),
     Requests.emailOrderAccepted({
       customer: contact,
       cart,
     })
-  ], (err, result) => {
+  );
+
+  Async.waterfall(requests, (err, result) => {
     if (err) return reply(Boom.badRequest());
     reply.view('order/success', {
       refId: result.ref_id,

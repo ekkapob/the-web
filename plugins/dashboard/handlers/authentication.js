@@ -17,6 +17,11 @@ exports.signin = (request, reply) => {
   });
 };
 
+exports.signout = (request, reply) => {
+  request.yar.set('authenticated', undefined);
+  reply.redirect('/');
+};
+
 exports.signup_screen = (request, reply) => {
   reply.view('member/signup');
 };

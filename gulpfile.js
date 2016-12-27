@@ -10,7 +10,7 @@ var Pump = require('pump');
 var Rename = require('gulp-rename');
 
 
-var assets = ['sass', 'scripts'];
+var assets = ['sass', 'scripts', 'dashboard-scripts'];
 if (process.env.ENV == 'production') {
   assets.push('compress-js');
   assets.push('compress-dashboard-js');

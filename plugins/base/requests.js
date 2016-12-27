@@ -101,10 +101,21 @@ exports.createCustomer = (params) => {
 }
 
 // Chained function after create customer
-exports.createOrder = () => {
-  return (customer, cb) => {
+exports.createOrder = (user) => {
+  if (!user) {
+    return (customer, cb) => {
+      Request.post(`${apiUrl}/orders`)
+        .send(customer)
+        .end((err, res) => {
+          if (err) return cb(true);
+          cb(null, res.body);
+        });
+    }
+  }
+
+  return (cb) => {
     Request.post(`${apiUrl}/orders`)
-      .send(customer)
+      .send(user)
       .end((err, res) => {
         if (err) return cb(true);
         cb(null, res.body);

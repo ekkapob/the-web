@@ -71,12 +71,14 @@
               {{contact.zip}}
             </div>
           </div>
-          <div class="col-md-12 contact-details block th">
-            <div class="title">{{__ 'remarks'}}</div>
-            <div class="details">
-              {{contact.remarks}}
+          {{#unless signedIn}}
+            <div class="col-md-12 contact-details block th">
+              <div class="title">{{__ 'remarks'}}</div>
+              <div class="details">
+                {{contact.remarks}}
+              </div>
             </div>
-          </div>
+          {{/unless}}
         </div>
       </div>
       <div class="row">

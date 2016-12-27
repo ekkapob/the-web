@@ -14,6 +14,11 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/signout',
+    handler: Authen.signout
+  },
+  {
+    method: 'GET',
     path: '/signup',
     handler: Authen.signup_screen
   },

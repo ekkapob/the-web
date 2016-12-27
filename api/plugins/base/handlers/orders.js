@@ -21,14 +21,17 @@ exports.index = (request, reply) => {
 };
 
 exports.create = (request, reply) => {
-  const { customer_id } = request.payload
+  const { customer_id, user_id } = request.payload
   const ref_id = orderRefId();
-  let q = Squel.insert()
-            .into('orders')
-            .set('customer_id', customer_id)
-            .set('ref_id', ref_id)
-            .returning('id')
-            .toParam();
+  let q = Squel.insert().into('orders');
+
+  if (!user_id) {
+    q = q.set('customer_id', customer_id)
+  } else {
+    q = q.set('user_id', user_id)
+  }
+
+  q = q.set('ref_id', ref_id).returning('id').toParam();
   request.pg.client.query(q.text, q.values, (err, result) => {
     if (err) return reply(Boom.badRequest());
     reply({

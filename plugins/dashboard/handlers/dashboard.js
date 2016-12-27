@@ -20,6 +20,13 @@ exports.account = (request, reply) => {
   Async.parallel({
     user: getUserInfo(user_id)
   }, (err, results) => {
+    const { username, name, email, phone, address,
+      country, city, zip } = results.user;
+    request.yar.set('authenticated', {
+      success: true,
+      user_id, username, name, email, phone, address,
+      country, city, zip
+    });
     reply.view('dashboard/account', {
       account: results.user
     }, {
