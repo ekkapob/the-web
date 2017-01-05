@@ -7,6 +7,10 @@ assets/css/app.css
 assets/css/app.css.map
 assets/images/products
 
+assets/css/dashboard.css
+assets/css/dashboard.css.map
+assets/js/dist/dashboard/bundle.min.js
+
 app.secret
 
 img_process/images/*

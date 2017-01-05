@@ -1,6 +1,12 @@
 // to connect
 $ psql -U webadmin -d web_dev
 
+>> production
+$ psql -U webadmin -d tra_production
+
+$ source app.secret
+$ source app.env_prod
+$ gulp assets
 
 update products set images=array['1','2'] where product_id = 'WPA-001';
 pdate products set images=null where product_id = 'WPA-001';
