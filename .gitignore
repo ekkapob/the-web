@@ -10,6 +10,7 @@ assets/images/products
 assets/css/dashboard.css
 assets/css/dashboard.css.map
 assets/js/dist/dashboard/bundle.min.js
+assets/js/dist/dashboard/bundle.js
 
 app.secret
 
