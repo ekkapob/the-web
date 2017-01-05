@@ -28,30 +28,32 @@
                 <div>Account</div>
               </a>
             </li>
-            <li>
-              <a href="/dashboard/categories">
-                <img src="/assets/images/dashboard/categories.png" alt="Categories">
-                <div>Categories</div>
-              </a>
-            </li>
-            <li>
-              <a href="/dashboard/products">
-                <img src="/assets/images/dashboard/products.png" alt="Products">
-                <div>Products</div>
-              </a>
-            </li>
-            <li>
-              <a href="/dashboard/orders">
-                <img src="/assets/images/dashboard/orders.png" alt="Orders">
-                <div>Orders</div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="/assets/images/dashboard/members.png" alt="Members">
-                <div>Members</div>
-              </a>
-            </li>
+            {{#isAdmin user}}
+              <li>
+                <a href="/dashboard/categories">
+                  <img src="/assets/images/dashboard/categories.png" alt="Categories">
+                  <div>Categories</div>
+                </a>
+              </li>
+              <li>
+                <a href="/dashboard/products">
+                  <img src="/assets/images/dashboard/products.png" alt="Products">
+                  <div>Products</div>
+                </a>
+              </li>
+              <li>
+                <a href="/dashboard/orders">
+                  <img src="/assets/images/dashboard/orders.png" alt="Orders">
+                  <div>Orders</div>
+                </a>
+              </li>
+            <!-- <li> -->
+            <!--   <a href="#"> -->
+            <!--     <img src="/assets/images/dashboard/members.png" alt="Members"> -->
+            <!--     <div>Members</div> -->
+            <!--   </a> -->
+            <!-- </li> -->
+            {{/isAdmin}}
           </ul>
         </div>
         <div id="content-container" class="col-sm-10 col-md-11">

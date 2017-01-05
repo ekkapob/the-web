@@ -18,15 +18,16 @@ exports.show = (request, reply) => {
             .field('country')
             .field('city')
             .field('zip')
+            .field('role')
             .where('id = ?', id)
             .toParam();
   request.pg.client.query(q.text, q.values, (err, result) => {
     if (err) { return reply(Boom.badRequest()); }
     const { id, username, name, email, phone,
-      address, country, city, zip } = result.rows[0];
+      address, country, city, zip, role } = result.rows[0];
     reply({
       id, username, name, email, phone, address,
-      country, city, zip
+      country, city, zip, role
     });
   });
 };

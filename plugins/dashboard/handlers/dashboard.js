@@ -9,9 +9,10 @@ import _            from 'lodash';
 const apiUrl = 'http://localhost:4001/api/v1';
 
 exports.index = (request, reply) => {
-  reply.view('dashboard/index', null, {
-    layout: 'dashboard'
-  });
+  reply.redirect(`/dashboard/accounts`);
+  // reply.view('dashboard/index', null, {
+  //   layout: 'dashboard'
+  // });
 };
 
 exports.account = (request, reply) => {
@@ -21,11 +22,11 @@ exports.account = (request, reply) => {
     user: getUserInfo(user_id)
   }, (err, results) => {
     const { username, name, email, phone, address,
-      country, city, zip } = results.user;
+      country, city, zip, role } = results.user;
     request.yar.set('authenticated', {
       success: true,
       user_id, username, name, email, phone, address,
-      country, city, zip
+      country, city, zip, role
     });
     reply.view('dashboard/account', {
       account: results.user
@@ -74,7 +75,7 @@ exports.accountEdit = (request, reply) => {
 };
 
 exports.products = (request, reply) => {
-  request.query = _.assign(request.query, { limit: '30' });
+  request.query = _.assign(request.query, { limit: '100' });
   const query = Querystring.stringify(request.query);
   Async.parallel({
     products: getProducts(query)

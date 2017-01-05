@@ -26,11 +26,11 @@ exports.signin = (request, reply) => {
 
     delete user.hash_password;
     const { username, name, email, phone, address,
-      country, city, zip } = user;
+      country, city, zip, role } = user;
     reply({
       success: true,
       user_id: user.id,
-      username, name, email, phone, address, country, city, zip
+      username, name, email, phone, address, country, city, zip, role
     });
   });
 }
