@@ -67,8 +67,8 @@ exports.index = (request, reply) => {
 
 exports.create = (request, reply) => {
   const { product_id, part_no, substitute_part_no,
-    name, category, subcategory,
-    carBrand, engine_model, details, remark, images
+    name, name_th, category, subcategory,
+    carBrand, engine_model, details, remark, remark_th, images
   } = request.payload;
 
   if (_.isEmpty(product_id) || _.isEmpty(name)) return reply(Boom.badRequest());
@@ -86,8 +86,10 @@ exports.create = (request, reply) => {
               .set('engine_model', engine_model)
               .set('part_no', part_no)
               .set('name', name)
+              .set('name_th', name_th)
               .set('details', details)
-              .set('remark', remark);
+              .set('remark', remark)
+              .set('remark_th', remark_th);
 
     if (!_.isEmpty(images)) {
       q.set('images', `{${images.join(',')}}`);
@@ -186,8 +188,8 @@ exports.removeImage = (request, reply) => {
 
 exports.update = (request, reply) => {
   const { product_id, part_no, substitute_part_no,
-    name, category, subcategory,
-    carBrand, engine_model, details, remark, images
+    name, name_th, category, subcategory,
+    carBrand, engine_model, details, remark, remark_th, images
   } = request.payload;
   let q = Squel.update()
             .table('products')
@@ -195,12 +197,14 @@ exports.update = (request, reply) => {
             .set('part_no', part_no)
             .set('substitute_part_no', substitute_part_no)
             .set('name', name)
+            .set('name_th', name_th)
             .set('category_id', category)
             .set('subcategory_id', subcategory)
             .set('car_brand_id', carBrand)
             .set('engine_model', engine_model)
             .set('details', details)
-            .set('remark', remark);
+            .set('remark', remark)
+            .set('remark_th', remark_th);
 
   if (!_.isEmpty(images)) {
     q = q.set("images = array_cat(images, '{" + images.join(',') + "}')")
@@ -220,10 +224,12 @@ function fetchProduct(request, productId) {
               .field('products.product_id')
               .field('products.substitute_part_no')
               .field('products.name')
+              .field('products.name_th')
               .field('products.details')
               .field('products.part_no')
               .field('products.engine_model')
               .field('products.remark')
+              .field('products.remark_th')
               .field('products.primary_image')
               .field('products.images')
               .field('car_brands.name AS car_brand')

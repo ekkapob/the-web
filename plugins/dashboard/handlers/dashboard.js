@@ -220,10 +220,10 @@ function moveImageFolder(oldSubcategory, newSubcategory, productId, callbackFn) 
 exports.productCreate = (request, reply) => {
   const {
     _method,
-    product_id, name,
+    product_id, name, name_th,
     part_no, substitute_part_no,
     category, carBrand,
-    engine_model, details, images, remark
+    engine_model, details, images, remark, remark_th
   } = request.payload;
 
   if (_method == 'PUT') return productUpdate(request, reply);
@@ -284,6 +284,7 @@ exports.productCreate = (request, reply) => {
           createProduct({
             product_id,
             name,
+            name_th,
             part_no,
             substitute_part_no,
             category,
@@ -292,7 +293,8 @@ exports.productCreate = (request, reply) => {
             engine_model,
             images,
             details,
-            remark
+            remark,
+            remark_th
           })
         ], (err, results) => {
           if (err) {
