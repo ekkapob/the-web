@@ -18,7 +18,13 @@
       {{> product_images}}
       <div class="col-md-5 col-lg-5 info">
         <p class="title">
-          <span class="name">{{product.name}}</span>
+          {{#isEng lang}}
+            <span class="name">{{../product.name}}</span>
+          {{else}}
+            <span class="name th th-big">
+              {{escapeText ../product.name_th ../product.name}}
+            </span>
+          {{/isEng}}
           <span>
             <span class="id">{{product.product_id}}</span>
           </span>
@@ -65,12 +71,21 @@
         {{#if product.details}}
           <p class="details">{{product.details}}</p>
         {{/if}}
-        {{#if product.remark}}
-          <div class="remark">
-            <p>Remark:</p>
-            <p>{{product.remark}}</p>
-          </div>
-        {{/if}}
+        {{#isEng lang}}
+          {{#if ../product.remark}}
+            <div class="remark">
+              <p>{{../../__ 'remarks'}}:</p>
+              <p>{{../../product.remark}}</p>
+            </div>
+          {{/if}}
+        {{else}}
+          {{#if ../product.remark_th}}
+            <div class="remark">
+              <p class="th th-small">{{../../__ 'remarks'}}:</p>
+              <p class="th th-small">{{../../product.remark_th}}</p>
+            </div>
+          {{/if}}
+        {{/isEng}}
         <hr />
         <div class="order">
           <div class="in-cart-msg th th-small {{#unless inCart}}hidden{{/unless}}">{{__ 'already_in_cart'}}</div>
