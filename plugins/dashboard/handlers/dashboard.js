@@ -223,7 +223,7 @@ exports.productCreate = (request, reply) => {
     product_id, name, name_th,
     part_no, substitute_part_no,
     category, carBrand,
-    engine_model, details, images, remark, remark_th
+    engine_model, details, details_th, images, remark, remark_th
   } = request.payload;
 
   if (_method == 'PUT') return productUpdate(request, reply);
@@ -293,6 +293,7 @@ exports.productCreate = (request, reply) => {
             engine_model,
             images,
             details,
+            details_th,
             remark,
             remark_th
           })

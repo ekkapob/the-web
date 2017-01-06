@@ -68,7 +68,7 @@ exports.index = (request, reply) => {
 exports.create = (request, reply) => {
   const { product_id, part_no, substitute_part_no,
     name, name_th, category, subcategory,
-    carBrand, engine_model, details, remark, remark_th, images
+    carBrand, engine_model, details, details_th, remark, remark_th, images
   } = request.payload;
 
   if (_.isEmpty(product_id) || _.isEmpty(name)) return reply(Boom.badRequest());
@@ -88,6 +88,7 @@ exports.create = (request, reply) => {
               .set('name', name)
               .set('name_th', name_th)
               .set('details', details)
+              .set('details_th', details_th)
               .set('remark', remark)
               .set('remark_th', remark_th);
 
@@ -189,7 +190,7 @@ exports.removeImage = (request, reply) => {
 exports.update = (request, reply) => {
   const { product_id, part_no, substitute_part_no,
     name, name_th, category, subcategory,
-    carBrand, engine_model, details, remark, remark_th, images
+    carBrand, engine_model, details, details_th, remark, remark_th, images
   } = request.payload;
   let q = Squel.update()
             .table('products')
@@ -203,6 +204,7 @@ exports.update = (request, reply) => {
             .set('car_brand_id', carBrand)
             .set('engine_model', engine_model)
             .set('details', details)
+            .set('details_th', details_th)
             .set('remark', remark)
             .set('remark_th', remark_th);
 
@@ -226,6 +228,7 @@ function fetchProduct(request, productId) {
               .field('products.name')
               .field('products.name_th')
               .field('products.details')
+              .field('products.details_th')
               .field('products.part_no')
               .field('products.engine_model')
               .field('products.remark')

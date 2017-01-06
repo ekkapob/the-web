@@ -68,10 +68,10 @@
             </p>
           {{/if}}
         </blockquote>
-        {{#if product.details}}
-          <p class="details">{{product.details}}</p>
-        {{/if}}
         {{#isEng lang}}
+          {{#if ../product.details}}
+            <p class="details">{{../../product.details}}</p>
+          {{/if}}
           {{#if ../product.remark}}
             <div class="remark">
               <p>{{../../__ 'remarks'}}:</p>
@@ -79,6 +79,9 @@
             </div>
           {{/if}}
         {{else}}
+          {{#if ../product.details_th}}
+            <p class="details th">{{../../product.details_th}}</p>
+          {{/if}}
           {{#if ../product.remark_th}}
             <div class="remark">
               <p class="th th-small">{{../../__ 'remarks'}}:</p>
