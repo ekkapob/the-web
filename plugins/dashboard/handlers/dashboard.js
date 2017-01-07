@@ -1,6 +1,7 @@
 import Async        from 'async';
 import Boom         from 'boom';
 import Request      from 'superagent';
+import Requests     from '../../base/requests';
 import Querystring  from 'querystring';
 import fs           from 'fs';
 import Mv           from 'mv';
@@ -85,6 +86,27 @@ exports.products = (request, reply) => {
       all_records, query_params  } = results.products;
     reply.view('dashboard/products/index', {
       all_records,
+      products,
+      page,
+      path: '/dashboard/products',
+      pages: Math.ceil(all_records/limit),
+      query_params
+    }, {
+      layout: 'dashboard'
+    });
+  });
+}
+
+exports.productsSearch = (request, reply) => {
+  const query = Querystring.stringify(request.query);
+  Async.parallel({
+    search: Requests.productSearch({ query: `?${query}` }),
+  }, (err, results) => {
+    const { all_records, page, limit, query_params, products } = results.search;
+    console.log(query_params);
+    reply.view('dashboard/products/index', {
+      all_records,
+      not_found: (all_records == 0),
       products,
       page,
       path: '/dashboard/products',

@@ -58,6 +58,11 @@ module.exports = [
     handler: Dashboard.products
   },
   {
+    method: 'GET',
+    path: '/dashboard/products/search',
+    handler: Dashboard.productsSearch
+  },
+  {
     method: 'PUT',
     path: '/dashboard/products/{productId}/primary_images',
     handler: Dashboard.productPrimaryImageUpdate

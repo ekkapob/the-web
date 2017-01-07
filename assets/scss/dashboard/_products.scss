@@ -21,5 +21,17 @@
       margin: 0 0.5em;
     }
   }
+  .no-records {
+    div {
+      font-size: 1.5em;
+      color: $dark-grey;
+      margin-bottom: 0.5em;
+    }
+    a {
+      text-decoration: underline;
+    }
+    margin: 2em 0;
+    padding-left: 0.5em;
+  }
 }
 
