@@ -8,6 +8,7 @@ import Mv           from 'mv';
 import _            from 'lodash';
 
 const apiUrl = 'http://localhost:4001/api/v1';
+const PRODUCTS_PER_PAGE = 100;
 
 exports.index = (request, reply) => {
   reply.redirect(`/dashboard/accounts`);
@@ -76,7 +77,7 @@ exports.accountEdit = (request, reply) => {
 };
 
 exports.products = (request, reply) => {
-  request.query = _.assign(request.query, { limit: '100' });
+  request.query = _.assign(request.query, { limit: PRODUCTS_PER_PAGE });
   const query = Querystring.stringify(request.query);
   Async.parallel({
     products: getProducts(query)
@@ -98,6 +99,7 @@ exports.products = (request, reply) => {
 }
 
 exports.productsSearch = (request, reply) => {
+  request.query = _.assign(request.query, { limit: PRODUCTS_PER_PAGE });
   const query = Querystring.stringify(request.query);
   Async.parallel({
     search: Requests.productSearch({ query: `?${query}` }),
