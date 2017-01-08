@@ -7,11 +7,15 @@ import Handlebars from 'handlebars';
 import Request    from 'superagent';
 
 function sendgridData(params) {
+  const bcc = [];
+  if (params.to.toLowerCase() != 'hello@traautoparts.com') {
+    bcc.push({ email: 'hello@traautoparts.com' });
+  }
   return {
     personalizations: [
       {
         to: [ { email: params.to } ],
-        bcc: [ { email: 'hello@traautoparts.com' } ],
+        bcc,
         subject: params.subject
       }
     ],
