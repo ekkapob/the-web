@@ -7,17 +7,19 @@ import Handlebars from 'handlebars';
 import Request    from 'superagent';
 
 function sendgridData(params) {
-  const bcc = [];
-  if (params.to.toLowerCase() != 'hello@traautoparts.com') {
-    bcc.push({ email: 'hello@traautoparts.com' });
+  let personalization = {
+    to: [ { email: params.to } ],
+    bcc: [ { email: 'hello@traautoparts.com' } ],
+    subject: params.subject
+  };
+
+  if (params.to.toLowerCase() == 'hello@traautoparts.com') {
+    delete personalization.bcc;
   }
+
   return {
     personalizations: [
-      {
-        to: [ { email: params.to } ],
-        bcc,
-        subject: params.subject
-      }
+      personalization
     ],
     from: {
       name: 'TRA Autoparts',
@@ -67,6 +69,7 @@ exports.orderAccepted = (request, reply) => {
       to: customer.email,
       content: orderAcceptedContent(data)
     }), (err, res) => {
+      console.log(err);
       if (err) return reply(Boom.badRequest());
       reply({ref_id});
     });
