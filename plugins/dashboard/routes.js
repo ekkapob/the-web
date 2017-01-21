@@ -123,7 +123,7 @@ module.exports = [
     handler: Dashboard.productCreate,
     config: {
       payload: {
-        maxBytes: (5 * 1024) * 1024, // 5MB to bytes
+        // maxBytes: (5 * 1024) * 1024, // 5MB to bytes
         output: 'stream',
         parse: true
       }

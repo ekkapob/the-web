@@ -105,7 +105,6 @@ exports.productsSearch = (request, reply) => {
     search: Requests.productSearch({ query: `?${query}` }),
   }, (err, results) => {
     const { all_records, page, limit, query_params, products } = results.search;
-    console.log(query_params);
     reply.view('dashboard/products/index', {
       all_records,
       not_found: (all_records == 0),
