@@ -63,10 +63,10 @@
             max-height: 255px;
           }
           @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-            max-height: 190px;
+            max-height: 170px;
           }
           @media (min-width: $screen-lg-min) {
-            max-height: 210px;
+            max-height: 190px;
           }
         }
         .info {
