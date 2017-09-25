@@ -1,0 +1,22 @@
+#how-to-order {
+  &.page-info {
+    .content {
+      margin-bottom: 1em;
+    }
+    h2 {
+      color: $bright-red;
+    }
+    .transfer-account {
+      line-height: 1.8em;
+      margin-bottom: 1em;
+      background-color: $light-grey;
+      padding: 1em 2em;
+    }
+    .underline {
+      text-decoration: underline;
+    }
+    ol {
+      line-height: 1.8em;
+    }
+  }
+}

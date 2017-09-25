@@ -1,8 +1,16 @@
 #hero {
   height: 360px;
   background-color: $light-grey;
+  height: 600px;
+  background-image: url(/assets/images/home.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   .container {
-    padding-top: 10em;
+    position: absolute;
+    width: 100%;
+    bottom: 8em;
     .row {
       margin-bottom: 2em;
       .brand {
@@ -17,7 +25,7 @@
         text-align: center;
         font-size: 22px;
         letter-spacing: 2px;
-        color: $dark-grey;
+        color: white;
       }
     }
     .btn-container {
@@ -46,11 +54,15 @@
   margin-bottom: 3em;
   .text {
     font-size: 1.4em;
-    margin-top: 2.5em;
-    margin-bottom: 2.5em;
-    line-height: 1.5em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    line-height: 2em;
     // color: $light-black;
     color: $light-black;
+    p {
+      width: 80%;
+      display: inline-block;
+    }
   }
   .icon {
     font-size: 3em;
@@ -62,10 +74,9 @@
     display: flex;
     padding: 0 3em;
     margin-bottom: 2em;
-    div {
-    }
     .title {
       font-size: 1.2em;
+      margin-bottom: 0.5em;
     }
     .content {
       color: $dark-grey;
