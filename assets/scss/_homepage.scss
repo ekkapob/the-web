@@ -64,6 +64,36 @@
       display: inline-block;
     }
   }
+  .shop-images {
+    margin-bottom: 5em;
+    div[class^="col"]{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    img {
+      margin-bottom: 10px;
+    }
+    .bg-image {
+      height: 230px;
+      background-size: cover;
+      background-position: center;
+      border: 3px solid white;
+      @media (max-width: $screen-xs-max) {
+        border-left: none;
+        border-right: none;
+        height: 300px;
+      }
+    }
+    .main-img {
+      height: 460px;
+      @media (max-width: $screen-xs-max) {
+        height: 350px;
+      }
+    }
+    .inner {
+      margin: 0;
+    }
+  }
   .icon {
     font-size: 3em;
     color: $bright-red;
