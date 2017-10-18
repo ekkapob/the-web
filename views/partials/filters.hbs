@@ -4,27 +4,6 @@
   </div>
   <div class="filter">
     <div class="title th">
-      <span>{{__ 'car_manufacturers'}}</span>
-      {{pillEmpty 'all' query_params.car_brands lang}}
-    </div>
-    <ul>
-      {{#each carBrands}}
-        <li>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"
-                      name="car_brands"
-                      value="{{name}}"
-                      {{inputChecked 'car_brands' name ../query_params}}>
-              {{name}}
-            </label>
-          </div>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-  <div class="filter">
-    <div class="title th">
       <span>{{__ 'categories'}}</span>
       {{pillEmpty 'all' query_params.categories lang}}
     </div>
@@ -62,6 +41,37 @@
           </label>
         </div>
       </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="filter car-brands">
+    <div class="filter-title">
+      <div class="title th">
+        <span>{{__ 'car_manufacturers'}}</span>
+        {{pillEmpty 'all' query_params.car_brands lang}}
+      </div>
+      <a href="#" id="filter-show-car-brands-btn"
+         data-pair-button="#filter-hide-car-brands-btn"
+         data-toggle="#filter-car-brands"
+        class="glyphicon glyphicon-chevron-down show-btn"></a>
+      <a href="#" id="filter-hide-car-brands-btn"
+         data-pair-button="#filter-show-car-brands-btn"
+         data-toggle="#filter-car-brands"
+        class="glyphicon glyphicon-chevron-up hide-btn"></a>
+    </div>
+    <ul id="filter-car-brands">
+      {{#each carBrands}}
+        <li>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                      name="car_brands"
+                      value="{{name}}"
+                      {{inputChecked 'car_brands' name ../query_params}}>
+              {{name}}
+            </label>
+          </div>
+        </li>
       {{/each}}
     </ul>
   </div>

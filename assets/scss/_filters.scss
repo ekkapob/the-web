@@ -54,3 +54,25 @@
     }
   }
 }
+
+.filter {
+  .filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      color: initial;
+      &.hide {
+        display: none;
+      }
+    }
+    .hide-btn {
+      display: none;
+    }
+  }
+  &.car-brands {
+    ul {
+      display: none;
+    }
+  }
+}
