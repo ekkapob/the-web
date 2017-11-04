@@ -304,3 +304,10 @@
     color: $light-red;
   }
 }
+
+.mobile-search {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  margin-top: 2em;
+}
