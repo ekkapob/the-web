@@ -23,8 +23,8 @@ exports.handle404 = (request, reply) => {
 };
 
 exports.index = (request, reply) => {
-  // console.log(request.i18n.getLocale());
-  // console.log(request.i18n.__("Hello"));
+  const paymentStatus = request.yar.get('paymentConfirm');
+  request.yar.clear('paymentConfirm');
   const query = '?subcategoryId=1&limit=10'
   Async.parallel({
     coolantPumpAssy:
@@ -32,7 +32,8 @@ exports.index = (request, reply) => {
   },
   (err, results) => {
     reply.view('index', {
-      coolantPumpAssyProducts: results.coolantPumpAssy.products
+      coolantPumpAssyProducts: results.coolantPumpAssy.products,
+      paymenConfirm: paymentStatus
     });
   });
 };

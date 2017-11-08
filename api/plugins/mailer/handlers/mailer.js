@@ -31,6 +31,8 @@ function sendgridData(params) {
   };
 }
 
+exports.setEmailHeader = sendgridData;
+
 function fetchProduct(productId) {
   var apiUrl = 'http://localhost:4001/api/v1';
   return (cb) => {

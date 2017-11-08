@@ -1,3 +1,4 @@
+import fs         from 'fs';
 import Async      from 'async';
 import Boom       from 'boom'; 
 import Cart       from '../utils/cart';
@@ -5,6 +6,11 @@ import Validation from '../utils/validation';
 import Requests   from '../requests';
 import Joi        from 'joi';
 import _          from 'lodash';
+import Uuid       from 'uuid/v1';
+import Mailer     from '../../../api/plugins/mailer/handlers/mailer';
+import Sendgrid   from '../../../api/plugins/mailer/libs/sendgrid';
+import Handlebars from 'handlebars';
+
 
 exports.index = (request, reply) => {
   let cart = request.yar.get('cart');
@@ -155,3 +161,51 @@ exports.delete = (request, reply) => {
   request.yar.set('cart', cart);
   reply('success');
 };
+
+exports.notifyPaymentIndex = (request, reply) => {
+  reply.view('order/notify-payment');
+};
+
+exports.notifyPayment = (request, reply) => {
+  const { order_id, name, email, phone, slip_image, remarks } = request.payload;
+  saveImage(slip_image, (img) => {
+    const data = { order_id, img, name, phone, email, remarks };
+    const emailData = Mailer.setEmailHeader({
+      subject: `Payment Notification for Order: ${order_id}`,
+      to: 'hello@traautoparts.com',
+      content: setEmailContent(data)
+    });
+    Sendgrid.mail(emailData, (err, res) => {
+      request.yar.set('paymentConfirm', 'done');
+      reply.redirect('/');
+    });
+  });
+};
+
+function setEmailContent(data) {
+  const source = fs.readFileSync(
+    `${__dirname}/../../../views/mailer/templates/payment_notification.hbs`,
+    'utf8'
+  );
+  const template = Handlebars.compile(source);
+  const result = template(data);
+  return template(data);
+}
+
+function saveImage(image, successFn) {
+  if (!image.hapi.filename) return;
+  const folderName = `${__dirname}/../../../assets/images/slips`;
+  let name = image.hapi.filename;
+  const namePaths = name.split('.');
+  const extension = (namePaths.length > 1)? namePaths[namePaths.length - 1] : '';
+  name = Uuid();
+  if (extension.length > 0) {
+    name += `.${extension}`;
+  }
+  let imgPath = `${folderName}/${name}`;
+  const file = fs.createWriteStream(imgPath);
+  image.pipe(file);
+  image.on('end', (err) => {
+    if (!err) return successFn(name);
+  });
+}

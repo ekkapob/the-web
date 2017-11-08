@@ -1,11 +1,13 @@
 .DS_Store
 node_modules
+
 assets/vendors
 assets/js/dist/app.js
 assets/js/dist/app.min.js
 assets/css/app.css
 assets/css/app.css.map
 assets/images/products
+assets/images/slips/*
 
 assets/css/dashboard.css
 assets/css/dashboard.css.map

@@ -22,5 +22,8 @@ body[lang='th'] {
 
   .nav-menus > ul > li > a {
     @include th();
+    @media (max-width: $screen-md-max) {
+      font-size: 16px;
+    }
   }
 }

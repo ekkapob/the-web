@@ -1,3 +1,10 @@
+{{#if paymenConfirm}}
+<div class="container flash-container">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="alert alert-info text-center" role="alert">{{__ 'payment_notification_done'}}</div>
+  </div>
+</div>
+{{/if}}
 <div class="container">
   <div class="row mobile-search">
     {{> mobile_search}}

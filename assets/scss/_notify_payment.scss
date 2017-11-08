@@ -1,0 +1,17 @@
+#notify-payment {
+  padding: 3em 0;
+  h2 {
+    margin-bottom: 1.5em;
+  }
+  .form-group {
+    margin-bottom: 2em;
+  }
+  .half-input {
+    display: flex;
+    justify-content: space-between;
+    .form-group {
+      display: inline-block;
+      width: 49%;
+    }
+  }
+}

@@ -91,7 +91,24 @@ module.exports = [
     method: 'GET',
     path: '/{param*}',
     handler: Pages.handle404
-  }
+  },
+  {
+    method: 'GET',
+    path: '/notify_payment',
+    handler: Order.notifyPaymentIndex
+  },
+  {
+    method: 'POST',
+    path: '/notify_payment',
+    handler: Order.notifyPayment,
+    config: {
+      payload: {
+        maxBytes: (5 * 1024) * 1024,
+        output: 'stream',
+        parse: true
+      }
+    }
+  },
   // {
   //   method: 'GET',
   //   path: '/signin',
