@@ -12,10 +12,10 @@
             <tr>
               <th>Order ID</th>
               <th>Products</th>
+              <th>Quantity</th>
               <th>Customer ID</th>
               <th>User ID</th>
               <th>Reference</th>
-              <th>Quantity</th>
               <th>Order Date</th>
               <th>Actions</th>
             </tr>
@@ -38,10 +38,10 @@
                     {{/each}}
                   </table>
                 </td>
+                <td>{{quantity}}</td>
                 <td>{{customer_id}}</td>
                 <td>{{user_id}}</td>
                 <td>{{ref_id}}</td>
-                <td>{{quantity}}</td>
                 <td>{{formatDateTime created_at}}</td>
                 <td>
                   <a class="btn btn-info btn-sm"
