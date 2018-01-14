@@ -378,11 +378,39 @@ exports.orders = (request, reply) => {
   Async.parallel([
     getData('/orders')
   ], (err, results) => {
-    reply.view('dashboard/orders/index', {
-      orders: results[0].orders
-    }, {
-      layout: 'dashboard'
+
+    let orders = results[0].orders;
+    let getOrderDetails = [];
+    orders.forEach((order) => {
+      getOrderDetails.push(getData('/orders/' + order.id));
+      order.details = [];
     });
+
+    // Get each order items
+    Async.parallel(getOrderDetails, (err, results) => {
+
+      results.forEach((items) => {
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i];
+          let order = _.find(orders, {'id': item.order_id});
+          if (_.isEmpty(order)) continue;
+          order.details.push({
+            product_id: item.product_id,
+            primary_image: item.primary_image,
+            subcategory_name: item.subcategory_name,
+            quantity: item.quantity
+          });
+        }
+      });
+
+      reply.view('dashboard/orders/index', {
+        orders: orders
+      }, {
+        layout: 'dashboard'
+      });
+
+    });
+
   });
 };
 

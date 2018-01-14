@@ -11,6 +11,7 @@
           <thead>
             <tr>
               <th>Order ID</th>
+              <th>Products</th>
               <th>Customer ID</th>
               <th>User ID</th>
               <th>Reference</th>
@@ -23,6 +24,20 @@
             {{#each orders}}
               <tr>
                 <td>{{id}}</td>
+                <td>
+                  <table style="margin: 0;">
+                    {{#each details}}
+                    <tr>
+                      <td style="font-size: 0.7em">{{product_id}}&nbsp;</td>
+                      <td><img style="width: 60px;"
+                         src="{{imgSrc primary_image product_id '' subcategory_name}}"
+                         alt="image product"/>&nbsp;
+                      </td>
+                      <td style="font-size: 0.7em"> x {{quantity}}</td>
+                    </tr>
+                    {{/each}}
+                  </table>
+                </td>
                 <td>{{customer_id}}</td>
                 <td>{{user_id}}</td>
                 <td>{{ref_id}}</td>
