@@ -382,7 +382,8 @@ exports.orders = (request, reply) => {
     let orders = results[0].orders;
     let getOrderDetails = [];
     orders.forEach((order) => {
-      getOrderDetails.push(getData('/orders/' + order.id));
+      const by = (!order.user_id)? '?by=customer' : '';
+      getOrderDetails.push(getData('/orders/' + order.id + by));
       order.details = [];
     });
 
