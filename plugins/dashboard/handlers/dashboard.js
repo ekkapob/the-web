@@ -365,6 +365,17 @@ exports.categoriesCreate = (request, reply) => {
   });
 };
 
+exports.categoriesUpdate = (request, reply) => {
+  const { name, name_th } = request.payload;
+  const id = request.params.id;
+  Async.parallel([
+    updateCategory(id, { name, name_th })
+  ], (err, results) => {
+    if (err) return reply(Boom.badRequest());
+    reply().code(200);
+  });
+};
+
 exports.subcategoriesCreate = (request, reply) => {
   const { category_id, name, name_th } = request.payload;
   Async.parallel([
@@ -621,6 +632,17 @@ function updateAccount(userId, data) {
 function createCategory(data) {
   return (cb) => {
     Request.post(`${apiUrl}/categories`)
+      .send(data)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  };
+}
+
+function updateCategory(id, data) {
+  return (cb) => {
+    Request.put(`${apiUrl}/categories/${id}`)
       .send(data)
       .end((err, res) => {
         if (err) return cb(true);

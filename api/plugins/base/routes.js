@@ -68,6 +68,11 @@ module.exports = [
     handler: Categories.create
   },
   {
+    method: 'PUT',
+    path: '/api/v1/categories/{id}',
+    handler: Categories.update
+  },
+  {
     method: 'GET',
     path: '/api/v1/subcategories',
     handler: Subcategories.index
