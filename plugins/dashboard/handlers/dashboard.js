@@ -365,12 +365,34 @@ exports.categoriesCreate = (request, reply) => {
   });
 };
 
+exports.categoriesUpdate = (request, reply) => {
+  const { name, name_th } = request.payload;
+  const id = request.params.id;
+  Async.parallel([
+    updateCategory(id, { name, name_th })
+  ], (err, results) => {
+    if (err) return reply(Boom.badRequest());
+    reply().code(200);
+  });
+};
+
 exports.subcategoriesCreate = (request, reply) => {
   const { category_id, name, name_th } = request.payload;
   Async.parallel([
     createSubcategory({ category_id, name, name_th })
   ], (err, results) => {
     reply.redirect('/dashboard/categories');
+  });
+};
+
+exports.subcategoriesUpdate = (request, reply) => {
+  const { category_id, name, name_th } = request.payload;
+  const id = request.params.id;
+  Async.parallel([
+    updateSubcategory(id, { category_id, name, name_th })
+  ], (err, results) => {
+    if (err) return reply(Boom.badRequest());
+    reply().code(200);
   });
 };
 
@@ -621,6 +643,28 @@ function updateAccount(userId, data) {
 function createCategory(data) {
   return (cb) => {
     Request.post(`${apiUrl}/categories`)
+      .send(data)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  };
+}
+
+function updateCategory(id, data) {
+  return (cb) => {
+    Request.put(`${apiUrl}/categories/${id}`)
+      .send(data)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  };
+}
+
+function updateSubcategory(id, data) {
+  return (cb) => {
+    Request.put(`${apiUrl}/subcategories/${id}`)
       .send(data)
       .end((err, res) => {
         if (err) return cb(true);

@@ -16,9 +16,7 @@ exports.handle404 = (request, reply) => {
       Requests.randomCoolantPumpAssy({ query: '?subcategoryId=1' })
   },
   (err, results) => {
-    reply.view('404', {
-      coolantPumpAssyProducts: results.coolantPumpAssy.products
-    });
+    return reply.redirect('/');
   });
 };
 
