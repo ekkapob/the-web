@@ -376,6 +376,24 @@ exports.categoriesUpdate = (request, reply) => {
   });
 };
 
+exports.categoriesDeleteAndConvert = (request, reply) => {
+  const { id, new_id } = request.params;
+  Async.parallel([
+    categoriesDeleteAndConvert({ id, new_id })
+  ], (err, results) => {
+    reply().code(200);
+  });
+}
+
+exports.subcategoriesDeleteAndConvert = (request, reply) => {
+  const { id, new_id } = request.params;
+  Async.parallel([
+    subcategoriesDeleteAndConvert({ id, new_id })
+  ], (err, results) => {
+    reply().code(200);
+  });
+}
+
 exports.subcategoriesCreate = (request, reply) => {
   const { category_id, name, name_th } = request.payload;
   Async.parallel([
@@ -665,6 +683,28 @@ function updateCategory(id, data) {
 function updateSubcategory(id, data) {
   return (cb) => {
     Request.put(`${apiUrl}/subcategories/${id}`)
+      .send(data)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  };
+}
+
+function categoriesDeleteAndConvert(data) {
+  return (cb) => {
+    Request.del(`${apiUrl}/categories/${data.id}/convert_products_to/${data.new_id}`)
+      .send(data)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  };
+}
+
+function subcategoriesDeleteAndConvert(data) {
+  return (cb) => {
+    Request.del(`${apiUrl}/subcategories/${data.id}/convert_products_to/${data.new_id}`)
       .send(data)
       .end((err, res) => {
         if (err) return cb(true);

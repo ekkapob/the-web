@@ -1,3 +1,5 @@
+var DEFAULT_CONVERT_SUBCATEGORY_ID;
+
 $(function() {
   $('button.subcategory-update-btn').click(function(e){
     e.preventDefault();
@@ -29,4 +31,52 @@ $(function() {
     });
 
   });
+
+
+  $('button.subcategory-delete-btn').click(function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    var tdName = $(this).parent().siblings('td.name')[0];
+    var name = $(tdName).children('input')[0].value;
+
+    DEFAULT_CONVERT_SUBCATEGORY_ID = undefined;
+    bootbox.prompt({
+      title: '<span style="color: red">Delete ' + (name) + ' & Convert its products to new one</span>',
+      inputType: 'select',
+      inputOptions: getSubcategoryOptions(id),
+      callback: function (result) {
+        if (result == '') result = DEFAULT_CONVERT_SUBCATEGORY_ID;
+        $.ajax({
+          url: '/dashboard/subcategories/' + id + '/convert_products_to/' + result,
+          type: 'DELETE',
+          success: function(result) {
+            location.reload();
+          }
+        });
+      }
+    });
+  });
+
+  function getSubcategoryOptions(toDeleteId) {
+    var results = [];
+    var subcategories = $('tr.list-subcategory');
+    for (var i = 0; i < subcategories.length; i++) {
+      var subcategory = subcategories[i];
+      var id = $(subcategory).data('subcategoryId');
+      if (toDeleteId == id) continue;
+      var name = $(subcategory).data('subcategoryName');
+      results.push({
+        text: name,
+        value: id
+      });
+    }
+    if (results.length > 0) {
+      // to force selection, need to remove first option to have blank value
+      DEFAULT_CONVERT_SUBCATEGORY_ID = results[0].value;
+      results[0].value = '';
+    }
+    return results;
+  }
+
+
 });

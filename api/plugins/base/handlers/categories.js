@@ -41,3 +41,22 @@ exports.update = (request, reply) => {
     reply().code(200);
   });
 };
+
+exports.deleteAndConvert = (request, reply) => {
+  const { id, new_id } = request.params;
+  let q = Squel.update()
+            .table('products')
+            .set('category_id', new_id)
+            .where('category_id = ?', id).toParam();
+  request.pg.client.query(q.text, q.values, (err, result) => {
+    if (err) return reply(Boom.badRequest());
+    q = Squel.delete()
+            .from('categories')
+            .where('id = ?', id)
+            .toParam();
+    request.pg.client.query(q.text, q.values, (err, result) => {
+      if (err) return reply(Boom.badRequest());
+      reply().code(200);
+    });
+  });
+};

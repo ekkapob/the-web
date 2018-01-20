@@ -73,6 +73,16 @@ module.exports = [
     handler: Categories.update
   },
   {
+    method: 'DELETE',
+    path: '/api/v1/categories/{id}/convert_products_to/{new_id}',
+    handler: Categories.deleteAndConvert
+  },
+  {
+    method: 'DELETE',
+    path: '/api/v1/subcategories/{id}/convert_products_to/{new_id}',
+    handler: Subcategories.deleteAndConvert
+  },
+  {
     method: 'GET',
     path: '/api/v1/subcategories',
     handler: Subcategories.index

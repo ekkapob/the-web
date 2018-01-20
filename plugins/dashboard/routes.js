@@ -118,6 +118,16 @@ module.exports = [
     handler: Dashboard.subcategoriesUpdate
   },
   {
+    method: 'DELETE',
+    path: '/dashboard/categories/{id}/convert_products_to/{new_id}',
+    handler: Dashboard.categoriesDeleteAndConvert
+  },
+  {
+    method: 'DELETE',
+    path: '/dashboard/subcategories/{id}/convert_products_to/{new_id}',
+    handler: Dashboard.subcategoriesDeleteAndConvert
+  },
+  {
     method: 'GET',
     path: '/dashboard/orders',
     handler: Dashboard.orders
