@@ -7,5 +7,14 @@
     .new-item {
       background-color: #ccd1ff;
     }
+    .list-category,
+    .list-subcategory {
+      button {
+        font-size: 0.7em;
+      }
+    }
+    td.actions {
+      min-width: 130px;
+    }
   }
 }
