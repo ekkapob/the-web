@@ -376,6 +376,12 @@ exports.categoriesUpdate = (request, reply) => {
   });
 };
 
+exports.categoriesDeleteAndConvert = (request, reply) => {
+  const { id, new_id } = request.params;
+  console.log(id, ':', new_id);
+  reply().code(200);
+}
+
 exports.subcategoriesCreate = (request, reply) => {
   const { category_id, name, name_th } = request.payload;
   Async.parallel([
