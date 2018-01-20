@@ -387,6 +387,7 @@ exports.subcategoriesCreate = (request, reply) => {
 
 exports.subcategoriesUpdate = (request, reply) => {
   const { category_id, name, name_th } = request.payload;
+  const id = request.params.id;
   Async.parallel([
     updateSubcategory(id, { category_id, name, name_th })
   ], (err, results) => {
