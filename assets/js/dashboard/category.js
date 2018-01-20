@@ -11,6 +11,7 @@ $(function() {
       type: 'PUT',
       data: { name: name, name_th: name_th },
       success: function(result) {
+        $('#category-status').empty();
         $('#category-status').append('<div class="alert alert-success" role="alert">Category has been updated.</div>');
         setTimeout(function(){
           $('#category-status').empty();

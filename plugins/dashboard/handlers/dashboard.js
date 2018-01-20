@@ -385,6 +385,16 @@ exports.subcategoriesCreate = (request, reply) => {
   });
 };
 
+exports.subcategoriesUpdate = (request, reply) => {
+  const { category_id, name, name_th } = request.payload;
+  Async.parallel([
+    updateSubcategory(id, { category_id, name, name_th })
+  ], (err, results) => {
+    if (err) return reply(Boom.badRequest());
+    reply().code(200);
+  });
+};
+
 exports.orders = (request, reply) => {
   Async.parallel([
     getData('/orders')
@@ -643,6 +653,17 @@ function createCategory(data) {
 function updateCategory(id, data) {
   return (cb) => {
     Request.put(`${apiUrl}/categories/${id}`)
+      .send(data)
+      .end((err, res) => {
+        if (err) return cb(true);
+        cb(null, res.body);
+      });
+  };
+}
+
+function updateSubcategory(id, data) {
+  return (cb) => {
+    Request.put(`${apiUrl}/subcategories/${id}`)
       .send(data)
       .end((err, res) => {
         if (err) return cb(true);

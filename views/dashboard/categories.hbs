@@ -64,12 +64,14 @@
           {{#each subcategories}}
             <tr>
               <th scope="row">{{id}}</th>
-              <td><input type="text" value="{{category_id}}"></td>
-              <td><input type="text" value="{{name}}"></td>
-              <td><input type="text" value="{{name_th}}"></td>
+              <td class="category_id"><input type="text" value="{{category_id}}"></td>
+              <td class="name"><input type="text" value="{{name}}"></td>
+              <td class="name_th"><input type="text" value="{{name_th}}"></td>
               <td>
                 <button class="btn btn-info btn-sm subcategory-update-btn"
                   data-id="{{id}}">Update</button>
+                <button class="btn btn-danger btn-sm subcategory-delete-btn"
+                  data-id="{{id}}">Delete</button>
               </td>
             </tr>
           {{/each}}

@@ -113,6 +113,11 @@ module.exports = [
     handler: Dashboard.subcategoriesCreate
   },
   {
+    method: 'PUT',
+    path: '/dashboard/subcategories/{id}',
+    handler: Dashboard.subcategoriesUpdate
+  },
+  {
     method: 'GET',
     path: '/dashboard/orders',
     handler: Dashboard.orders
