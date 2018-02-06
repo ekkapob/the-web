@@ -57,6 +57,9 @@ exports.products = (request, reply) => {
     const { subcategories } = results.subcategories;
     const { car_brands } = results.carBrands;
 
+    console.log('-----------');
+    console.log(request)
+
     reply.view('products/index', {
       products,
       page,

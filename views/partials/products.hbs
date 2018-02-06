@@ -23,7 +23,13 @@
         <!-- </div> -->
       </div>
       <div class="info">
-        <a href="/products/{{product_id}}"><div class="name text-ellipsis">{{name}}</div></a>
+        <a href="/products/{{product_id}}">
+          {{#if ../lang}}
+            <div class="name th text-ellipsis">{{name_th}}</div>
+          {{else}}
+            <div class="name text-ellipsis">{{name}}</div>
+          {{/if}}
+        </a>
         <div class="th th">{{../__ subcategory}}</div>
         <div class="part-info">
           {{#if part_no}}

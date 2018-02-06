@@ -24,6 +24,7 @@ exports.index = (request, reply) => {
             .field('COUNT(1) OVER() AS all_records')
             .field('products.product_id')
             .field('products.name')
+            .field('products.name_th')
             .field('products.details')
             .field('products.part_no')
             .field('products.engine_model')

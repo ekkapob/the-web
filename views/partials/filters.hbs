@@ -2,27 +2,31 @@
   <div id="filter-toggle" class="visible-xs-block">
     <span class="glyphicon glyphicon-remove"></span>
   </div>
-  <div class="filter">
-    <div class="title th">
-      <span>{{__ 'categories'}}</span>
-      {{pillEmpty 'all' query_params.categories lang}}
-    </div>
-    <ul>
-      {{#each categories}}
-        <li>
-          <div class="checkbox th th-small">
-            <label>
-              <input type="checkbox"
-                      name="categories"
-                      value="{{name}}"
-                      {{inputChecked 'categories' name ../query_params}}>
-              {{../__ name}}
-            </label>
-          </div>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
+  <!-- <div class="filter"> -->
+  <!--   <div class="title th"> -->
+  <!--     <span>{{__ 'categories'}}</span> -->
+  <!--     {{pillEmpty 'all' query_params.categories lang}} -->
+  <!--   </div> -->
+  <!--   <ul> -->
+  <!--     {{#each categories}} -->
+  <!--       <li> -->
+  <!--         <div class="checkbox th th&#45;small"> -->
+  <!--           <label> -->
+  <!--             <input type="checkbox" -->
+  <!--                     name="categories" -->
+  <!--                     value="{{name}}" -->
+  <!--                     {{inputChecked 'categories' name ../query_params}}> -->
+  <!--             {{#if ../lang}} -->
+  <!--               {{name_th}} -->
+  <!--             {{else}} -->
+  <!--               {{name}} -->
+  <!--             {{/if}} -->
+  <!--           </label> -->
+  <!--         </div> -->
+  <!--       </li> -->
+  <!--     {{/each}} -->
+  <!--   </ul> -->
+  <!-- </div> -->
   <div class="filter">
     <div class="title th">
       <span>{{__ 'subcategories'}}</span>
@@ -37,7 +41,11 @@
                    name="subcategories"
                    value="{{name}}"
                    {{inputChecked 'subcategories' name ../query_params}}>
-            {{../__ name}}
+            {{#if ../lang}}
+              {{name_th}}
+            {{else}}
+              {{name}}
+            {{/if}}
           </label>
         </div>
       </li>
@@ -50,14 +58,14 @@
         <span>{{__ 'car_manufacturers'}}</span>
         {{pillEmpty 'all' query_params.car_brands lang}}
       </div>
-      <a href="#" id="filter-show-car-brands-btn"
-         data-pair-button="#filter-hide-car-brands-btn"
-         data-toggle="#filter-car-brands"
-        class="glyphicon glyphicon-chevron-down show-btn"></a>
-      <a href="#" id="filter-hide-car-brands-btn"
-         data-pair-button="#filter-show-car-brands-btn"
-         data-toggle="#filter-car-brands"
-        class="glyphicon glyphicon-chevron-up hide-btn"></a>
+      <!-- <a href="#" id="filter&#45;show&#45;car&#45;brands&#45;btn" -->
+      <!--    data&#45;pair&#45;button="#filter&#45;hide&#45;car&#45;brands&#45;btn" -->
+      <!--    data&#45;toggle="#filter&#45;car&#45;brands" -->
+      <!--   class="glyphicon glyphicon&#45;chevron&#45;down show&#45;btn"></a> -->
+      <!-- <a href="#" id="filter&#45;hide&#45;car&#45;brands&#45;btn" -->
+      <!--    data&#45;pair&#45;button="#filter&#45;show&#45;car&#45;brands&#45;btn" -->
+      <!--    data&#45;toggle="#filter&#45;car&#45;brands" -->
+      <!--   class="glyphicon glyphicon&#45;chevron&#45;up hide&#45;btn"></a> -->
     </div>
     <ul id="filter-car-brands">
       {{#each carBrands}}

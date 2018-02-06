@@ -17,13 +17,21 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3 filter-container">
-          {{> filters}}
+          {{#if th}}
+            {{> filters lang="th"}}
+          {{else}}
+            {{> filters}}
+          {{/if}}
         </div>
         <div class="col-sm-12 col-md-9 col-lg-9 product-list-container">
           {{#unless products}}
             <div class="no-results">No results found. Please retry with other search options.</div>
           {{/unless}}
-          {{> products}}
+          {{#if th}}
+            {{> products lang="th"}}
+          {{else}}
+            {{> products }}
+          {{/if}}
           {{paginations page pages path query_params}}
         </div>
       </form>
