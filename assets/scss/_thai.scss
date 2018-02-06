@@ -1,10 +1,13 @@
-body[lang='th'] {
-  @mixin th() {
+// body[lang='th'] {
+body {
+  @include th(14px);
+
+  @mixin th($font-size) {
     font-family: 'kanitlight', sans-serif !important;
-    font-size: 18px;
+    font-size: $font-size;
   }
   .th {
-    @include th();
+    @include th(18px);
   }
 
   .th-big {
@@ -17,11 +20,11 @@ body[lang='th'] {
   }
 
   .th-small {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
   }
 
   .nav-menus > ul > li > a {
-    @include th();
+    @include th(18px);
     @media (max-width: $screen-md-max) {
       font-size: 16px;
     }
