@@ -1,11 +1,12 @@
 // body[lang='th'] {
 body {
-  @include th(14px);
 
   @mixin th($font-size) {
     font-family: 'kanitlight', sans-serif !important;
     font-size: $font-size;
   }
+  @include th(14px);
+
   .th {
     @include th(18px);
   }
