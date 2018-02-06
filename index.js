@@ -41,7 +41,8 @@ Server.register(Plugins, (err) => {
         urlPath: request.url.path,
         production: process.env.ENV == 'production',
         cart: request.yar.get('cart'),
-        user: request.yar.get('authenticated')
+        user: request.yar.get('authenticated'),
+        subcategories: request.response.subcategories,
       };
     }
   });
