@@ -1,6 +1,6 @@
 $(function(){
   var displayImg = $('#product-show .display-image > img');
-  $('.image-thumbnails > div').mouseover(showImageThumbnail(displayImg));
+  $('.image-thumbnails > div').click(showImageThumbnail(displayImg));
   registerOrderAmountBtn();
   registerOrderBtn();
 });
@@ -12,7 +12,8 @@ function showImageThumbnail(displayImg) {
     var hoverImg = imgThumbnail.attr('src');
     imgThumbnail.addClass('selected');
 
-    displayImg.attr('src', hoverImg)
+    displayImg.attr('src', hoverImg);
+    displayImg.attr('xoriginal', hoverImg);
   };
 };
 

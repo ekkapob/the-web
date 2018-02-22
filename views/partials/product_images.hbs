@@ -2,9 +2,12 @@
   <div class="row">
     <div class="col-md-12 display-image hidden-xs hidden-sm">
       {{#if product.primary_image}}
-        <img class="img-responsive"
+        <img class="img-responsive xzoom"
           src="{{imgSrc product.primary_image product.product_id product.category
-          product.subcategory}}" alt="{{product.product_id}}">
+          product.subcategory}}"
+          xoriginal="{{imgSrc product.primary_image product.product_id product.category product.subcategory}}"
+          xpreview="{{imgSrc product.primary_image product.product_id product.category product.subcategory}}"
+          alt="{{product.product_id}}">
       {{else}}
         <img class="img-responsive" src="/assets/images/products/unavailable.jpg">
       {{/if}}
@@ -17,7 +20,7 @@
                 ../product.product_id
                 ../product.category
                 ../product.subcategory}}"
-                alt="{{../product.product_id}} {{@index}}"
+              alt="{{../product.product_id}} {{@index}}"
               class="{{#if @first}}selected{{/if}}">
           </div>
         {{/each}}
