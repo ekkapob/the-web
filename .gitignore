@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 
-assets/vendors
 assets/js/dist/app.js
 assets/js/dist/app.min.js
 assets/css/app.css
