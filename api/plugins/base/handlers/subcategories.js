@@ -1,6 +1,8 @@
 import Boom     from 'boom';
 import S        from 'squel';
 import _        from 'lodash';
+import path     from 'path';
+import fs       from 'fs';
 const Squel = S.useFlavour('postgres');
 
 exports.index = (request, reply) => {
@@ -33,15 +35,43 @@ exports.create = (request, reply) => {
 exports.update = (request, reply) => {
   const { category_id, name, name_th } = request.payload;
   const id = request.params.id;
-  const q = Squel.update()
-            .table('subcategories')
-            .set('category_id', category_id)
-            .set('name', name)
-            .set('name_th', name_th)
-            .where('id = ?', id).toParam();
-  request.pg.client.query(q.text, q.values, (err, result) => {
+
+  const retrieve = Squel.select('name')
+                    .from('subcategories')
+                    .field('name')
+                    .where('id = ?', id)
+                    .toParam();
+  request.pg.client.query(retrieve.text, retrieve.values, (err, result) => {
     if (err) return reply(Boom.badRequest());
-    reply().code(200);
+    const oldSubcategoryName = result.rows[0].name;
+
+    // update subcategories
+    const q = Squel.update()
+              .table('subcategories')
+              .set('category_id', category_id)
+              .set('name', name)
+              .set('name_th', name_th)
+              .where('id = ?', id)
+              .toParam();
+
+    request.pg.client.query(q.text, q.values, (err, result) => {
+      if (err) return reply(Boom.badRequest());
+      // rename image folder
+      if (oldSubcategoryName != name) {
+        console.log('need change folder names');
+        const oldProductImagePath = path.resolve(
+          __dirname, '../../../../', 'assets/images/products',
+          oldSubcategoryName.toLowerCase().replace(/\s/g, '_')
+        );
+        const newProductImagePath = path.resolve(
+          __dirname, '../../../../', 'assets/images/products',
+          name.toLowerCase().replace(/\s/g, '_')
+        );
+        fs.renameSync(oldProductImagePath, newProductImagePath);
+      }
+      reply().code(200);
+    });
+
   });
 };
 
