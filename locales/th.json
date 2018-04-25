@@ -128,5 +128,8 @@
 	"notify_payment": "แจ้งการชำระเงิน",
 	"Ball Joint Group": "Ball Joint Group",
 	"Test Category A": "Test Category A",
-	"Sub Category B": "Sub Category B"
+	"Sub Category B": "Sub Category B",
+  "sorry_for_inconvenience": "ขออภัยในความไม่สะดวก",
+  "online_purchase_unavailable": "ระบบซื้อของปิดบริการชั่วคราว",
+  "please_contact_us": "ติดต่อสอบถาม สำหรับข้อมูลเพิ่มเติม"
 }

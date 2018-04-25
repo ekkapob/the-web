@@ -87,9 +87,16 @@
             <div><a href="/orders" class="th">{{__ 'back_to_edit_order?'}}</a></div>
             <form action="/orders/place_order" method="post" accept-charset="utf-8">
               <button id="order-place-order" type="submit" class="btn
-                btn-success th">
+                btn-success th" disabled>
                 {{__ 'place_order'}}
               </button>
+              <div style="line-height: 1.5em; padding-top: 1em; color: #ff6665; }">
+                <div>
+                  {{__ 'sorry_for_inconvenience'}}<br>
+                  {{__ 'online_purchase_unavailable'}}<br>
+                  {{__ 'please_contact_us'}}
+                </div>
+              </div>
             </form>
           </div>
         </div>

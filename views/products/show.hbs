@@ -103,7 +103,7 @@
             {{/if}}
             <span class="increase-order glyphicon glyphicon-plus"></span>
           </div>
-          <button class="btn btn-order" data-product-id="{{product.product_id}}">
+          <button class="btn btn-order" data-product-id="{{product.product_id}}" disabled>
             <span class="th th-small">
               {{#if inCart}}
                 {{__ 'update'}}
@@ -113,6 +113,11 @@
               <span class="icon-cart"></span>
             </span>
           </button>
+          <div style="line-height: 1.5em; padding-top: 1em; color: #ff6665; }">
+            <div>{{__ 'sorry_for_inconvenience'}}</div>
+            <div>{{__ 'online_purchase_unavailable'}}</div>
+            <div>{{__ 'please_contact_us'}}</div>
+          </div>
           <div id="flash-ordered-msg" hidden>1 item is added to your cart</div>
         </div>
       </div>
