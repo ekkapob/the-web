@@ -1,6 +1,6 @@
-import Request  from 'superagent';
+const Request  = require('superagent');
 
-exports.mail = (data, cb) => {
+exports.mail = function(data, cb) {
   // return cb(null);
   Request
     .post('https://api.sendgrid.com/v3/mail/send')

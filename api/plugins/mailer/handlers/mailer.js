@@ -1,10 +1,10 @@
-import Async      from 'async';
-import Boom       from 'boom';
-import Sendgrid   from '../libs/sendgrid';
-import ImgSrc     from '../helpers/imgSrc';
-import Fs         from 'fs';
-import Handlebars from 'handlebars';
-import Request    from 'superagent';
+const Async      = require('async');
+const Boom       = require('boom');
+const Sendgrid   = require('../libs/sendgrid');
+const ImgSrc     = require('../helpers/imgSrc');
+const Fs         = require('fs');
+const Handlebars = require('handlebars');
+const Request    = require('superagent');
 
 function sendgridData(params) {
   let personalization = {

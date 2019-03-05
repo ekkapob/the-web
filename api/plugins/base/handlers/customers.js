@@ -1,5 +1,5 @@
-import Boom     from 'boom';
-import S        from 'squel';
+const Boom     = require('boom');
+const S        = require('squel');
 const Squel = S.useFlavour('postgres');
 
 exports.create = (request, reply) => {

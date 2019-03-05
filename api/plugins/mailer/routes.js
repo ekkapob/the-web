@@ -1,4 +1,4 @@
-import Mailer from './handlers/mailer';
+const Mailer = require('./handlers/mailer');
 
 module.exports = [
   {

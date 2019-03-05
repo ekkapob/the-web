@@ -1,5 +1,5 @@
-import Authen     from './handlers/authentication';
-import Dashboard  from './handlers/dashboard';
+const Authen = require('./handlers/authentication');
+const Dashboard = require('./handlers/dashboard');
 
 module.exports = [
   {

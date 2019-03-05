@@ -1,8 +1,8 @@
-import Async    from 'async';
-import Boom     from 'boom';
-import S        from 'squel';
-import Moment   from 'moment';
-import Random   from 'randomstring';
+const Async    = require('async');
+const Boom     = require('boom');
+const S        = require('squel');
+const Moment   = require('moment');
+const Random   = require('randomstring');
 
 const Squel = S.useFlavour('postgres');
 

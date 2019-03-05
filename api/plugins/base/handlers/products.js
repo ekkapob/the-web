@@ -1,7 +1,7 @@
-import Async    from 'async';
-import Boom     from 'boom';
-import _        from 'lodash';
-import S        from 'squel';
+const Async    = require('async');
+const Boom     = require('boom');
+const _        = require('lodash');
+const S        = require('squel');
 const Squel = S.useFlavour('postgres');
 
 exports.index = (request, reply) => {

@@ -1,7 +1,7 @@
-import Bcrypt   from 'bcrypt';
-import Boom     from 'boom';
-import S        from 'squel';
-import _        from 'lodash';
+const Bcrypt   = require('bcrypt');
+const Boom     = require('boom');
+const S        = require('squel');
+const _        = require('lodash');
 
 const Squel = S.useFlavour('postgres');
 

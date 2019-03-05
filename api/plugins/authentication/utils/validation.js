@@ -1,5 +1,5 @@
-import _      from 'lodash';
-import Joi    from 'joi';
+const _      = require('lodash');
+const Joi    = require('joi');
 
 exports.emailRegex = () => {
   return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;

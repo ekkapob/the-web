@@ -1,15 +1,15 @@
-import fs         from 'fs';
-import Async      from 'async';
-import Boom       from 'boom'; 
-import Cart       from '../utils/cart';
-import Validation from '../utils/validation';
-import Requests   from '../requests';
-import Joi        from 'joi';
-import _          from 'lodash';
-import Uuid       from 'uuid/v1';
-import Mailer     from '../../../api/plugins/mailer/handlers/mailer';
-import Sendgrid   from '../../../api/plugins/mailer/libs/sendgrid';
-import Handlebars from 'handlebars';
+const fs         = require('fs');
+const Async      = require('async');
+const Boom       = require('boom');
+const Cart       = require('../utils/cart');
+const Validation = require('../utils/validation');
+const Requests   = require('../requests');
+const Joi        = require('joi');
+const _          = require('lodash');
+const Uuid       = require('uuid/v1');
+const Mailer     = require('../../../api/plugins/mailer/handlers/mailer');
+const Sendgrid   = require('../../../api/plugins/mailer/libs/sendgrid');
+const Handlebars = require('handlebars');
 
 
 exports.index = (request, reply) => {

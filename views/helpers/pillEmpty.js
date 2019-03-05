@@ -1,6 +1,6 @@
-import Handlebars from 'handlebars';
-import _          from 'lodash';
-import I18n       from 'i18n';
+const Handlebars = require('handlebars');
+const _          = require('lodash');
+const I18n       = require('i18n');
 
 module.exports = (keyword, list, lang) => {
   if (!keyword) return '';

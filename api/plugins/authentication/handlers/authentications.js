@@ -1,9 +1,9 @@
-import Bcrypt       from 'bcrypt';
-import Boom         from 'boom';
-import _            from 'lodash';
-import S            from 'squel';
-import Joi          from 'joi';
-import Validation   from '../utils/validation';
+const Bcrypt       = require('bcrypt');
+const Boom         = require('boom');
+const _            = require('lodash');
+const S            = require('squel');
+const Joi          = require('joi');
+const Validation   = require('../utils/validation');
 
 const Squel = S.useFlavour('postgres');
 

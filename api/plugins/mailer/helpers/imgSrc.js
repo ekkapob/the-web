@@ -1,4 +1,4 @@
-import _ from 'lodash';
+const _ = require('lodash');
 const hostname = 'http://www.traautoparts.com';
 
 module.exports = (img, product_id, category, subcategory) => {

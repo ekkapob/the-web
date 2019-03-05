@@ -1,5 +1,5 @@
-import I18n       from 'i18n';
-import Handlebars from 'handlebars';
+const I18n       = require('i18n');
+const Handlebars = require('handlebars');
 
 module.exports = (number, single, plural, lang) => {
   if (isNaN(parseInt(number))) return;

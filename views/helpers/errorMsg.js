@@ -1,5 +1,5 @@
-import _      from 'lodash';
-import I18n   from 'i18n';
+const _      = require('lodash');
+const I18n   = require('i18n');
 
 module.exports = (inputKey, errors, lang) => {
   I18n.setLocale(lang);

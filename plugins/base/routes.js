@@ -1,6 +1,6 @@
-import Pages      from './handlers/pages';
-import Order      from './handlers/order';
-import Cart       from './handlers/cart';
+const Pages = require('./handlers/pages');
+const Order = require('./handlers/order');
+const Cart  = require('./handlers/cart');
 
 module.exports = [
   {

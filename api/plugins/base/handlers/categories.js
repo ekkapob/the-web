@@ -1,6 +1,6 @@
-import Boom     from 'boom';
-import S        from 'squel';
-import _        from 'lodash';
+const Boom     = require('boom');
+const S        = require('squel');
+const _        = require('lodash');
 const Squel = S.useFlavour('postgres');
 
 exports.index = (request, reply) => {

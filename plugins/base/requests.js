@@ -1,6 +1,6 @@
-import _        from 'lodash';
-import Wreck    from 'wreck';
-import Request  from 'superagent';
+const _ = require('lodash');
+const Wreck = require('wreck');
+const Request = require('superagent');
 var apiUrl = 'http://localhost:4001/api/v1';
 
 exports.products = (params) => {

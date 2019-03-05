@@ -1,4 +1,4 @@
-import Authentications from './handlers/authentications';
+const Authentications = require('./handlers/authentications');
 
 module.exports = [
   {

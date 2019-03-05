@@ -1,8 +1,8 @@
-import Boom     from 'boom';
-import S        from 'squel';
-import _        from 'lodash';
-import path     from 'path';
-import fs       from 'fs';
+const Boom     = require('boom');
+const S        = require('squel');
+const _        = require('lodash');
+const path     = require('path');
+const fs       = require('fs');
 const Squel = S.useFlavour('postgres');
 
 exports.index = (request, reply) => {

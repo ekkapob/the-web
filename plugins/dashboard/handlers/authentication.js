@@ -1,6 +1,6 @@
-import _        from 'lodash';
-import Requests from '../requests';
-import Async    from 'async';
+const _ = require('lodash');
+const Requests = require('../requests');
+const Async = require('async');
 
 exports.signin_screen = (request, reply) => {
   reply.view('member/signin');

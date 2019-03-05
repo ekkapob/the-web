@@ -1,4 +1,4 @@
-import Handlebars   from 'handlebars';
+const Handlebars = require('handlebars');
 
 module.exports = (currentLang, urlPath) => {
   const toggleLang = (currentLang == 'en') ? 'th' : 'en';

@@ -1,6 +1,6 @@
-import Handlebars   from 'handlebars';
-import _            from 'lodash';
-import Querystring  from 'querystring';
+const Handlebars   = require('handlebars');
+const _            = require('lodash');
+const Querystring  = require('querystring');
 
 module.exports = (page, pages, path, query) => {
   if (!page || !pages) return;

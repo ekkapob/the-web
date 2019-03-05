@@ -1,5 +1,5 @@
-import Hapi from 'hapi';
-import _    from 'lodash';
+const Hapi  = require('hapi');
+const _ = require('lodash');
 
 const Server = new Hapi.Server({
   connections: {

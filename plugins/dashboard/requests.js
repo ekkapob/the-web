@@ -1,4 +1,4 @@
-import Request  from 'superagent';
+const Request = require('superagent');
 var apiUrl = 'http://localhost:4001/api/v1';
 
 exports.signin = (params) => {
