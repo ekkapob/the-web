@@ -110,3 +110,4 @@ Gulp.task('browser-sync', () => {
 });
 
 Gulp.task('default', ['start']);
+Gulp.task('build', ['assets']);

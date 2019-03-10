@@ -30,4 +30,7 @@
   .slick-next {
     right: 30px;
   }
+  .slick-arrow::before {
+    color: $medium-grey;
+  }
 }

@@ -30,7 +30,11 @@
             <div class="name text-ellipsis">{{name}}</div>
           {{/if}}
         </a>
-        <div class="th th">{{../__ subcategory}}</div>
+        {{#if ../inputLang}}
+          <div class="th">{{subcategory_th}}</div>
+        {{else}}
+          <div class="th">{{subcategory}}</div>
+        {{/if}}
         <div class="part-info">
           {{#if part_no}}
             <div class="text-ellipsis">
@@ -44,8 +48,14 @@
               <span class="number">{{engine_model}}</span>
             </div>
           {{/if}}
-          {{#if details}}
-            <div class="details text-ellipsis">{{details}}</div>
+          {{#if ../inputLang}}
+            {{#if details_th}}
+              <div class="th th-small details text-ellipsis">{{details_th}}</div>
+            {{/if}}
+          {{else}}
+            {{#if details}}
+              <div class="details text-ellipsis">{{details}}</div>
+            {{/if}}
           {{/if}}
         </div>
       </div>

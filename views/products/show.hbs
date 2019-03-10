@@ -19,11 +19,11 @@
       <div class="col-md-5 col-lg-5 info">
         <p class="title">
           {{#isEng lang}}
-            <span class="name">{{../product.name}}</span>
+            <b class="name">{{../product.name}}</b>
           {{else}}
-            <span class="name th th-big">
+            <b class="name th th-big">
               {{escapeText ../product.name_th ../product.name}}
-            </span>
+            </b>
           {{/isEng}}
           <span>
             <span class="id">{{product.product_id}}</span>
@@ -31,14 +31,16 @@
         </p>
         <div class="category-car">
           <span class="category">
-            {{#if product.category}}
-              <span class="icon-gear"></span>
-              <a class="th" href="#">{{__ product.category}}</a>
-            {{/if}}
-            {{#if product.subcategory}}
-              <span>|</span>
-              <a class="th" href="#">{{__ product.subcategory}}</a>
-            {{/if}}
+            <span class="icon-gear"></span>
+            {{#isEng lang}}
+              <span class="th" style="font-size: 1.8em;">
+                {{../product.subcategory}}
+              </span>
+            {{else}}
+              <span class="th" style="font-size: 1.8em;">
+                {{../product.subcategory_th}}
+              </span>
+            {{/isEng}}
           </span>
           {{#if product.car_brand}}
             <span class="car-brand">
@@ -70,22 +72,22 @@
         </blockquote>
         {{#isEng lang}}
           {{#if ../product.details}}
-            <p class="details">{{../../product.details}}</p>
+            <p class="details">{{../product.details}}</p>
           {{/if}}
           {{#if ../product.remark}}
             <div class="remark">
               <p>{{../../__ 'remarks'}}:</p>
-              <p>{{../../product.remark}}</p>
+              <p>{{../product.remark}}</p>
             </div>
           {{/if}}
         {{else}}
           {{#if ../product.details_th}}
-            <p class="details th">{{../../product.details_th}}</p>
+            <p class="details th">{{../product.details_th}}</p>
           {{/if}}
           {{#if ../product.remark_th}}
             <div class="remark">
               <p class="th th-small">{{../../__ 'remarks'}}:</p>
-              <p class="th th-small">{{../../product.remark_th}}</p>
+              <p class="th th-small">{{../product.remark_th}}</p>
             </div>
           {{/if}}
         {{/isEng}}

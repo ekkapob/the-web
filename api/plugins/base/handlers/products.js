@@ -26,6 +26,7 @@ exports.index = (request, reply) => {
             .field('products.name')
             .field('products.name_th')
             .field('products.details')
+            .field('products.details_th')
             .field('products.part_no')
             .field('products.engine_model')
             .field('products.primary_image')
@@ -35,6 +36,7 @@ exports.index = (request, reply) => {
             .field('car_brands.name AS car_name')
             .field('categories.name AS category')
             .field('subcategories.name AS subcategory')
+            .field('subcategories.name_th AS subcategory_th')
             .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
             .left_join('categories', null, 'products.category_id = categories.id')
             .left_join('subcategories', null, 'products.subcategory_id = subcategories.id');
@@ -42,7 +44,7 @@ exports.index = (request, reply) => {
   if (!_.isEmpty(categories)) q.where('categories.name IN ?', categories);
   if (!_.isEmpty(subcategories)) q.where('subcategories.name IN ?', subcategories);
 
-  q.order('products.created_at')
+  q.order('products.product_id')
     .limit(limit)
     .offset(offset);
   q = q.toParam();
@@ -239,6 +241,7 @@ function fetchProduct(request, productId) {
               .field('car_brands.name AS car_brand')
               .field('categories.name AS category')
               .field('subcategories.name AS subcategory')
+              .field('subcategories.name_th AS subcategory_th')
               .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
               .left_join('categories', null, 'products.category_id = categories.id')
               .left_join('subcategories', null, 'products.subcategory_id = subcategories.id');
@@ -269,6 +272,7 @@ function randomBy(request, randomType, randomName, limit = 10) {
               .field('products.name AS name')
               .field('categories.name AS category')
               .field('subcategories.name AS subcategory')
+              .field('subcategories.name_th AS subcategory_th')
               .field('car_brands.name AS car_brand')
               .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
               .left_join('categories', null, 'products.category_id = categories.id')
@@ -298,6 +302,7 @@ function recommended(request, productId, categoryName, subcategoryName, carBrand
               .field('products.primary_image AS image')
               .field('categories.name AS category')
               .field('subcategories.name AS subcategory')
+              .field('subcategories.name_th AS subcategory_th')
               .field('car_brands.name AS car_brand')
               .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
               .left_join('categories', null, 'products.category_id = categories.id')
@@ -362,6 +367,7 @@ exports.random = (request, reply) => {
             .field('car_brands.name AS car_brand')
             .field('categories.name AS category')
             .field('subcategories.name AS subcategory')
+            .field('subcategories.name_th AS subcategory_th')
             .field('products.details')
             .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
             .left_join('categories', null, 'products.category_id = categories.id')
@@ -426,6 +432,7 @@ exports.search = (request, reply) => {
             .field('car_brands.name AS car_name')
             .field('categories.name AS category')
             .field('subcategories.name AS subcategory')
+            .field('subcategories.name_th AS subcategory_th')
             .left_join('car_brands', null, 'products.car_brand_id = car_brands.id')
             .left_join('categories', null, 'products.category_id = categories.id')
             .left_join('subcategories', null, 'products.subcategory_id = subcategories.id')
