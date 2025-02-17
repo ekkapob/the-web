@@ -1,0 +1,5 @@
+# when server is down, do this
+# node.v6.17.1
+source app.env_prod
+source app.secret
+./fix_start
